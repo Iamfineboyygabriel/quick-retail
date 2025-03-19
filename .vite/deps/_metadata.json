@@ -2,7 +2,39 @@
   "hash": "6fc5b06a",
   "configHash": "55b0e3b7",
   "lockfileHash": "30053d6e",
-  "browserHash": "aaefa675",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "9aa0ebd4",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "43d7e6c8",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "65d21fb5",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "698e5c58",
+      "needsInterop": true
+    },
+    "@mantine/core": {
+      "src": "../../node_modules/@mantine/core/esm/index.mjs",
+      "file": "@mantine_core.js",
+      "fileHash": "17ee88e3",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-SY4HHCYH": {
+      "file": "chunk-SY4HHCYH.js"
+    },
+    "chunk-GT27OAPC": {
+      "file": "chunk-GT27OAPC.js"
+    }
+  }
 }
