@@ -5,8 +5,18 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  top: 0;
 }
 #root {
   height: 100vh;
   background-color: #f2f4f7;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
