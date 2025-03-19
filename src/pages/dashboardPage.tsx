@@ -1,11 +1,10 @@
-import DashboardHeader from "../components/dashboard/layout/dashboardHeader";
 
 const DashboardPage = () => {
   return (
     <div>
-      <DashboardHeader />
+      Page
     </div>
-  );
-};
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage
