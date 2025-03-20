@@ -40,7 +40,7 @@ const DashboardSidebar = () => {
           </div>
         </div>
 
-        <div className="mt-12 px-3 overflow-y-auto hide-scrollbar flex-1">
+        <div className="mt-8 px-3 overflow-y-auto hide-scrollbar flex-1">
           <div className="mb-6">
             <List spacing="md" size="sm" className="p-0">
               {sidebarItems.map((item, index) => (

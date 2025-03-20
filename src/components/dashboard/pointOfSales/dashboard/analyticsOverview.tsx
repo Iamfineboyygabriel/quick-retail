@@ -1,5 +1,7 @@
+import OverviewBox from "../../../General/overviewBox/overviewBox";
+
 const AnalyticsOverview = () => {
-  return <main className="w-full h-auto rounded-lg bg-white">Dashboard</main>;
+  return <OverviewBox />;
 };
 
 export default AnalyticsOverview;
