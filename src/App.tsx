@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LandingPage from "./pages/landingPage";
+import LandingPage from "./pages/pointOfSales/landingPage";
 import DashboardLayout from "./layout/layout";
-import ProductManagementPage from "./pages/productManagementPage";
-import SalesProcessingPage from "./pages/salesProcessingPage";
-import InventoryManagementPage from "./pages/inventoryManagementPage";
-import CategoriesPage from "./pages/categoriesPage";
-import HappyTimePage from "./pages/happyTimePage";
-import StoresPage from "./pages/storesPage";
-import ReportsPage from "./pages/reportsPage";
-import ReturnsPage from "./pages/returnsPage";
-import CustomerPage from "./pages/customerPage";
-import DashboardPage from "./pages/dashboardPage";
-import TransactionPage from "./pages/transactionPage";
+import ProductManagementPage from "./pages/pointOfSales/productManagementPage";
+import SalesProcessingPage from "./pages/pointOfSales/salesProcessingPage";
+import InventoryManagementPage from "./pages/pointOfSales/inventoryManagementPage";
+import CategoriesPage from "./pages/pointOfSales/categoriesPage";
+import HappyTimePage from "./pages/pointOfSales/happyTimePage";
+import StoresPage from "./pages/pointOfSales/storesPage";
+import ReportsPage from "./pages/pointOfSales/reportsPage";
+import ReturnsPage from "./pages/pointOfSales/returnsPage";
+import CustomerPage from "./pages/pointOfSales/customerPage";
+import DashboardPage from "./pages/pointOfSales/dashboardPage";
+import TransactionPage from "./pages/pointOfSales/transactionPage";
 
 export default function App() {
   return (

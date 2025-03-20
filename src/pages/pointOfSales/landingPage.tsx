@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
-import { ROUTES } from "../constants/routes";
+import { ROUTES } from "../../constants/routes";
 
 const LandingPage = () => {
   return (
