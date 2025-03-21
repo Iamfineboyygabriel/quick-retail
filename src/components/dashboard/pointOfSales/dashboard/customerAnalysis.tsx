@@ -3,28 +3,9 @@ import DateFilterMenu from "../../../General/filterMenu";
 import { salesCustomer } from "../../../../utils/mockData";
 import { ArrowUpRight } from "lucide-react";
 
-const DivisionSalesOverview = () => {
+const CustomerAnalysis = () => {
   return (
     <main className="flex gap-3">
-      <div className="w-[60%] h-auto px-4 py-8 rounded-lg bg-white">
-        <div className="flex justify-between items-center">
-          <div className="flex-col ">
-            <Text size="xl" fw={600} c="textSecondary.9">
-              Division Sale Overview
-            </Text>
-            <span className="text-gray-400 font-normal">
-              An overview of sales made
-            </span>
-          </div>
-          <Group>
-            <DateFilterMenu
-              defaultFilter="This Month"
-              buttonVariant="subtle"
-              buttonSize="md"
-            />
-          </Group>
-        </div>
-      </div>
       <div className="w-[40%] h-auto px-4 py-8 rounded-lg bg-white">
         <div className="flex flex-col">
           <Text size="xl" fw={600} c="textSecondary.9">
@@ -50,8 +31,27 @@ const DivisionSalesOverview = () => {
           ))}
         </div>
       </div>
+      <div className="w-[60%] h-auto px-4 py-8 rounded-lg bg-white">
+        <div className="flex justify-between items-center">
+          <div className="flex-col ">
+            <Text size="xl" fw={600} c="textSecondary.9">
+              Division Sale Overview
+            </Text>
+            <span className="text-gray-400 font-normal">
+              An overview of sales made
+            </span>
+          </div>
+          <Group>
+            <DateFilterMenu
+              defaultFilter="This Month"
+              buttonVariant="subtle"
+              buttonSize="md"
+            />
+          </Group>
+        </div>
+      </div>
     </main>
   );
 };
 
-export default DivisionSalesOverview;
+export default CustomerAnalysis;

@@ -5,6 +5,7 @@ import SalesOverview from "../../components/dashboard/pointOfSales/dashboard/sal
 import CustomerOrdersTable from "../../components/dashboard/pointOfSales/dashboard/orderTable";
 import KeyPerformance from "../../components/dashboard/pointOfSales/dashboard/keyPerformance";
 import DivisionSalesOverview from "../../components/dashboard/pointOfSales/dashboard/divisionSalesOverview";
+import CustomerAnalysis from "../../components/dashboard/pointOfSales/dashboard/customerAnalysis";
 
 const DashboardPage = () => {
   const subHeaders = [
@@ -17,6 +18,7 @@ const DashboardPage = () => {
     <PageContainer subHeaders={subHeaders}>
       <AnalyticsOverview />
       <SalesOverview />
+      <CustomerAnalysis />
       <DivisionSalesOverview />
       <KeyPerformance />
       <CustomerOrdersTable />
