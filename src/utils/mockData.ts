@@ -1,6 +1,7 @@
 import dollar from "../../src/assets/images/dollarSign.png";
 import orders from "../../src/assets/images/orders.png";
 import customer from "../../src/assets/images/customers.png";
+import { BlueUserIcon, PinkUserIcon, PurpleUserIcon } from "../assets/svg";
 
 export const analyticsData = [
   {
@@ -131,5 +132,23 @@ export const customerOrders = [
     amount: "₦275,000",
     status: "Paid",
     items: 5,
+  },
+];
+
+export const salesCustomer = [
+  {
+    usericon: PurpleUserIcon,
+    customerName: "Victoria Pascal",
+    email: "victoriapascal@gmail.com",
+  },
+  {
+    usericon: PinkUserIcon,
+    customerName: "Michael Johnson",
+    email: "michaeljohnson@example.com",
+  },
+  {
+    usericon: BlueUserIcon,
+    customerName: "Sophia Williams",
+    email: "sophiawilliams@example.com",
   },
 ];

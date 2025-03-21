@@ -33,7 +33,6 @@ const CustomerOrdersTable = () => {
       header: "Customer",
       accessorKey: "customer",
     },
-
     {
       header: "Amount",
       accessorKey: "amount",

@@ -38,7 +38,7 @@ const SalesOverview = () => {
     <main className="w-full h-auto px-4 py-6 rounded-lg bg-white">
       <header className="flex justify-between items-center mb-6">
         <div className="flex flex-col">
-          <Text size="lg" fw={600} c="textSecondary.9">
+          <Text size="xl" fw={600} c="textSecondary.9">
             Sales overview
           </Text>
           <Text size="sm">An overview of sales made</Text>

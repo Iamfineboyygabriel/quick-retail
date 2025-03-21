@@ -1,40 +1,88 @@
 {
-  "hash": "6fc5b06a",
+  "hash": "338b2958",
   "configHash": "55b0e3b7",
-  "lockfileHash": "30053d6e",
-  "browserHash": "9aa0ebd4",
+  "lockfileHash": "d6f0b9d2",
+  "browserHash": "3da00e38",
   "optimized": {
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "43d7e6c8",
+      "fileHash": "adb3e413",
       "needsInterop": true
     },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "65d21fb5",
+      "fileHash": "90c3e696",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "698e5c58",
+      "fileHash": "d9b6350c",
       "needsInterop": true
     },
     "@mantine/core": {
       "src": "../../node_modules/@mantine/core/esm/index.mjs",
       "file": "@mantine_core.js",
-      "fileHash": "17ee88e3",
+      "fileHash": "01387c08",
+      "needsInterop": false
+    },
+    "@mantine/notifications": {
+      "src": "../../node_modules/@mantine/notifications/esm/index.mjs",
+      "file": "@mantine_notifications.js",
+      "fileHash": "7a36e202",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "de7fd9ea",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "b8ac03b7",
+      "needsInterop": false
+    },
+    "react-router": {
+      "src": "../../node_modules/react-router/dist/development/index.mjs",
+      "file": "react-router.js",
+      "fileHash": "76d9e9f5",
+      "needsInterop": false
+    },
+    "recharts": {
+      "src": "../../node_modules/recharts/es6/index.js",
+      "file": "recharts.js",
+      "fileHash": "e0d00148",
+      "needsInterop": false
+    },
+    "@tanstack/react-table": {
+      "src": "../../node_modules/@tanstack/react-table/build/lib/index.mjs",
+      "file": "@tanstack_react-table.js",
+      "fileHash": "0c0b6b2e",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-SY4HHCYH": {
-      "file": "chunk-SY4HHCYH.js"
+    "chunk-CYNCHVMD": {
+      "file": "chunk-CYNCHVMD.js"
     },
-    "chunk-GT27OAPC": {
-      "file": "chunk-GT27OAPC.js"
+    "chunk-WHAHIZQN": {
+      "file": "chunk-WHAHIZQN.js"
+    },
+    "chunk-FHRPH24K": {
+      "file": "chunk-FHRPH24K.js"
+    },
+    "chunk-VCHV22QC": {
+      "file": "chunk-VCHV22QC.js"
+    },
+    "chunk-5AR7P7EP": {
+      "file": "chunk-5AR7P7EP.js"
+    },
+    "chunk-AY6LENDD": {
+      "file": "chunk-AY6LENDD.js"
     }
   }
 }
