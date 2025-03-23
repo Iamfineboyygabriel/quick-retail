@@ -4,6 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { TableRowData } from "../../../../types";
 import { Avatar, Text } from "@mantine/core";
 import { PaidDot, UnpaidDot } from "../../../../assets/svg";
+import imageSrc from "../../../../assets/images/productIMG.png"
 
 const ProductTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -13,7 +14,7 @@ const ProductTable = () => {
       cell: (props) => (
         <div className="flex items-center gap-3">
           <Avatar
-            src={props.row.original.imageUrl as string} // Ensure this field contains the image URL
+             src={imageSrc} // Ensure this field contains the image URL
             alt={props.row.original.name as string}
             radius="md"
             size={40} // Adjust size as needed
