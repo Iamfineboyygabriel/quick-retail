@@ -5,7 +5,7 @@ import { analyticsData } from "../../../utils/mockData";
 
 const OverviewBox = () => {
   return (
-    <main className="w-full h-auto overflow-auto px-4 py-6 rounded-lg bg-white">
+    <main className="w-full h-auto overflow-auto px-6 py-8 rounded-lg bg-white">
       <header className="flex justify-between items-center">
         <div className="flex flex-col">
           <Text size="xl" fw={600} c="textSecondary.9">

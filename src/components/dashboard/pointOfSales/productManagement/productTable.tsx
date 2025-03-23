@@ -2,8 +2,8 @@ import TanTable from "../../../General/table";
 import { productTableData } from "../../../../utils/mockData";
 import { ColumnDef } from "@tanstack/react-table";
 import { TableRowData } from "../../../../types";
-import { Dot } from "lucide-react";
-import { Text } from "@mantine/core";
+import { Avatar, Text } from "@mantine/core";
+import { PaidDot, UnpaidDot } from "../../../../assets/svg";
 
 const ProductTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -11,14 +11,22 @@ const ProductTable = () => {
       header: "Name",
       accessorKey: "name",
       cell: (props) => (
-        <div className="flex flex-col gap-1">
-          <Text fw={500} c="black">
-            {props.row.original.id}
-          </Text>
-          <Text fw={500}>
-            Total Items:
-            <span className="ml-1 text-black">{props.row.original.items}</span>
-          </Text>
+        <div className="flex items-center gap-3">
+          <Avatar
+            src={props.row.original.imageUrl as string} // Ensure this field contains the image URL
+            alt={props.row.original.name as string}
+            radius="md"
+            size={40} // Adjust size as needed
+          />
+
+          <div className="flex flex-col">
+            <Text fw={500} c="black">
+              {props.row.original.name}
+            </Text>
+            <Text fw={500} className="text-[#667185] text-sm">
+              {props.row.original.items}
+            </Text>
+          </div>
         </div>
       ),
     },
@@ -26,12 +34,12 @@ const ProductTable = () => {
       header: "Product Code",
       accessorKey: "productCode",
       cell: (props) => (
-        <Text c="textSecondary.7">{props.row.original.timestamp}</Text>
+        <Text c="textSecondary.7">{props.row.original.productCode}</Text>
       ),
     },
     {
       header: "Location",
-      accessorKey: "customer",
+      accessorKey: "location",
     },
     {
       header: "Category",
@@ -40,21 +48,6 @@ const ProductTable = () => {
     {
       header: "Selling Price",
       accessorKey: "sellingPrice",
-      cell: (props) => {
-        const status = props.row.original.status;
-        return (
-          <div
-            className={`px-2 py-1 flex w-20  rounded-full font-medium text-sm ${
-              status === "Paid"
-                ? "bg-[#ECFDF3] text-[#027A48]"
-                : "bg-[#FFFAEB] text-[#B54708]"
-            }`}
-          >
-            <Dot />
-            {status}
-          </div>
-        );
-      },
     },
     {
       header: "Stock Level",
@@ -68,13 +61,21 @@ const ProductTable = () => {
     {
       header: "Discount Status",
       accessorKey: "discountStatus",
-      cell: () => (
-        <button>
-          <Text fw={700} c="customPrimary.10">
-            View Order
-          </Text>
-        </button>
-      ),
+      cell: (props) => {
+        const status = props.row.original.discountStatus;
+        return (
+          <div
+            className={`px-2 py-1 flex items-center justify-start w-24 rounded-full font-medium text-sm ${
+              status === "Paid"
+                ? "bg-[#ECFDF3] text-[#027A48]"
+                : "bg-[#FFFAEB] text-[#B54708]"
+            }`}
+          >
+            {status === "Paid" ? <PaidDot /> : <UnpaidDot />}
+            <span className="ml-2">{status}</span>
+          </div>
+        );
+      },
     },
   ];
   return (
@@ -84,13 +85,16 @@ const ProductTable = () => {
         data={productTableData}
         showSearch
         showSortFilter
-        searchPlaceholder="Search by Name, Product code etc."
+        searchPlaceholder="Search orders"
         length={5}
         tableTitle={
-          <div>
+          <div className="flex gap-2.5">
             <Text fw={500} size="xl" c="textSecondary.9">
-               Products
+              Products
             </Text>
+            <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
+              <Text c="customPrimary.10">100</Text>
+            </div>
           </div>
         }
       />

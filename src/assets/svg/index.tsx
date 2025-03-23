@@ -716,3 +716,31 @@ export const BlueUserIcon = () => {
     </svg>
   );
 };
+
+export const PaidDot = () => {
+  return (
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 8 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="4" cy="4" r="3" fill="#12B76A" />
+    </svg>
+  );
+};
+
+export const UnpaidDot = () => {
+  return (
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 8 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="4" cy="4" r="3" fill="#F79009" />
+    </svg>
+  );
+};

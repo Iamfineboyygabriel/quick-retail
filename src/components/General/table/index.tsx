@@ -51,7 +51,7 @@ const TanTable: FC<TanTableProps> = ({
   filterList = [],
   showSortFilter = false,
   searchPlaceholder,
-  searchMaxWidth = "400px",
+  searchMaxWidth = "350px",
   showBorder = false,
   sortOptions = [],
   tableTitle = "Recent Orders",
@@ -190,7 +190,7 @@ const TanTable: FC<TanTableProps> = ({
           flexDirection: "column",
           ...(showBorder && {
             border: "1px solid var(--mantine-color-gray-3)",
-            padding: "0.75rem 0.75rem 0",
+            padding: "0.75rem 0rem 0",
           }),
         }}
       >
@@ -202,6 +202,8 @@ const TanTable: FC<TanTableProps> = ({
             alignItems: "center",
             marginBottom: "1rem",
             width: "100%",
+            paddingLeft: "20px",
+            paddingRight: "20px",
           }}
         >
           <div>

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ResponsiveContainer,
-  LineChart as RechartsLineChart,
   Line,
   XAxis,
   YAxis,
@@ -9,6 +8,8 @@ import {
   Tooltip,
   Legend,
   TooltipProps,
+  Area,
+  ComposedChart,
 } from "recharts";
 import { Text } from "@mantine/core";
 
@@ -114,7 +115,7 @@ const LineChart: React.FC<LineChartProps> = ({
   return (
     <div className="w-full" style={{ height: `${height}px` }}>
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart
+        <ComposedChart
           data={data}
           margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
         >
@@ -148,6 +149,36 @@ const LineChart: React.FC<LineChartProps> = ({
 
           {showLegend && <Legend content={<CustomLegend />} />}
 
+          {/* Define gradients for each line */}
+          <defs>
+            {lines.map((line, index) => (
+              <linearGradient
+                key={`gradient-${index}`}
+                id={`color-${line.dataKey}`}
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop offset="5%" stopColor={line.color} stopOpacity={0.5} />
+                <stop offset="95%" stopColor={line.color} stopOpacity={0.1} />
+              </linearGradient>
+            ))}
+          </defs>
+
+          {/* Improved Area beneath lines with gradient */}
+          {lines.map((line, index) => (
+            <Area
+              key={`area-${index}`}
+              type="monotone"
+              dataKey={line.dataKey}
+              fill={`url(#color-${line.dataKey})`}
+              stroke="none"
+              fillOpacity={1}
+            />
+          ))}
+
+          {/* Lines on top */}
           {lines.map((line, index) => (
             <Line
               key={`line-${index}`}
@@ -192,7 +223,7 @@ const LineChart: React.FC<LineChartProps> = ({
               }}
             />
           )}
-        </RechartsLineChart>
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
   );

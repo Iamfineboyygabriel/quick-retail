@@ -50,12 +50,11 @@ const SearchComp: FC<SearchCompProps> = ({
         onChange={handleInputChange}
         leftSection={searchIcon || <Search size={20} color={iconColor} />}
         styles={{
-          root: { width: "100%" },
+          root: { width: "100%", fontSize: "26px" },
           input: {
             backgroundColor: "transparent",
             "&::placeholder": {
               color: placeholderColor,
-              fontSize: "26px",
             },
           },
         }}

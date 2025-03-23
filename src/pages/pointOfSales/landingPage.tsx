@@ -8,7 +8,11 @@ const LandingPage = () => {
     <main className="flex flex-col justify-center items-center h-screen">
       <h1 className="text-black font-bold">WELCOME GUYS!👋👋</h1>
       <Link to={ROUTES.dashboard}>
-        <Button type="submit" className="mt-4 flex items-center gap-2">
+        <Button
+          type="submit"
+          bg="customPrimary.9"
+          className="mt-4 bg-[customPrimary.9] flex items-center gap-2"
+        >
           Cick to proceed
           <ArrowRight />
         </Button>
