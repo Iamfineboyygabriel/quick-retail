@@ -9,8 +9,9 @@ import {
   otherMenu,
 } from "../../../layout/navItemData";
 import { useDashboard } from "../../../layout/dashboardContext";
+import { X } from "lucide-react";
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   const { activeSection } = useDashboard();
 
   const getSidebarItems = () => {
@@ -37,6 +38,10 @@ const DashboardSidebar = () => {
         <div className="px-4">
           <div className="flex justify-between items-center">
             <img src={logo} alt="logo" className="object-contain" />
+            <X
+              onClick={toggleSidebar}
+              className="w-6 h-6 text-gray-700 cursor-pointer md:hidden"
+            />
           </div>
         </div>
 

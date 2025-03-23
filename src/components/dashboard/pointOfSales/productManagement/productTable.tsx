@@ -115,7 +115,7 @@ const ProductTable = () => {
     },
   ];
   return (
-    <main className="w-full h-auto px-4 py-6 rounded-lg bg-white">
+    <main className="w-full h-auto py-6 rounded-lg bg-white">
       <TanTable
         columnData={columns}
         data={productTableData}

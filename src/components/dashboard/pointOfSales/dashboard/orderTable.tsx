@@ -77,7 +77,7 @@ const CustomerOrdersTable = () => {
   ];
 
   return (
-    <main className="w-full h-auto px- py-8 rounded-lg bg-white">
+    <main className="w-full h-auto  py-8 rounded-lg bg-white">
       <TanTable
         columnData={columns}
         data={customerOrders}
