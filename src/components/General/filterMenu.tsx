@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, Button, ButtonProps } from "@mantine/core";
+import { Menu, Button, ButtonProps, Text } from "@mantine/core";
 import { ChevronDown } from "lucide-react";
 import { CalendaIcon } from "../../assets/svg";
 
@@ -73,7 +73,7 @@ function DateFilterMenu({
         dropdown: {
           backgroundColor: "white",
           border: `1px solid ${theme.colors.textSecondary[1] || "#D0D5DD"}`,
-          padding: theme.spacing.xs,
+          padding: theme.spacing.lg,
           boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.05)",
         },
         item: {
@@ -102,12 +102,13 @@ function DateFilterMenu({
           className={className}
           style={style}
           leftSection={<CalendaIcon />}
-          rightSection={<ChevronDown size={14} color="#667185" />}
+          rightSection={<ChevronDown size={24} color="#667185" />}
           styles={(theme) => ({
             root: {
               border: `1px solid ${theme.colors.textSecondary[1] || "#D0D5DD"}`,
               color: "#101928",
               backgroundColor: "white",
+              borderRadius: "8px",
               "&:hover": {
                 backgroundColor: theme.colors.gray[0],
               },
@@ -120,7 +121,7 @@ function DateFilterMenu({
             },
           })}
         >
-          {selectedFilter}
+          <Text fw={500}>{selectedFilter}</Text>
         </Button>
       </Menu.Target>
 

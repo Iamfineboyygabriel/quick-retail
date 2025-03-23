@@ -35,8 +35,7 @@ export const theme: MantineThemeOverride = createTheme({
 
   // Define additional theme variables that aren't part of Mantine's default theme
   other: {
-    // These can be accessed in your components for consistency
-    textColor: textColors.primary, // "#111943" - dark blue-gray
+    textColor: textColors.primary, // "#F16722" - Brand Orange
     textSecondaryColor: textColors.secondary, // "#667185" - medium-dark gray
   },
 

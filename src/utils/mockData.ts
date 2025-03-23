@@ -152,3 +152,27 @@ export const salesCustomer = [
     email: "sophiawilliams@example.com",
   },
 ];
+
+export const customerData = [
+  { name: "New customers - 60%", value: 60, color: "#F06A4D" },
+  { name: "Bounce customers - 20%", value: 20, color: "#223F4A" },
+  { name: "Existing customers", value: 10, color: "#FBBD7A" },
+];
+
+export const customerAnalysis = [
+  {
+    label: "New Customers",
+    num: "40,000",
+    color: "#E76E50",
+  },
+  {
+    label: "Bounce Customers",
+    num: "400",
+    color: "#223F4A",
+  },
+  {
+    label: "Existing Customers",
+    num: "40",
+    color: "#FBBD7A",
+  },
+];

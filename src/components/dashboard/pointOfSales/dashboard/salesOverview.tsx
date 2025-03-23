@@ -27,7 +27,7 @@ const SalesOverview = () => {
           "label" in highlightedData &&
           typeof highlightedData.label === "string"
             ? highlightedData.label
-            : `${highlightedData.revenue}M`,
+            : `₦${highlightedData.revenue}M`,
       };
     }
 
@@ -35,13 +35,15 @@ const SalesOverview = () => {
   }, []);
 
   return (
-    <main className="w-full h-auto px-4 py-6 rounded-lg bg-white">
+    <main className="w-full h-auto px-6 py-8 rounded-lg bg-white">
       <header className="flex justify-between items-center mb-6">
         <div className="flex flex-col">
           <Text size="xl" fw={600} c="textSecondary.9">
             Sales overview
           </Text>
-          <Text size="sm">An overview of sales made</Text>
+          <Text size="sm" c="secondary">
+            An overview of sales made
+          </Text>
         </div>
         <Group>
           <DateFilterMenu

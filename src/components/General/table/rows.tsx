@@ -42,7 +42,7 @@ const TanRows: FC<TanRowsProps> = ({ table, onClick }) => {
                 padding: "0.75rem",
               }}
             >
-              <div>
+              <div className="px-2">
                 <span className="text-black whitespace-nowrap font-medium">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </span>

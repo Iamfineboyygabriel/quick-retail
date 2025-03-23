@@ -53,13 +53,12 @@ const TanBody = ({ table, onClick }: TanBodyProps) => {
   }, [isDragging, startX, scrollLeft]);
 
   return (
-    <div className="w-full overflow-auto" style={{ overflow: "hiddn" }}>
+    <div className="w-full overflow-hidden">
       <div
         ref={scrollContainerRef}
-        className={`overflow-auto ${
+        className={`w-full overflow-x-auto ${
           isDragging ? "cursor-grabbing" : "cursor-default"
         }`}
-        style={{ width: "100%" }}
       >
         <Table style={{ width: "100%" }}>
           <TanHeader table={table} />

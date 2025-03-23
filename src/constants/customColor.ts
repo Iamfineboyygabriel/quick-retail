@@ -51,7 +51,7 @@ export const textSecondary: [
 ];
 
 export const textColors = {
-  primary: "#111943", // Dark blue-gray - Use for headings and primary text
+  primary: "#F16722", // Brand Orange -
   secondary: "#667185", // Same as textSecondary[7] - Use for body text
 };
 
