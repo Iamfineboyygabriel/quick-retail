@@ -176,3 +176,10 @@ export const customerAnalysis = [
     color: "#FBBD7A",
   },
 ];
+
+export const paymentData = [
+  { label: "Subtotal (1 item)", amount: "₦ 30,000" },
+  { label: "Discount", amount: "-" },
+  { label: "Tax (7.5% VAT)", amount: "₦ 2,250" },
+  { label: "Service fee", amount: "₦ 2,250" },
+];

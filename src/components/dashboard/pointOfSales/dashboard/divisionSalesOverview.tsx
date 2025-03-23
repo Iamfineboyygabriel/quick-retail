@@ -6,7 +6,7 @@ import DivisionSaleChart from "../../../General/divisionSalesChart";
 
 const DivisionSalesOverview = () => {
   return (
-    <main className="flex gap-3">
+    <main className="flex gap-6">
       <section className="w-[35%] h-auto px-6 py-8 rounded-lg bg-white">
         <div className="flex flex-col">
           <Text size="xl" fw={600} c="textSecondary.9">

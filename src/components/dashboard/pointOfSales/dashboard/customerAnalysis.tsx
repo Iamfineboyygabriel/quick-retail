@@ -6,7 +6,7 @@ import DivisionSaleChart from "../../../General/divisionSalesChart";
 
 const CustomerAnalysis = () => {
   return (
-    <main className="flex gap-3">
+    <main className="flex gap-6">
       <div className="w-[65%] h-auto px-4 py-8 rounded-lg bg-white">
         <div className="flex justify-between items-center">
           <div className="flex-col ">
