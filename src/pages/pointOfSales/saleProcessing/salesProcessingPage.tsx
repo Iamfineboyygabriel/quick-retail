@@ -1,6 +1,8 @@
 import { Text } from "@mantine/core";
 import PageContainer from "../../../layout/pageContainer";
 import CustomerOrdersTable from "../../../components/dashboard/pointOfSales/dashboard/orderTable";
+import { ROUTES } from "../../../constants/routes";
+import { Link } from "react-router";
 
 const SalesProcessingPage = () => {
   const subHeaders = [
@@ -9,6 +11,7 @@ const SalesProcessingPage = () => {
         <Text fw={500} size="xl" c="black">
           Sale Processing
         </Text>
+        <Link to={ROUTES.createOrder}>Create Order</Link>
       </div>
     </div>,
   ];
