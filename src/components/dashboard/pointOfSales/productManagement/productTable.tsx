@@ -66,7 +66,7 @@ const ProductTable = () => {
         const status = props.row.original.discountStatus;
         return (
           <div
-            className={`px-2 py-1 flex items-center justify-start w-24 rounded-full font-medium text-sm ${
+            className={`inline-flex items-center px-3 py-1 rounded-full font-medium text-sm ${
               status === "Paid"
                 ? "bg-[#ECFDF3] text-[#027A48]"
                 : "bg-[#FFFAEB] text-[#B54708]"
