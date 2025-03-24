@@ -22,16 +22,36 @@ const ProductManagementPage = () => {
             >
               Add New Product
               {/* <IconChevronDown size={18} className="ml-2" /> */}
-
             </Button>
           </Menu.Target>
 
-          <Menu.Dropdown>
-            <Menu.Item onClick={() => console.log("Option 1 clicked")}>
-              Option 1
+          <Menu.Dropdown
+            style={{
+              backgroundColor: "white", // White background
+              borderRadius: "8px", // Rounded corners
+              padding: "10px", // Add spacing inside
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Soft shadow effect
+            }}
+          >
+            <Menu.Item
+              style={{
+                fontSize: "14px",
+                padding: "8px 16px",
+                color: "#333",
+              }}
+              onClick={() => console.log("Add product clicked")}
+            >
+              Add a product
             </Menu.Item>
-            <Menu.Item onClick={() => console.log("Option 2 clicked")}>
-              Option 2
+            <Menu.Item
+              style={{
+                fontSize: "14px",
+                padding: "8px 16px",
+                color: "#333",
+              }}
+              onClick={() => console.log("Option 2 clicked")}
+            >
+              Add bulk products
             </Menu.Item>
           </Menu.Dropdown>
         </Menu>
