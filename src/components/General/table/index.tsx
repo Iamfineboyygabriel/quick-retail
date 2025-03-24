@@ -53,7 +53,6 @@ const TanTable: FC<TanTableProps> = ({
   searchPlaceholder,
   searchMaxWidth = "350px",
   showBorder = false,
-  sortOptions = [],
   tableTitle = "Recent Orders",
 }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -232,13 +231,7 @@ const TanTable: FC<TanTableProps> = ({
               />
             )}
 
-            {showSortFilter && sortOptions.length > 0 && (
-              <SortFilter
-                data={data}
-                onSort={handleSort}
-                sortOptions={sortOptions}
-              />
-            )}
+            {showSortFilter && <SortFilter data={data} onSort={handleSort} />}
           </Box>
         </Box>
       </Box>

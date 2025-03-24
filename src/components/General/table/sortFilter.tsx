@@ -1,12 +1,7 @@
 import { FC, useState } from "react";
 import { Menu, Button, Box, Text } from "@mantine/core";
 import { ChevronDown } from "lucide-react";
-
-interface TableRowData {
-  [key: string]: unknown;
-  name?: string;
-  createdAt?: string | Date;
-}
+import { TableRowData } from "../../../types";
 
 interface SortFilterProps {
   data: TableRowData[];
@@ -16,6 +11,7 @@ interface SortFilterProps {
 const SortFilter: FC<SortFilterProps> = ({ data, onSort }) => {
   const [activeOption, setActiveOption] = useState<string>("All");
 
+  // Default sort options - can be extended later
   const sortOptions = [
     { label: "All", key: "all" },
     { label: "Recent", key: "recent" },
@@ -26,40 +22,29 @@ const SortFilter: FC<SortFilterProps> = ({ data, onSort }) => {
 
   const handleSort = (optionKey: string) => {
     setActiveOption(optionKey);
-
     const sortedData = [...data];
 
     switch (optionKey) {
       case "recent":
-        sortedData.sort((a, b) => {
-          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-          return dateB - dateA;
-        });
+        // Will be implemented when API is connected
+        // sortedData.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         break;
       case "oldest":
-        sortedData.sort((a, b) => {
-          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-          return dateA - dateB;
-        });
+        // Will be implemented when API is connected
+        // sortedData.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
         break;
       case "a-z":
-        sortedData.sort((a, b) => {
-          const nameA = typeof a.name === "string" ? a.name : "";
-          const nameB = typeof b.name === "string" ? b.name : "";
-          return nameA.localeCompare(nameB);
-        });
+        sortedData.sort((a, b) =>
+          (a.name?.toString() || "").localeCompare(b.name?.toString() || "")
+        );
         break;
       case "z-a":
-        sortedData.sort((a, b) => {
-          const nameA = typeof a.name === "string" ? a.name : "";
-          const nameB = typeof b.name === "string" ? b.name : "";
-          return nameB.localeCompare(nameA);
-        });
+        sortedData.sort((a, b) =>
+          (b.name?.toString() || "").localeCompare(a.name?.toString() || "")
+        );
         break;
       default:
-        // "All" case - no sorting needed
+        // "All" case - return original order
         break;
     }
 
@@ -76,9 +61,10 @@ const SortFilter: FC<SortFilterProps> = ({ data, onSort }) => {
           <Button
             variant="outline"
             size="sm"
+            rightSection={<ChevronDown size={16} />}
             styles={{
               root: {
-                padding: "0.30rem 0.9rem",
+                padding: "0.30rem 0.5rem",
                 backgroundColor: "transparent",
                 border: "1px solid var(--mantine-color-gray-3)",
                 borderRadius: "0.375rem",
@@ -89,7 +75,6 @@ const SortFilter: FC<SortFilterProps> = ({ data, onSort }) => {
             }}
           >
             {activeOption}
-            <ChevronDown />
           </Button>
         </Menu.Target>
         <Menu.Dropdown style={{ minWidth: "120px" }}>

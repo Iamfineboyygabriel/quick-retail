@@ -14,4 +14,5 @@ export interface SortOption {
 
 export interface TableRowData {
   [key: string]: string | number | boolean | null | undefined | React.ReactNode;
+  name?: string;
 }
