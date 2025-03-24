@@ -5,6 +5,8 @@ import { TableRowData } from "../../../../types";
 import { Avatar, Text } from "@mantine/core";
 import { PaidDot, UnpaidDot } from "../../../../assets/svg";
 import imageSrc from "../../../../assets/images/productIMG.png";
+import { Menu, Button } from "@mantine/core";
+import { MoreVertical } from "lucide-react";
 
 const ProductTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -45,6 +47,11 @@ const ProductTable = () => {
     {
       header: "Category",
       accessorKey: "category",
+      cell: ({ row }) => (
+        <span className="bg-gray-100 text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
+          {row.original.category}
+        </span>
+      ),
     },
     {
       header: "Selling Price",
@@ -55,7 +62,7 @@ const ProductTable = () => {
       accessorKey: "stockLevel",
       cell: (props) => (
         <span className="font-medium text-center">
-          {props.row.original.items}
+          {props.row.original.stockLevel}
         </span>
       ),
     },
@@ -77,6 +84,34 @@ const ProductTable = () => {
           </div>
         );
       },
+    },
+    {
+      header: "",
+      accessorKey: "action",
+      cell: () => (
+        <Menu shadow="md" width={150} position="bottom-end">
+          <Menu.Target>
+            <Button variant="subtle" size="xs" p={1}>
+              <MoreVertical size={20} className="cursor-pointer" />
+            </Button>
+          </Menu.Target>
+
+          <Menu.Dropdown>
+            <Menu.Item onClick={() => alert("View Order Clicked!")}>
+              View 
+            </Menu.Item>
+            <Menu.Item onClick={() => alert("View Order Clicked!")}>
+              Edit
+            </Menu.Item>
+            <Menu.Item
+              color="red"
+              onClick={() => alert("Delete Order Clicked!")}
+            >
+              Delete 
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      ),
     },
   ];
   return (
