@@ -31,6 +31,7 @@ const TanRows: FC<TanRowsProps> = ({ table, onClick }) => {
           style={{
             cursor: onClick ? "pointer" : "default",
             backgroundColor: "white",
+            borderBottom: "1px solid #e0e0e0",
           }}
           onClick={(e) => handleRowClick(e, row)}
         >

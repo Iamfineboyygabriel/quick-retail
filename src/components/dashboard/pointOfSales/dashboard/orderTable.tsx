@@ -44,7 +44,7 @@ const CustomerOrdersTable = () => {
         const status = props.row.original.status;
         return (
           <div
-            className={`px-2 py-1 flex items-center justify-start w-24 rounded-full font-medium text-sm ${
+            className={`px-2 py-1 flex items-center justify-start w-auto rounded-full font-medium text-sm ${
               status === "Paid"
                 ? "bg-[#ECFDF3] text-[#027A48]"
                 : "bg-[#FFFAEB] text-[#B54708]"
@@ -85,6 +85,17 @@ const CustomerOrdersTable = () => {
         showSortFilter
         searchPlaceholder="Search orders"
         length={5}
+        showFilter
+        sortOptions={[
+          {
+            key: "products",
+            label: "Sort By Recently Uploaded",
+          },
+          {
+            key: "added_on",
+            label: "Sort by Date Added",
+          },
+        ]}
         tableTitle={
           <div className="flex gap-2.5">
             <Text fw={500} size="xl" c="textSecondary.9">

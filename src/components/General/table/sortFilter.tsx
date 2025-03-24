@@ -1,143 +1,117 @@
 import { FC, useState } from "react";
-import { Menu, Button, Box } from "@mantine/core";
-import { SortOption, TableRowData } from "../../../types";
+import { Menu, Button, Box, Text } from "@mantine/core";
+import { ChevronDown } from "lucide-react";
+
+interface TableRowData {
+  [key: string]: unknown;
+  name?: string;
+  createdAt?: string | Date;
+}
 
 interface SortFilterProps {
   data: TableRowData[];
   onSort: (data: TableRowData[]) => void;
-  sortOptions: SortOption[];
 }
 
-const SortFilter: FC<SortFilterProps> = ({ data, onSort, sortOptions }) => {
-  const [activeOption, setActiveOption] = useState<string | null>(null);
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  const handleSort = (option: SortOption) => {
-    // Toggle direction if clicking the same option again
-    if (activeOption === option.key) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    } else {
-      setActiveOption(option.key);
-      setSortDirection(option.defaultDirection || "asc");
+const SortFilter: FC<SortFilterProps> = ({ data, onSort }) => {
+  const [activeOption, setActiveOption] = useState<string>("All");
+
+  const sortOptions = [
+    { label: "All", key: "all" },
+    { label: "Recent", key: "recent" },
+    { label: "Oldest", key: "oldest" },
+    { label: "A-Z", key: "a-z" },
+    { label: "Z-A", key: "z-a" },
+  ];
+
+  const handleSort = (optionKey: string) => {
+    setActiveOption(optionKey);
+
+    const sortedData = [...data];
+
+    switch (optionKey) {
+      case "recent":
+        sortedData.sort((a, b) => {
+          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+          return dateB - dateA;
+        });
+        break;
+      case "oldest":
+        sortedData.sort((a, b) => {
+          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+          return dateA - dateB;
+        });
+        break;
+      case "a-z":
+        sortedData.sort((a, b) => {
+          const nameA = typeof a.name === "string" ? a.name : "";
+          const nameB = typeof b.name === "string" ? b.name : "";
+          return nameA.localeCompare(nameB);
+        });
+        break;
+      case "z-a":
+        sortedData.sort((a, b) => {
+          const nameA = typeof a.name === "string" ? a.name : "";
+          const nameB = typeof b.name === "string" ? b.name : "";
+          return nameB.localeCompare(nameA);
+        });
+        break;
+      default:
+        // "All" case - no sorting needed
+        break;
     }
-
-    const direction =
-      activeOption === option.key
-        ? sortDirection === "asc"
-          ? "desc"
-          : "asc"
-        : option.defaultDirection || "asc";
-
-    const sortType = option.type || "string";
-
-    const sortedData = [...data].sort((a, b) => {
-      const valueA = option.key
-        .split(".")
-        .reduce((obj: TableRowData, k) => obj?.[k], a);
-      const valueB = option.key
-        .split(".")
-        .reduce((obj: TableRowData, k) => obj?.[k], b);
-
-      if (valueA === null || valueA === undefined)
-        return direction === "asc" ? 1 : -1;
-      if (valueB === null || valueB === undefined)
-        return direction === "asc" ? -1 : 1;
-
-      if (sortType === "date") {
-        // Assuming the date is stored in a property like 'dateField'
-        const dateA = new Date(valueA.dateField).getTime();
-        const dateB = new Date(valueB.dateField).getTime();
-
-        if (isNaN(dateA) || isNaN(dateB)) {
-          return direction === "asc"
-            ? String(valueA).localeCompare(String(valueB))
-            : String(valueB).localeCompare(String(valueA));
-        }
-
-        return direction === "asc" ? dateA - dateB : dateB - dateA;
-      } else if (sortType === "number") {
-        const numA = Number(valueA);
-        const numB = Number(valueB);
-
-        if (isNaN(numA) || isNaN(numB)) {
-          return direction === "asc"
-            ? String(valueA).localeCompare(String(valueB))
-            : String(valueB).localeCompare(String(valueA));
-        }
-
-        return direction === "asc" ? numA - numB : numB - numA;
-      } else {
-        // String handling (case-insensitive)
-        const strA = String(valueA).toLowerCase();
-        const strB = String(valueB).toLowerCase();
-
-        return direction === "asc"
-          ? strA.localeCompare(strB)
-          : strB.localeCompare(strA);
-      }
-    });
 
     onSort(sortedData);
   };
 
-  if (!sortOptions?.length) return null;
-
   return (
-    <Menu position="bottom-end">
-      <Menu.Target>
-        <Button
-          variant="outline"
-          styles={{
-            root: {
-              padding: "0.5rem",
-              backgroundColor: "transparent",
-              border: "1px solid var(--mantine-color-gray-3)",
-              borderRadius: "0.375rem",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            },
-          }}
-        >
-          sort
-        </Button>
-      </Menu.Target>
-      <Menu.Dropdown style={{ minWidth: "200px" }}>
-        {sortOptions.map((option) => (
-          <Menu.Item
-            key={option.key}
+    <Box style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+      <Text size="md" fw={500} c="black">
+        Sort By:
+      </Text>
+      <Menu position="bottom-end">
+        <Menu.Target>
+          <Button
+            variant="outline"
+            size="sm"
             styles={{
-              item: {
-                backgroundColor:
-                  activeOption === option.key
-                    ? "var(--mantine-color-gray-1)"
-                    : undefined,
+              root: {
+                padding: "0.30rem 0.9rem",
+                backgroundColor: "transparent",
+                border: "1px solid var(--mantine-color-gray-3)",
+                borderRadius: "0.375rem",
+                color: "#475367",
+                fontSize: "15px",
+                textTransform: "capitalize",
               },
             }}
-            onClick={() => handleSort(option)}
           >
-            <Box
-              style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+            {activeOption}
+            <ChevronDown />
+          </Button>
+        </Menu.Target>
+        <Menu.Dropdown style={{ minWidth: "120px" }}>
+          {sortOptions.map((option) => (
+            <Menu.Item
+              key={option.key}
+              onClick={() => handleSort(option.key)}
+              styles={{
+                item: {
+                  backgroundColor:
+                    activeOption === option.key
+                      ? "var(--mantine-color-gray-1)"
+                      : undefined,
+                },
+              }}
             >
-              {option.icon}
-              <span>
-                {option.label}
-                {activeOption === option.key && (
-                  <span
-                    style={{
-                      marginLeft: "0.25rem",
-                      fontSize: "0.875rem",
-                      color: "var(--mantine-color-gray-6)",
-                    }}
-                  >
-                    ({sortDirection === "asc" ? "↑" : "↓"})
-                  </span>
-                )}
-              </span>
-            </Box>
-          </Menu.Item>
-        ))}
-      </Menu.Dropdown>
-    </Menu>
+              {option.label}
+            </Menu.Item>
+          ))}
+        </Menu.Dropdown>
+      </Menu>
+    </Box>
   );
 };
 

@@ -1,7 +1,13 @@
 import { Divider, Text } from "@mantine/core";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, CircleHelp } from "lucide-react";
 import { useState } from "react";
-import { paymentData } from "../../../../utils/mockData";
+
+export const paymentData = [
+  { label: "Subtotal (1 item)", amount: "₦ 30,000" },
+  { label: "Discount", amount: "-" },
+  { label: "Tax (7.5% VAT)", amount: "₦ 2,250" },
+  { label: "Service fee", amount: "₦ 2,250" },
+];
 
 const PaymentDetails = () => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -25,7 +31,17 @@ const PaymentDetails = () => {
             <div className="flex flex-col gap-2.5">
               {paymentData.map((item, index) => (
                 <div key={index} className="flex items-center justify-between">
-                  <Text fw={500}>{item.label}</Text>
+                  <div className="flex items-center gap-2">
+                    <Text fw={500}>
+                      {item.label}
+                      {item.label === "Service fee" && (
+                        <CircleHelp
+                          size={16}
+                          className="inline-block ml-2 text-[#2E90FA]"
+                        />
+                      )}
+                    </Text>
+                  </div>
                   <Text fw={500}>{item.amount}</Text>
                 </div>
               ))}
