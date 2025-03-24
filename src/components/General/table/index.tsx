@@ -133,18 +133,17 @@ const TanTable: FC<TanTableProps> = ({
             setPageIndex(i);
           }}
           style={{
-            color: isPageActive(i, currentPage) ? "white" : "black",
-            backgroundColor: isPageActive(i, currentPage)
-              ? "var(--mantine-color-blue-6)"
-              : "transparent",
+            color: isPageActive(i, currentPage) ? "black" : "#98A2B3",
+            backgroundColor: "transparent",
             borderRadius: "0.375rem",
             padding: "0.25rem 1rem",
             border: isPageActive(i, currentPage)
-              ? "1px solid var(--mantine-color-blue-6)"
-              : "1px solid var(--mantine-color-gray-3)",
+              ? "1px solid #F56630"
+              : "1px solid transparent",
             display: "flex",
             alignItems: "center",
-            fontSize: "0.75rem",
+            fontSize: "1rem",
+            fontWeight: "600",
             cursor: "pointer",
             marginLeft: "0.25rem",
             marginRight: "0.25rem",
@@ -216,9 +215,9 @@ const TanTable: FC<TanTableProps> = ({
             style={{
               display: "flex",
               flexDirection: "row",
-              gap: "1rem",
+              gap: "2rem",
               alignItems: "center",
-              width: "500px",
+              width: "600px",
             }}
           >
             {showSearch && (

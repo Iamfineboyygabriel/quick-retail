@@ -254,7 +254,7 @@ export const productTableData = [
     discountStatus: "Paid",
     items: "Green | Small",
   },
-]
+];
 
 export const customerData = [
   { name: "New customers - 60%", value: 60, color: "#F06A4D" },

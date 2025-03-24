@@ -52,7 +52,7 @@ export const DashboardHeader = ({
   };
 
   return (
-    <div className="bg-white text-black px-4 py-6 flex items-center justify-between gap-6">
+    <div className="bg-white text-black px-4 shadow-xs py-6 flex items-center justify-between gap-6">
       <p onClick={toggleSidebar} />
       <nav className="flex justify-between w-full">
         <div className="flex gap-6">

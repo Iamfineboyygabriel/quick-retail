@@ -40,30 +40,15 @@ const CreateOrderPage = () => {
     </div>,
   ];
 
-  const Buttom = [
+  const bottomButtons = [
     <div className="flex gap-4 justify-end">
-      <Button
-        variant="outline"
-        px={40}
-        radius="md"
-        color="#F16722"
-        styles={{
-          root: {
-            border: "1px solid #F16722",
-            "&:hover": {
-              backgroundColor: "rgba(241, 103, 34, 0.05)",
-            },
-          },
-        }}
-      >
-        <Text variant="secondary">Cancel</Text>
-      </Button>
-      <Button variant="primary">Create Order</Button>
+      <Button variant="outline-primary">Cancel</Button>
+      <Button variant="filled-primary">Create Order</Button>
     </div>,
   ];
 
   return (
-    <PageContainer subHeaders={subHeaders} subHeaderButtom={Buttom}>
+    <PageContainer subHeaders={subHeaders} subHeaderButtom={bottomButtons}>
       <SearchProduct />
       <SearchCustomer />
       <PaymentDetails />

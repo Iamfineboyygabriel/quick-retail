@@ -1,9 +1,8 @@
-import { createTheme, Text, MantineThemeOverride } from "@mantine/core";
+import { createTheme, MantineThemeOverride, Button, Text } from "@mantine/core";
 import {
   customPrimary,
   textSecondary,
   textColors,
-  customBlue,
 } from "../constants/customColor";
 
 export const theme: MantineThemeOverride = createTheme({
@@ -13,18 +12,46 @@ export const theme: MantineThemeOverride = createTheme({
   colors: {
     customPrimary, // Your orange palette
     textSecondary, // Your gray palette
-    customBlue, // Your blue palette (newly added)
   },
 
-  // Set the default primary color to use throughout the app
   primaryColor: "customPrimary",
-
-  // Set which shade (0-9) of the primary color to use by default
-  // 9 is the darkest shade in your customPrimary palette (#9c3e0d)
   primaryShade: 9,
 
   components: {
-    // Override Text component to have a default gray color
+    Button: Button.extend({
+      styles: (theme, params) => ({
+        root: {
+          ...(params.variant === "filled-primary" && {
+            backgroundColor: "#F16722",
+            color: "white",
+            borderRadius: "0.75rem",
+            height: "auto",
+            padding: "1rem 1.5rem",
+            fontWeight: 600,
+            display: "inline-flex",
+            alignItems: "center",
+            fontSize: "15px",
+            justifyContent: "center",
+            "&:hover": {
+              backgroundColor: "#dc5f20",
+            },
+          }),
+          ...(params.variant === "outline-primary" && {
+            backgroundColor: "transparent",
+            color: "#F16722",
+            border: "1px solid #F16722",
+            borderRadius: "0.75rem",
+            padding: "1rem 2.6rem",
+            height: "auto",
+            fontWeight: 600,
+            fontSize: "15px",
+            "&:hover": {
+              backgroundColor: "rgba(241, 103, 34, 0.1)",
+            },
+          }),
+        },
+      }),
+    }),
     Text: Text.extend({
       defaultProps: {
         // This sets all <Text> components to use textSecondary.7 by default
@@ -32,11 +59,10 @@ export const theme: MantineThemeOverride = createTheme({
       },
     }),
   },
-
   // Define additional theme variables that aren't part of Mantine's default theme
   other: {
-    textColor: textColors.primary, // "#F16722" - Brand Orange
-    textSecondaryColor: textColors.secondary, // "#667185" - medium-dark gray
+    textColor: textColors.primary,
+    textSecondaryColor: textColors.secondary,
   },
 
   cursorType: "pointer",
