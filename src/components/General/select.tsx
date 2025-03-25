@@ -1,3 +1,5 @@
+import { iSelect } from "./formTypes";
+
 const FormSelect = ({
   label,
   options,
@@ -60,7 +62,7 @@ const FormSelect = ({
           disabled={readOnly}
           className={`block px-${paddingX ? paddingX : "4"} py-${
             paddingY ? paddingY : "2"
-          } rounded-md w-full border-[1px] ${
+          } rounded-md border-[#D0D5DD] w-full border-[1px] ${
             error
               ? "border-[#D42620]"
               : value
@@ -77,13 +79,18 @@ const FormSelect = ({
           }}
           {...rest}
         >
-          {placeholder && <option value="">{placeholder}</option>}
+          {placeholder && (
+            <option value="" style={{ color: "#D0D5DD" }}>
+              {placeholder}
+            </option>
+          )}
           {options?.map((option, ind) => (
             <option key={ind} value={option}>
               {option}
             </option>
           ))}
         </select>
+
         {rightIcon && (
           <span
             onClick={rightIconClick}

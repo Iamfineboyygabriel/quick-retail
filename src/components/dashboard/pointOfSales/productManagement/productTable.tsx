@@ -16,10 +16,10 @@ const ProductTable = () => {
       cell: (props) => (
         <div className="flex items-center gap-3">
           <Avatar
-            src={imageSrc} // Ensure this field contains the image URL
+            src={imageSrc}
             alt={props.row.original.name as string}
             radius="md"
-            size={40} // Adjust size as needed
+            size={40}
           />
 
           <div className="flex flex-col">
@@ -98,7 +98,7 @@ const ProductTable = () => {
 
           <Menu.Dropdown>
             <Menu.Item onClick={() => alert("View Order Clicked!")}>
-              View 
+              View
             </Menu.Item>
             <Menu.Item onClick={() => alert("View Order Clicked!")}>
               Edit
@@ -107,7 +107,7 @@ const ProductTable = () => {
               color="red"
               onClick={() => alert("Delete Order Clicked!")}
             >
-              Delete 
+              Delete
             </Menu.Item>
           </Menu.Dropdown>
         </Menu>

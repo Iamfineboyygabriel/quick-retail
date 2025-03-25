@@ -67,3 +67,9 @@ interface CountryOption {
   label: string;
   flag: string;
 }
+
+export interface OrderCreationContextType {
+  currentStep: OrderCreationStep;
+  nextStep: () => void;
+  prevStep: () => void;
+}

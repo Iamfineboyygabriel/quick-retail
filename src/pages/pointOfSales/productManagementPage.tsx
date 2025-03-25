@@ -1,7 +1,7 @@
 import PageContainer from "../../layout/pageContainer";
 import ProductTable from "../../components/dashboard/pointOfSales/productManagement/productTable";
 import { Menu, Button, Text } from "@mantine/core";
-// import { IconChevronDown } from "@tabler/icons-react";
+import { ChevronDown } from "lucide-react";
 
 const ProductManagementPage = () => {
   const subHeaders = [
@@ -13,24 +13,18 @@ const ProductManagementPage = () => {
       <div>
         <Menu>
           <Menu.Target>
-            <Button
-              size="md"
-              className="flex items-center px-4 py-2 rounded-full text-white"
-              style={{
-                background: "linear-gradient(to bottom, #F97316, #EA580C)", // Orange gradient
-              }}
-            >
+            <Button variant="filled-primary">
               Add New Product
-              {/* <IconChevronDown size={18} className="ml-2" /> */}
+              <ChevronDown className="ml-2" />
             </Button>
           </Menu.Target>
 
           <Menu.Dropdown
             style={{
-              backgroundColor: "white", // White background
-              borderRadius: "8px", // Rounded corners
-              padding: "10px", // Add spacing inside
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Soft shadow effect
+              backgroundColor: "white",
+              borderRadius: "8px",
+              padding: "10px",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
           >
             <Menu.Item
