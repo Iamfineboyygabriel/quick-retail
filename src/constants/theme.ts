@@ -19,7 +19,7 @@ export const theme: MantineThemeOverride = createTheme({
 
   components: {
     Button: Button.extend({
-      styles: (theme, params) => ({
+      styles: (_theme, params) => ({
         root: {
           ...(params.variant === "filled-primary" && {
             backgroundColor: "#F16722",

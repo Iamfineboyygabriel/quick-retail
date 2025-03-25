@@ -1,3 +1,5 @@
+import { iInputField } from "./formTypes";
+
 const FormInput = ({
   label,
   type,
