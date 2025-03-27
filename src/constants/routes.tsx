@@ -13,4 +13,6 @@ export const ROUTES = {
   createOrder: "/dashboard/sales/create_order",
   viewOrder: "/dashboard/sales/view_order",
   test: "/dashboard/#",
+  addNewProduct: "/dashboard/product-management/add-new-product",
+  addBulkProduct: "/dashboard/product-management/add-bulk-product",
 };
