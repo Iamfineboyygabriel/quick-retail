@@ -29,7 +29,6 @@ const PaymentDetails = () => {
             labelGap="gap-[5em]"
             color="#000000"
             paddingY="3"
-            fontSize="sm font-normal"
           />
           <FormInput
             type="text"
@@ -37,21 +36,14 @@ const PaymentDetails = () => {
             optional
             placeholder="Enter Payment Refrence Number"
             className="w-full"
-            paddingY="3"
           />
           <FormInput
             type="text"
             label="Amount Collected"
             placeholder="Enter the amount customer paid in cash"
             className="w-full"
-            paddingY="3"
           />
-          <FormInput
-            type="text"
-            label="Customer Balance"
-            className="w-full"
-            paddingY="3"
-          />
+          <FormInput type="text" label="Customer Balance" className="w-full" />
         </section>
         <Divider size="sm" className="mt-3" color="#E4E7EC" />
         <section>

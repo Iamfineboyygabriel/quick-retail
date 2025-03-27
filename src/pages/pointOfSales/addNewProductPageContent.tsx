@@ -7,8 +7,6 @@ import PageContainer from "../../layout/pageContainer";
 import { useOrderCreation } from "../../components/General/orderContext/orderCreationContext";
 import AddProductForm from "./addProductForm";
 
-
-
 const AddNewProductPageContent: React.FC = () => {
   const navigate = useNavigate();
   const { currentStep, prevStep } = useOrderCreation();
@@ -66,7 +64,7 @@ const AddNewProductPageContent: React.FC = () => {
       </div>,
       <div key="2">
         <Text fw={500} size="xl" c="black">
-         Add Product
+          Add Product
         </Text>
       </div>,
     ];
@@ -75,11 +73,8 @@ const AddNewProductPageContent: React.FC = () => {
   };
 
   return (
-    <PageContainer
-      subHeaders={getSubHeaders()}
-    >
-      {/* Add your children components here */}
-     <AddProductForm />
+    <PageContainer subHeaders={getSubHeaders()}>
+      <AddProductForm />
     </PageContainer>
   );
 };

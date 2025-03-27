@@ -1,4 +1,12 @@
+import { TextInput } from "@mantine/core";
 import { iInputField } from "./formTypes";
+
+interface FlexibleInputField
+  extends Omit<iInputField, "paddingX" | "paddingY" | "borderWidth"> {
+  paddingX?: number | string;
+  paddingY?: number | string;
+  borderWidth?: number | string;
+}
 
 const FormInput = ({
   label,
@@ -15,93 +23,92 @@ const FormInput = ({
   optional,
   name,
   readOnly,
-  bgColor,
-  borderColor,
-  borderWidth,
+  bgColor = "white",
+  borderWidth = "1px",
   color,
   inputRef,
-  fontSize,
-  paddingX,
-  paddingY,
+  fontSize = "16px",
+  paddingX = 16,
+  paddingY = "5px",
   className,
   id,
-  requiredColor = "text-[#D42620]",
+  requiredColor = "text-red-600",
   ...rest
-}: iInputField) => {
+}: FlexibleInputField) => {
+  const normalizeDimension = (dimension: number | string | undefined) => {
+    if (dimension === undefined) return "0.5rem";
+    if (typeof dimension === "number") return `${dimension}px`;
+    return dimension;
+  };
+
+  const paddingXValue = normalizeDimension(paddingX);
+  const paddingYValue = normalizeDimension(paddingY);
+  const borderWidthValue = normalizeDimension(borderWidth);
+
   return (
-    <div>
-      {label && (
-        <label
-          style={{ color: (error && "#D42620") || color }}
-          className={`mb-2 block text-[${fontSize}]`}
-        >
-          {label}
-          {required && <span className={`pl-1 ${requiredColor}`}>*</span>}
-          {optional && <span className="text-[#787486] pl-1">(Optional)</span>}
-        </label>
-      )}
-
-      <div className="relative flex-1">
-        {/* Left Icon */}
-        {leftIcon && (
-          <span
-            onClick={leftIconClick}
-            className="absolute left-0 px-3 bottom-0 flex items-center justify-center h-full cursor-pointer"
-          >
+    <TextInput
+      id={id}
+      ref={inputRef}
+      type={type}
+      label={
+        label && (
+          <div className="flex items-center">
+            {label}
+            {required && <span className={`pl-1 ${requiredColor}`}>*</span>}
+            {optional && <span className="text-gray-500 pl-1">(Optional)</span>}
+          </div>
+        )
+      }
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      required={required}
+      name={name}
+      readOnly={readOnly}
+      error={error}
+      leftSection={
+        leftIcon && (
+          <div onClick={leftIconClick} className="cursor-pointer">
             {leftIcon}
-          </span>
-        )}
-
-        <input
-          id={id}
-          type={type}
-          ref={inputRef}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          required={required}
-          name={name}
-          readOnly={readOnly}
-          className={`${className} bg-inherit border-[#D0D5DD] block px-${
-            paddingX ? paddingX : "4"
-          } py-${paddingY ? paddingY : "2"}
-          rounded-md w-full border-[1px] ${
-            error
-              ? "border-[#D42620]"
-              : value
-              ? "border-[#FFD68F]"
-              : "dark:border-borderDark border-borderLight"
-          } ${leftIcon ? "pl-12" : ""} ${rightIcon ? "pr-12" : ""} 
-          dark:placeholder:text-gray_3 placeholder:text-gray_4 ${
-            readOnly
-              ? "dark:bg-darkBg bg-lightBg"
-              : bgColor
-              ? `bg-[${bgColor}]`
-              : "bg-[#F9FAFB]"
-          } text-base`}
-          style={{
-            borderWidth,
-            borderColor,
-            color: (error && "#D42620") || color,
-          }}
-          {...rest}
-        />
-
-        {rightIcon && (
-          <span
-            onClick={rightIconClick}
-            className="absolute right-0 px-3 bottom-0 flex items-center justify-center h-full cursor-pointer"
-          >
+          </div>
+        )
+      }
+      rightSection={
+        rightIcon && (
+          <div onClick={rightIconClick} className="cursor-pointer">
             {rightIcon}
-          </span>
-        )}
-      </div>
-      {error && (
-        <div className="mt-1" style={{ color: "#D42620" }}>
-          {error}
-        </div>
-      )}
-    </div>
+          </div>
+        )
+      }
+      styles={{
+        wrapper: {
+          width: "100%",
+        },
+        input: {
+          backgroundColor: bgColor,
+          color: error ? "#D42620" : color,
+          borderWidth: borderWidthValue,
+          borderStyle: "solid",
+          borderRadius: "0.375rem",
+          paddingLeft: leftIcon ? "2.5rem" : paddingXValue,
+          paddingRight: rightIcon ? "2.5rem" : paddingXValue,
+          paddingTop: paddingYValue,
+          paddingBottom: paddingYValue,
+          height: "auto",
+          minHeight: "2.5rem",
+          fontSize: fontSize,
+          boxShadow: "none",
+          outline: "none",
+          label: {
+            color: error ? "#D42620" : color,
+            fontSize: fontSize,
+            marginBottom: "0.5rem",
+          },
+        },
+      }}
+      className={className}
+      {...rest}
+    />
   );
 };
 

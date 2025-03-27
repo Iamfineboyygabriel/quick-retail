@@ -26,21 +26,24 @@ export default function App() {
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardPage />} />
           <Route
-            path="product-management"
+            path={ROUTES.productManagement}
             element={<ProductManagementPage />}
           />
           <Route path={ROUTES.addNewProduct} element={<AddNewProduct />} />
           <Route path={ROUTES.addBulkProduct} element={<AddBulkProduct />} />
-          <Route path="sales" element={<SalesProcessingPage />} />
-          <Route path="sales/create_order" element={<CreateOrderPage />} />
-          <Route path="inventory" element={<InventoryManagementPage />} />
-          <Route path="categories" element={<CategoriesPage />} />
-          <Route path="returns" element={<ReturnsPage />} />
-          <Route path="customer" element={<CustomerPage />} />
-          <Route path="happy-time" element={<HappyTimePage />} />
-          <Route path="transaction" element={<TransactionPage />} />
-          <Route path="stores" element={<StoresPage />} />
-          <Route path="reports" element={<ReportsPage />} />
+          <Route path={ROUTES.sales} element={<SalesProcessingPage />} />
+          <Route path={ROUTES.createOrder} element={<CreateOrderPage />} />
+          <Route
+            path={ROUTES.inventory}
+            element={<InventoryManagementPage />}
+          />
+          <Route path={ROUTES.category} element={<CategoriesPage />} />
+          <Route path={ROUTES.returns} element={<ReturnsPage />} />
+          <Route path={ROUTES.customer} element={<CustomerPage />} />
+          <Route path={ROUTES.happyTime} element={<HappyTimePage />} />
+          <Route path={ROUTES.transaction} element={<TransactionPage />} />
+          <Route path={ROUTES.stores} element={<StoresPage />} />
+          <Route path={ROUTES.report} element={<ReportsPage />} />
         </Route>
       </Routes>
     </Router>

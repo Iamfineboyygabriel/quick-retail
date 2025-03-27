@@ -57,28 +57,24 @@ const SearchCustomer = () => {
                       type="text"
                       label="Name"
                       placeholder="Enter Customer Name"
-                      paddingY="3"
                     />
                     <FormInput
                       type="text"
                       label="Email"
                       placeholder="Enter Customer Email"
                       optional
-                      paddingY="3"
                     />
                     <FormInput
                       type="number"
                       label="Phone Number"
                       placeholder="Enter customer Phone Number"
                       optional
-                      paddingY="3"
                     />
                     <FormInput
                       type="text"
                       label="Address"
                       placeholder="Enter Customer Address"
                       optional
-                      paddingY="3"
                     />
                   </section>
                   <Text

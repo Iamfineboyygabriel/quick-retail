@@ -9,7 +9,6 @@ const AddProductForm = () => {
           BASIC INFORMATION
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Product Name */}
           <TextInput
             label="Product Name"
             placeholder="Enter product name"
@@ -24,7 +23,6 @@ const AddProductForm = () => {
             }}
           />
 
-          {/* Barcode */}
           <TextInput
             label={
               <span>
@@ -46,7 +44,6 @@ const AddProductForm = () => {
             }}
           />
 
-          {/* SKU */}
           <TextInput
             label="SKU (Store Keeping Unit)"
             placeholder="Enter SKU"
@@ -77,7 +74,6 @@ const AddProductForm = () => {
             }}
           />
 
-          {/* Sub-category */}
           <Select
             label="Sub-category"
             placeholder="Select sub-category"
@@ -93,7 +89,6 @@ const AddProductForm = () => {
             }}
           />
 
-          {/* Supplier */}
           <Select
             label="Supplier"
             placeholder="Enter supplier"
@@ -112,13 +107,11 @@ const AddProductForm = () => {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mt-[3em]">
-        {/* Pricing Information */}
         <h2 className="text-lg font-semibold text-gray-800 mb-4 border-b border-gray-200">
           PRICING INFORMATION
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Cost Price */}
           <div>
             <TextInput
               label="Cost Price"
@@ -139,7 +132,6 @@ const AddProductForm = () => {
             />
           </div>
 
-          {/* Selling Price */}
           <div>
             <TextInput
               label="Selling Price"
