@@ -1,17 +1,16 @@
 import TanTable from "../../../General/table";
-import { productTableData } from "../../../../utils/mockData";
 import { ColumnDef } from "@tanstack/react-table";
 import { TableRowData } from "../../../../types";
-import { Avatar, Text } from "@mantine/core";
-import { PaidDot, UnpaidDot } from "../../../../assets/svg";
+import { Avatar, Button, Menu, Text } from "@mantine/core";
+import { LowDot, PaidDot, SoldoutDot } from "../../../../assets/svg";
 import imageSrc from "../../../../assets/images/productIMG.png";
-import { Menu, Button } from "@mantine/core";
+import { InventoryTableData } from "../../../../utils/mockData";
 import { MoreVertical } from "lucide-react";
 
-const ProductTable = () => {
+const InventoryTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
     {
-      header: "Name",
+      header: "Product",
       accessorKey: "name",
       cell: (props) => (
         <div className="flex items-center gap-3">
@@ -22,64 +21,50 @@ const ProductTable = () => {
             size={40}
           />
 
-          <div className="flex flex-col">
-            <Text fw={500} c="black">
-              {props.row.original.name}
-            </Text>
-            <Text fw={500} className="text-[#667185] text-sm">
-              {props.row.original.items}
-            </Text>
-          </div>
+          <Text fw={500} c="black">
+            {props.row.original.name}
+          </Text>
         </div>
       ),
     },
     {
-      header: "Product Code",
-      accessorKey: "productCode",
-      cell: (props) => (
-        <Text c="textSecondary.7">{props.row.original.productCode}</Text>
-      ),
+      header: "SKU",
+      accessorKey: "sku",
     },
     {
       header: "Location",
       accessorKey: "location",
     },
     {
-      header: "Category",
-      accessorKey: "category",
-      cell: ({ row }) => (
-        <span className="bg-gray-100 text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
-          {row.original.category}
-        </span>
-      ),
-    },
-    {
-      header: "Selling Price",
-      accessorKey: "sellingPrice",
-    },
-    {
       header: "Stock Level",
       accessorKey: "stockLevel",
-      cell: (props) => (
-        <span className="font-medium text-center">
-          {props.row.original.stockLevel}
-        </span>
-      ),
+    },
+    {
+      header: "Date",
+      accessorKey: "date",
     },
     {
       header: "Discount Status",
-      accessorKey: "discountStatus",
+      accessorKey: "status",
       cell: (props) => {
-        const status = props.row.original.discountStatus;
+        const status = props.row.original.status;
         return (
           <div
             className={`inline-flex items-center px-3 py-1 rounded-full font-medium text-sm ${
-              status === "Paid"
+              status === "Available"
                 ? "bg-[#ECFDF3] text-[#027A48]"
+                : status === "Sold Out"
+                ? "bg-[#FEE2E2] text-[#D92D20]"
                 : "bg-[#FFFAEB] text-[#B54708]"
             }`}
           >
-            {status === "Paid" ? <PaidDot /> : <UnpaidDot />}
+            {status === "Available" ? (
+              <PaidDot />
+            ) : status === "Sold Out" ? (
+              <SoldoutDot />
+            ) : (
+              <LowDot />
+            )}
             <span className="ml-2">{status}</span>
           </div>
         );
@@ -118,7 +103,7 @@ const ProductTable = () => {
     <main className="w-full h-auto py-6 rounded-lg bg-white">
       <TanTable
         columnData={columns}
-        data={productTableData}
+        data={InventoryTableData}
         showSearch
         showSortFilter
         searchPlaceholder="Search orders"
@@ -126,10 +111,13 @@ const ProductTable = () => {
         tableTitle={
           <div className="flex gap-2.5">
             <Text fw={500} size="xl" c="textSecondary.9">
-              Products
+              Inventory
             </Text>
             <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
-              <Text c="customPrimary.10">{productTableData.length}</Text>
+              <Text c="customPrimary.10">
+                {InventoryTableData.length}
+                <span className="ml-2">Product</span>
+              </Text>
             </div>
           </div>
         }
@@ -138,4 +126,4 @@ const ProductTable = () => {
   );
 };
 
-export default ProductTable;
+export default InventoryTable;

@@ -26,11 +26,11 @@ export const theme: MantineThemeOverride = createTheme({
             color: "white",
             borderRadius: "0.75rem",
             height: "auto",
-            padding: "0.7rem 1.5rem",
+            padding: "0.9rem 1.5rem",
             fontWeight: 600,
             display: "inline-flex",
             alignItems: "center",
-            fontSize: "15px",
+            fontSize: "16px",
             justifyContent: "center",
             "&:hover": {
               backgroundColor: "#dc5f20",

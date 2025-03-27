@@ -11,5 +11,6 @@ export const ROUTES = {
   stores: "/dashboard/stores",
   report: "/dashboard/reports",
   createOrder: "/dashboard/sales/create_order",
+  viewOrder: "/dashboard/sales/view_order",
   test: "/dashboard/#",
 };

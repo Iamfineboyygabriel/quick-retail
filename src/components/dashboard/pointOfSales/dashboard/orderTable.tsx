@@ -4,6 +4,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { TableRowData } from "../../../../types";
 import { Text } from "@mantine/core";
 import { PaidDot, UnpaidDot } from "../../../../assets/svg";
+import { Link } from "react-router";
+import { ROUTES } from "../../../../constants/routes";
 
 const CustomerOrdersTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -69,9 +71,11 @@ const CustomerOrdersTable = () => {
       header: "",
       accessorKey: "action",
       cell: () => (
-        <Text fw={700} c="customPrimary.10" className="cursor-pointer">
-          View Order
-        </Text>
+        <Link to={ROUTES.viewOrder}>
+          <Text fw={700} c="customPrimary.10" className="cursor-pointer">
+            View Order
+          </Text>
+        </Link>
       ),
     },
   ];
@@ -102,7 +106,7 @@ const CustomerOrdersTable = () => {
               Recent Orders
             </Text>
             <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
-              <Text c="customPrimary.10">100</Text>
+              <Text c="customPrimary.10">{customerOrders.length}</Text>
             </div>
           </div>
         }

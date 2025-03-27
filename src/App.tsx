@@ -13,6 +13,7 @@ import CustomerPage from "./pages/pointOfSales/customerPage";
 import DashboardPage from "./pages/pointOfSales/dashboardPage";
 import TransactionPage from "./pages/pointOfSales/transactionPage";
 import CreateOrderPage from "./pages/pointOfSales/saleProcessing/createOrderPage";
+import ViewOrderPage from "./pages/pointOfSales/saleProcessing/viewOrderPage";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           />
           <Route path="sales" element={<SalesProcessingPage />} />
           <Route path="sales/create_order" element={<CreateOrderPage />} />
+          <Route path="sales/view_order" element={<ViewOrderPage />} />
           <Route path="inventory" element={<InventoryManagementPage />} />
           <Route path="categories" element={<CategoriesPage />} />
           <Route path="returns" element={<ReturnsPage />} />

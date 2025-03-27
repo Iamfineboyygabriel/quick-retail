@@ -16,7 +16,21 @@ const NavItem = ({
 }: NavItemProps) => {
   const location = useLocation();
 
-  const isActive = location.pathname === href;
+  const isActive = (() => {
+    if (href === "/dashboard" && location.pathname === "/dashboard") {
+      return true;
+    }
+
+    if (href !== "/dashboard") {
+      const pathSegments = location.pathname.split("/").filter(Boolean);
+      const hrefSegments = href.split("/").filter(Boolean);
+      return hrefSegments.every(
+        (segment, index) => pathSegments[index] === segment
+      );
+    }
+
+    return false;
+  })();
 
   const isLogOut = label === "Log Out";
 

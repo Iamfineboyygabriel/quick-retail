@@ -1,7 +1,6 @@
 import { Divider, Text } from "@mantine/core";
 import FormInput from "../../../General/formInput";
 import { ChevronDown, ChevronUp, Plus, Search, X } from "lucide-react";
-import { SqrCode } from "../../../../assets/svg";
 import { useState } from "react";
 
 const SearchCustomer = () => {
@@ -38,7 +37,6 @@ const SearchCustomer = () => {
                     type="text"
                     placeholder="Enter Customer Name"
                     leftIcon={<Search color="#667185" />}
-                    rightIcon={<SqrCode />}
                   />
                 </div>
                 <footer

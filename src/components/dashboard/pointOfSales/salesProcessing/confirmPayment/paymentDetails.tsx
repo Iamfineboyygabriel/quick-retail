@@ -16,29 +16,42 @@ const PaymentDetails = () => {
       </header>
       <>
         <Divider size="sm" className="mt-3" color="#E4E7EC" />
-        <section className="flex pt-8 pb-6 items-center gap-8 px-3.5">
-          <div className="flex-1">
-            <FormSelect
-              label="Payment Method"
-              options={["Quick Retail"]}
-              placeholder="Select Payment Method"
-              className="rounded-none w-full text-gray_4"
-              labelGap="gap-[5em]"
-              color="#000000"
-              paddingY="3"
-              fontSize="sm font-normal"
-            />
-          </div>
-          <div className="flex-1">
-            <FormInput
-              type="text"
-              label="Payment Refrence Number"
-              optional
-              placeholder="Enter Payment Refrence Number"
-              className="w-full"
-              paddingY="3"
-            />
-          </div>
+        <section className="grid grid-cols-2 pt-8 pb-6 items-center gap-10 px-3.5">
+          <FormSelect
+            label="Payment Method"
+            options={[
+              "Pay with cash",
+              "Pay with Debit/Credit Card",
+              "Pay With Transfer",
+            ]}
+            placeholder="Select Payment Method"
+            className="rounded-none w-full text-gray_4"
+            labelGap="gap-[5em]"
+            color="#000000"
+            paddingY="3"
+            fontSize="sm font-normal"
+          />
+          <FormInput
+            type="text"
+            label="Payment Refrence Number"
+            optional
+            placeholder="Enter Payment Refrence Number"
+            className="w-full"
+            paddingY="3"
+          />
+          <FormInput
+            type="text"
+            label="Amount Collected"
+            placeholder="Enter the amount customer paid in cash"
+            className="w-full"
+            paddingY="3"
+          />
+          <FormInput
+            type="text"
+            label="Customer Balance"
+            className="w-full"
+            paddingY="3"
+          />
         </section>
         <Divider size="sm" className="mt-3" color="#E4E7EC" />
         <section>
