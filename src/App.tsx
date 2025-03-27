@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/pointOfSales/landingPage";
 import DashboardLayout from "./layout/layout";
 import ProductManagementPage from "./pages/pointOfSales/productManagementPage";
+import SalesProcessingPage from "./pages/pointOfSales/saleProcessing/salesProcessingPage";
 import InventoryManagementPage from "./pages/pointOfSales/inventoryManagementPage";
 import CategoriesPage from "./pages/pointOfSales/categoriesPage";
 import HappyTimePage from "./pages/pointOfSales/happyTimePage";
@@ -12,7 +13,9 @@ import CustomerPage from "./pages/pointOfSales/customerPage";
 import DashboardPage from "./pages/pointOfSales/dashboardPage";
 import TransactionPage from "./pages/pointOfSales/transactionPage";
 import CreateOrderPage from "./pages/pointOfSales/saleProcessing/createOrderPage";
-import SalesProcessingPage from "./pages/pointOfSales/saleProcessing/salesProcessingPage";
+import { ROUTES } from "./constants/routes";
+import AddNewProduct from "./pages/pointOfSales/addNewProduct";
+import AddBulkProduct from "./pages/pointOfSales/addBulkProduct";
 
 export default function App() {
   return (
@@ -26,6 +29,8 @@ export default function App() {
             path="product-management"
             element={<ProductManagementPage />}
           />
+          <Route path={ROUTES.addNewProduct} element={<AddNewProduct />} />
+          <Route path={ROUTES.addBulkProduct} element={<AddBulkProduct />} />
           <Route path="sales" element={<SalesProcessingPage />} />
           <Route path="sales/create_order" element={<CreateOrderPage />} />
           <Route path="inventory" element={<InventoryManagementPage />} />
