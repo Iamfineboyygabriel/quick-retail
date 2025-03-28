@@ -6,6 +6,8 @@ import { LowDot, PaidDot, SoldoutDot } from "../../../../assets/svg";
 import imageSrc from "../../../../assets/images/productIMG.png";
 import { InventoryTableData } from "../../../../utils/mockData";
 import { MoreVertical } from "lucide-react";
+import { Link } from "react-router";
+import { ROUTES } from "../../../../constants/routes";
 
 const InventoryTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -83,17 +85,11 @@ const InventoryTable = () => {
 
           <Menu.Dropdown>
             <Menu.Item onClick={() => alert("View Order Clicked!")}>
-              View
+              Update
             </Menu.Item>
-            <Menu.Item onClick={() => alert("View Order Clicked!")}>
-              Edit
-            </Menu.Item>
-            <Menu.Item
-              color="red"
-              onClick={() => alert("Delete Order Clicked!")}
-            >
-              Delete
-            </Menu.Item>
+            <Link to={ROUTES.triggerOrder}>
+              <Menu.Item color="red">Trigger Reorder</Menu.Item>
+            </Link>
           </Menu.Dropdown>
         </Menu>
       ),

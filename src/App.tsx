@@ -3,7 +3,6 @@ import LandingPage from "./pages/pointOfSales/landingPage";
 import DashboardLayout from "./layout/layout";
 import ProductManagementPage from "./pages/pointOfSales/productManagementPage";
 import SalesProcessingPage from "./pages/pointOfSales/saleProcessing/salesProcessingPage";
-import InventoryManagementPage from "./pages/pointOfSales/inventoryManagementPage";
 import CategoriesPage from "./pages/pointOfSales/categoriesPage";
 import HappyTimePage from "./pages/pointOfSales/happyTimePage";
 import StoresPage from "./pages/pointOfSales/storesPage";
@@ -17,6 +16,9 @@ import AddNewProduct from "./pages/pointOfSales/addNewProduct";
 import AddBulkProduct from "./pages/pointOfSales/addBulkProduct";
 import ReturnsPage from "./pages/pointOfSales/returns/returnsPage";
 import ViewReturnsPage from "./pages/pointOfSales/returns/viewReturnsPage";
+import InventoryManagementPage from "./pages/pointOfSales/inventory/inventoryManagementPage";
+import UpdateInventory from "./pages/pointOfSales/inventory/updateInventory";
+import TriggerOrder from "./pages/pointOfSales/inventory/triggerOrder";
 
 export default function App() {
   return (
@@ -38,6 +40,8 @@ export default function App() {
             path={ROUTES.inventory}
             element={<InventoryManagementPage />}
           />
+          <Route path={ROUTES.updateInventory} element={<UpdateInventory />} />
+          <Route path={ROUTES.triggerOrder} element={<TriggerOrder />} />
           <Route path={ROUTES.category} element={<CategoriesPage />} />
           <Route path={ROUTES.returns} element={<ReturnsPage />} />
           <Route path={ROUTES.viewReturns} element={<ViewReturnsPage />} />

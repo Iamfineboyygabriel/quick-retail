@@ -3,6 +3,8 @@ export const ROUTES = {
   productManagement: "/dashboard/product-management",
   sales: "/dashboard/sales",
   inventory: "/dashboard/inventory",
+  updateInventory: "/dashboard/inventory/updateInventory",
+  triggerOrder: "/dashboard/inventory/triggerorders",
   category: "/dashboard/categories",
   returns: "/dashboard/returns",
   viewReturns: "/dashboard/returns/view_returns",
