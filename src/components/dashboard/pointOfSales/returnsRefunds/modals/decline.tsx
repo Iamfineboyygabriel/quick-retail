@@ -20,7 +20,7 @@ const Decline = ({ opened, onClose }: DeclineProps) => {
           </div>
         }
         centered
-        size="lg"
+        size="md"
         radius={20}
         padding="xl"
       >

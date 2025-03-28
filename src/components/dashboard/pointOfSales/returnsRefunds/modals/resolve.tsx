@@ -20,7 +20,7 @@ const Resolve = ({ opened, onClose }: ResolveProps) => {
           </div>
         }
         centered
-        size="lg"
+        size="md"
         radius={20}
         padding="xl"
       >
