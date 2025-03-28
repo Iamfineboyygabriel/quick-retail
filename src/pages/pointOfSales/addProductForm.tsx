@@ -58,7 +58,6 @@ const AddProductForm = () => {
             }}
           />
 
-          {/* Category */}
           <Select
             label="Category"
             placeholder="Select product category"
@@ -152,7 +151,6 @@ const AddProductForm = () => {
             />
           </div>
 
-          {/* Tax Percentage */}
           <Select
             label="Tax %"
             placeholder="Select tax percentage"
@@ -190,7 +188,6 @@ const AddProductForm = () => {
         </div>
       </div>
 
-      {/* Product Variations */}
       <div className="flex justify-between items-center mt-[3em] bg-white p-6 rounded-lg shadow-md border border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800">
           PRODUCT VARIATIONS
@@ -199,13 +196,11 @@ const AddProductForm = () => {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mt-[3em]">
-        {/* Promotions Header */}
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
           PROMOTIONS <span className="text-gray-500">(optional)</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Promotion Price */}
           <TextInput
             label="Promotion Price"
             placeholder="₦"
@@ -220,7 +215,6 @@ const AddProductForm = () => {
             }}
           />
 
-          {/* Price Effective Date */}
           <div className="relative w-full">
             <TextInput
               label="Price Effective Date"
@@ -235,7 +229,6 @@ const AddProductForm = () => {
                 input: { fontSize: "18px", height: "56px" },
               }}
             />
-            {/* Lucide Calendar Icon */}
             <CalendarIcon
               className="absolute right-4 top-10 text-gray-500"
               size={20}

@@ -9,7 +9,7 @@ const FormSelect = ({
   onSelect,
   name,
   className,
-  bgColor,
+  bgColor = "white",
   borderWidth,
   borderColor,
   color,
@@ -80,12 +80,12 @@ const FormSelect = ({
           {...rest}
         >
           {placeholder && (
-            <option value="" style={{ color: "#D0D5DD" }}>
+            <option value="" style={{ color: "#98A2B3" }}>
               {placeholder}
             </option>
           )}
           {options?.map((option, ind) => (
-            <option key={ind} value={option}>
+            <option className="" key={ind} value={option}>
               {option}
             </option>
           ))}
