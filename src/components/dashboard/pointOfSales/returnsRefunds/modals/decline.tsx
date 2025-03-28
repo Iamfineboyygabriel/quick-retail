@@ -25,7 +25,7 @@ const Decline = ({ opened, onClose }: DeclineProps) => {
         padding="xl"
       >
         <div className="space-y-4 grid grid-cols-1"></div>
-        <div className="flex mt-7 gap-4">
+        <div className="flex mt-7 gap-14">
           <Button
             variant="outline"
             style={{
