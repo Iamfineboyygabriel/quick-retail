@@ -1,10 +1,10 @@
 import { Button, Text } from "@mantine/core";
-import PageContainer from "../../layout/pageContainer";
-import ReturnsAnlytics from "../../components/dashboard/pointOfSales/returnsRefunds/returnsAnlytics";
-import ReturnsTable from "../../components/dashboard/pointOfSales/returnsRefunds/returnsTable";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import LogComplaints from "../../components/dashboard/pointOfSales/returnsRefunds/modals/logComplaints";
+import PageContainer from "../../../layout/pageContainer";
+import ReturnsAnalytics from "../../../components/dashboard/pointOfSales/returnsRefunds/returnsAnlytics";
+import ReturnsTable from "../../../components/dashboard/pointOfSales/returnsRefunds/returnsTable";
+import LogComplaints from "../../../components/dashboard/pointOfSales/returnsRefunds/modals/logComplaints";
 
 const ReturnsPage = () => {
   const [isLogComplaintsOpen, setIsLogComplaintsOpen] = useState(false);
@@ -29,7 +29,7 @@ const ReturnsPage = () => {
 
   return (
     <PageContainer subHeaders={subHeaders}>
-      <ReturnsAnlytics />
+      <ReturnsAnalytics />
       <ReturnsTable />
       <LogComplaints
         opened={isLogComplaintsOpen}

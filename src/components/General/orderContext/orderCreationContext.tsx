@@ -1,57 +1,87 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
-import { OrderCreationContextType } from "../formTypes";
-import { OrderCreationStep } from "../../../utils/orderCreationTypes";
 
-const OrderCreationContext = createContext<
-  OrderCreationContextType | undefined
->(undefined);
+export interface SlideContextType<T> {
+  currentStep: T;
+  nextStep: () => void;
+  prevStep: () => void;
+  goToStep: (step: T) => void;
+}
 
-export const OrderCreationProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  const [currentStep, setCurrentStep] = useState<OrderCreationStep>(
-    OrderCreationStep.SEARCH_PRODUCT
+export function createSlideProvider<T extends string | number>(steps: T[]) {
+  const SlideContext = createContext<SlideContextType<T> | undefined>(
+    undefined
   );
 
-  const nextStep = () => {
-    switch (currentStep) {
-      case OrderCreationStep.SEARCH_PRODUCT:
-        setCurrentStep(OrderCreationStep.CONFIRM_PAYMENT);
-        break;
-      case OrderCreationStep.CONFIRM_PAYMENT:
-        setCurrentStep(OrderCreationStep.CUSTOMER_RECEIPT);
-        break;
-      default:
-        break;
-    }
-  };
+  const SlideProvider: React.FC<{
+    children: ReactNode;
+    initialStep?: T;
+  }> = ({ children, initialStep = steps[0] }) => {
+    const [currentStep, setCurrentStep] = useState<T>(initialStep);
 
-  const prevStep = () => {
-    switch (currentStep) {
-      case OrderCreationStep.CONFIRM_PAYMENT:
-        setCurrentStep(OrderCreationStep.SEARCH_PRODUCT);
-        break;
-      case OrderCreationStep.CUSTOMER_RECEIPT:
-        setCurrentStep(OrderCreationStep.CONFIRM_PAYMENT);
-        break;
-      default:
-        break;
-    }
-  };
+    const nextStep = () => {
+      const currentIndex = steps.indexOf(currentStep);
+      if (currentIndex < steps.length - 1) {
+        setCurrentStep(steps[currentIndex + 1]);
+      }
+    };
 
-  return (
-    <OrderCreationContext.Provider value={{ currentStep, nextStep, prevStep }}>
-      {children}
-    </OrderCreationContext.Provider>
-  );
-};
+    const prevStep = () => {
+      const currentIndex = steps.indexOf(currentStep);
+      if (currentIndex > 0) {
+        setCurrentStep(steps[currentIndex - 1]);
+      }
+    };
 
-export const useOrderCreation = () => {
-  const context = useContext(OrderCreationContext);
-  if (context === undefined) {
-    throw new Error(
-      "useOrderCreation must be used within an OrderCreationProvider"
+    const goToStep = (step: T) => {
+      if (steps.includes(step)) {
+        setCurrentStep(step);
+      }
+    };
+
+    return (
+      <SlideContext.Provider
+        value={{
+          currentStep,
+          nextStep,
+          prevStep,
+          goToStep,
+        }}
+      >
+        {children}
+      </SlideContext.Provider>
     );
-  }
-  return context;
-};
+  };
+
+  const useSlideContext = () => {
+    const context = useContext(SlideContext);
+    if (context === undefined) {
+      throw new Error("useSlideContext must be used within a SlideProvider");
+    }
+    return context;
+  };
+
+  return { SlideProvider, useSlideContext };
+}
+
+export enum OrderCreationStep {
+  SEARCH_PRODUCT = "SEARCH_PRODUCT",
+  CONFIRM_PAYMENT = "CONFIRM_PAYMENT",
+  CUSTOMER_RECEIPT = "CUSTOMER_RECEIPT",
+}
+
+export enum ReturnsStep {
+  VIEW_RETURNS = "VIEW_RETURNS",
+  SEND_MAIL = "SEND_MAIL",
+}
+
+export const {
+  SlideProvider: OrderCreationProvider,
+  useSlideContext: useOrderCreation,
+} = createSlideProvider([
+  OrderCreationStep.SEARCH_PRODUCT,
+  OrderCreationStep.CONFIRM_PAYMENT,
+  OrderCreationStep.CUSTOMER_RECEIPT,
+]);
+
+export const { SlideProvider: ReturnsProvider, useSlideContext: useReturns } =
+  createSlideProvider([ReturnsStep.VIEW_RETURNS, ReturnsStep.SEND_MAIL]);

@@ -8,7 +8,6 @@ import CategoriesPage from "./pages/pointOfSales/categoriesPage";
 import HappyTimePage from "./pages/pointOfSales/happyTimePage";
 import StoresPage from "./pages/pointOfSales/storesPage";
 import ReportsPage from "./pages/pointOfSales/reportsPage";
-import ReturnsPage from "./pages/pointOfSales/returnsPage";
 import CustomerPage from "./pages/pointOfSales/customerPage";
 import DashboardPage from "./pages/pointOfSales/dashboardPage";
 import TransactionPage from "./pages/pointOfSales/transactionPage";
@@ -16,6 +15,8 @@ import CreateOrderPage from "./pages/pointOfSales/saleProcessing/createOrderPage
 import { ROUTES } from "./constants/routes";
 import AddNewProduct from "./pages/pointOfSales/addNewProduct";
 import AddBulkProduct from "./pages/pointOfSales/addBulkProduct";
+import ReturnsPage from "./pages/pointOfSales/returns/returnsPage";
+import ViewReturnsPage from "./pages/pointOfSales/returns/viewReturnsPage";
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
           />
           <Route path={ROUTES.category} element={<CategoriesPage />} />
           <Route path={ROUTES.returns} element={<ReturnsPage />} />
+          <Route path={ROUTES.viewReturns} element={<ViewReturnsPage />} />
           <Route path={ROUTES.customer} element={<CustomerPage />} />
           <Route path={ROUTES.happyTime} element={<HappyTimePage />} />
           <Route path={ROUTES.transaction} element={<TransactionPage />} />

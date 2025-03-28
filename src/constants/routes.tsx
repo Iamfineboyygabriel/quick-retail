@@ -5,6 +5,7 @@ export const ROUTES = {
   inventory: "/dashboard/inventory",
   category: "/dashboard/categories",
   returns: "/dashboard/returns",
+  viewReturns: "/dashboard/returns/view_returns",
   customer: "/dashboard/customer",
   happyTime: "/dashboard/happy-time",
   transaction: "/dashboard/transaction",
