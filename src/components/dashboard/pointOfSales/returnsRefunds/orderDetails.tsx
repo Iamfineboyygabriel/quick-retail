@@ -1,5 +1,6 @@
 import { Text } from "@mantine/core";
-import product from "../../../../assets/images/Image.png";
+import product from "../../../../assets/images/Image.png"
+;
 const OrderDetails = () => {
   return (
     <main className="w-full h-auto rounded-lg bg-white px-6 py-8">

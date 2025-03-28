@@ -14,6 +14,7 @@ import ReturnedProduct from "../../../components/dashboard/pointOfSales/returnsR
 import SendMail from "../../../components/dashboard/pointOfSales/returnsRefunds/sendMail";
 import Resolve from "../../../components/dashboard/pointOfSales/returnsRefunds/modals/resolve";
 import Decline from "../../../components/dashboard/pointOfSales/returnsRefunds/modals/decline";
+import { Attachment } from "../../../assets/svg";
 
 const slideVariants = {
   initial: (direction: number) => ({
@@ -71,14 +72,10 @@ const ViewReturnsContent: React.FC = () => {
           {backButton}
           <div className="flex items-center">
             <Text>Returns and Refund</Text>
-            {currentStep === ReturnsStep.VIEW_RETURNS && (
-              <>
-                <span className="mx-2">/</span>
-                <Text c="black" fw={500}>
-                  View Returns
-                </Text>
-              </>
-            )}
+            <span className="mx-2">/</span>
+            <Text c="black" fw={500}>
+              View Returns
+            </Text>
           </div>
         </div>
       </div>,
@@ -134,7 +131,25 @@ const ViewReturnsContent: React.FC = () => {
 
   const getSubHeaderBottom = () => {
     if (currentStep === ReturnsStep.SEND_MAIL) {
-      return [<h1>hii</h1>];
+      return [
+        <div
+          key="confirm-payment-buttons"
+          className="flex justify-between items-center"
+        >
+          <div className="flex items-center gap-2.5">
+            <Attachment />
+            <Text>Attached</Text>
+          </div>
+          <div className="flex gap-4 justify-end">
+            <Button variant="outline-primary" onClick={prevStep}>
+              Cancel
+            </Button>
+            <Button variant="filled-primary" style={{ width: "10rem" }}>
+              Send
+            </Button>
+          </div>
+        </div>,
+      ];
     }
     return [];
   };
