@@ -4,6 +4,15 @@ export enum OrderCreationStep {
   CUSTOMER_RECEIPT = "CUSTOMER_RECEIPT",
 }
 
+export enum ProductManagementStep {
+  BASIC_INFORMATION = "SEARCH_PRODUCT",
+  PRICING_INFORMATION = "CONFIRM_PAYMENT",
+  PRODUCT_VARIATIONS = "CUSTOMER_RECEIPT",
+  PROMOTIONS = "PROMOTIONS",
+  ADDITIONAL_INFORMATION = "ADDINTIONAL_INFORMATION",
+  COMPLIANCE_INFORMATION = "COMPLIANCE_INFORMATION",
+}
+
 export interface OrderCreationContextType {
   currentStep: OrderCreationStep;
   nextStep: () => void;
