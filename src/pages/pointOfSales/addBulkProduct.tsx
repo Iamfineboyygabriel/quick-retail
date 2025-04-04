@@ -3,7 +3,7 @@ import { Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../layout/pageContainer";
-import AddProductForm from "./addProductForm";
+import AddBulkUploadDoc from "./addBulkUploadDoc";
 
 const AddBulkProduct: React.FC = () => {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const AddBulkProduct: React.FC = () => {
     <PageContainer
       subHeaders={getSubHeaders()}
     >
-      <AddProductForm />
+      <AddBulkUploadDoc />
     </PageContainer>
   );
 };
