@@ -1,76 +1,73 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { TableRowData } from "../../../../types";
-import { Avatar, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { PaidDot, UnpaidDot } from "../../../../assets/svg";
-import imageSrc from "../../../../assets/images/productIMG.png";
 import TanTable from "../../../General/table";
-import { discountProduct } from "../../../../utils/mockData";
+import { allTransaction, discountProduct } from "../../../../utils/mockData";
 
 const AllTransactionTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
     {
-      header: "Product",
-      accessorKey: "name",
+      header: "Transaction ID",
+      accessorKey: "phoneNumber",
       cell: ({ row }) => (
-        <div className="flex items-center gap-3">
-          <Avatar
-            src={imageSrc}
-            alt={row.original.name as string}
-            radius="md"
-            size={40}
-          />
+        <div className="flex flex-col">
           <Text fw={500} c="black">
-            {row.original.name}
+            {row.original.phoneNumber}
+          </Text>
+          <Text fw={400} className="text-sm">
+            {row.original.transactionId}
           </Text>
         </div>
       ),
     },
     {
-      header: "Discount Code",
-      accessorKey: "discountCode",
+      header: "Transaction Date",
+      accessorKey: "transactionDate",
       cell: ({ row }) => (
-        <Text c="textSecondary.7">{row.original.discountCode}</Text>
+        <Text c="textSecondary.7">{row.original.transactionDate}</Text>
       ),
     },
     {
-      header: "Percent",
-      accessorKey: "percent",
+      header: "Order ID",
+      accessorKey: "orderId",
     },
     {
-      header: "Price",
-      accessorKey: "price",
+      header: "Amount",
+      accessorKey: "Amount",
       cell: ({ row }) => (
         <span className=" text-gray-900 text-sm font-medium">
-          {row.original.price}
+          {row.original.Amount}
         </span>
       ),
     },
     {
-      header: "Date From",
-      accessorKey: "dateFrom",
-    },
-    {
-      header: "Date To",
-      accessorKey: "dateTo",
-    },
-    {
-      header: "Status",
-      accessorKey: "status",
+      header: "Payment Status",
+      accessorKey: "paymentStatus",
       cell: ({ row }) => {
-        const status = row.original.status;
+        const status = row.original.paymentStatus;
         return (
           <div
             className={`inline-flex items-center px-3 py-1 rounded-full font-medium text-sm ${
-              status === "Active"
+              status === "Successful"
                 ? "bg-[#ECFDF3] text-[#027A48]"
-                : "bg-[#FFFAEB] text-[#B54708]"
+                : "bg-[#FEF3F2] text-[#B42318]"
             }`}
           >
-            {status === "Active" ? <PaidDot /> : <UnpaidDot />}
+            {status === "Successful" ? <PaidDot /> : <UnpaidDot />}
             <span className="ml-2">{status}</span>
           </div>
         );
       },
+    },
+    {
+      header: "",
+      accessorKey: "action",
+      cell: () => (
+        <Text fw={700} c="customPrimary.10" className="cursor-pointer">
+          Download
+        </Text>
+      ),
     },
   ];
 
@@ -78,7 +75,7 @@ const AllTransactionTable = () => {
     <main className="w-full h-auto py-6 rounded-lg bg-white">
       <TanTable
         columnData={columns}
-        data={discountProduct}
+        data={allTransaction}
         showSearch
         showSortFilter
         searchPlaceholder="Search orders"
@@ -86,7 +83,7 @@ const AllTransactionTable = () => {
         tableTitle={
           <div className="flex gap-2.5">
             <Text fw={500} size="xl" c="textSecondary.9">
-              Discount Product
+              Transaction
             </Text>
             <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
               <Text c="customPrimary.10">{discountProduct.length}</Text>

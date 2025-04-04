@@ -4,6 +4,7 @@ import customer from "../../src/assets/images/customers.png";
 import orangeBox from "../../src/assets/images/orangeBox.png";
 import goldBox from "../../src/assets/images/goldBox.png";
 import greenBox from "../../src/assets/images/greenBox.png";
+import house from "../../src/assets/images/house.png";
 import { BlueUserIcon, PinkUserIcon, PurpleUserIcon } from "../assets/svg";
 
 export const analyticsData = [
@@ -666,5 +667,141 @@ export const transactionOverviewData = [
     percentageValue: 0.5,
     borderColor: "#98A2B3",
     altText: "orders-icon",
+  },
+];
+
+export const allTransaction = [
+  {
+    phoneNumber: "234782019283992",
+    transactionId: "62528",
+    transactionDate: "13 Jun, 2024 4:20PM",
+    orderId: "ABC 23456 S BL",
+    customer: "Greatful Erhis",
+    Amount: "#30,000.00",
+    paymentStatus: "Successful",
+  },
+  {
+    phoneNumber: "2347012345678",
+    transactionId: "62529",
+    transactionDate: "14 Jun, 2024 9:15AM",
+    orderId: "XYZ 12457 K GT",
+    customer: "Adaobi Johnson",
+    Amount: "#15,500.00",
+    paymentStatus: "Successful",
+  },
+  {
+    phoneNumber: "2348098765432",
+    transactionId: "62530",
+    transactionDate: "15 Jun, 2024 2:40PM",
+    orderId: "LMN 33458 Y HP",
+    customer: "Chinedu Okoro",
+    Amount: "#45,000.00",
+    paymentStatus: "Declined",
+  },
+  {
+    phoneNumber: "2347011122233",
+    transactionId: "62531",
+    transactionDate: "16 Jun, 2024 11:10AM",
+    orderId: "QRS 22459 A TR",
+    customer: "Fatima Usman",
+    Amount: "#12,750.00",
+    paymentStatus: "Successful",
+  },
+  {
+    phoneNumber: "2348034567890",
+    transactionId: "62532",
+    transactionDate: "17 Jun, 2024 4:05PM",
+    orderId: "TUV 88460 Z PK",
+    customer: "Emeka Nwosu",
+    Amount: "#23,300.00",
+    paymentStatus: "Declined",
+  },
+  {
+    phoneNumber: "2349091234567",
+    transactionId: "62533",
+    transactionDate: "18 Jun, 2024 6:30PM",
+    orderId: "WXY 99961 B HL",
+    customer: "Blessing Adebayo",
+    Amount: "#18,000.00",
+    paymentStatus: "Successful",
+  },
+  {
+    phoneNumber: "2347067894321",
+    transactionId: "62534",
+    transactionDate: "19 Jun, 2024 10:50AM",
+    orderId: "DEF 11362 M YT",
+    customer: "Tunde Ojo",
+    Amount: "#31,250.00",
+    paymentStatus: "Declined",
+  },
+  {
+    phoneNumber: "2348023456789",
+    transactionId: "62535",
+    transactionDate: "20 Jun, 2024 8:45AM",
+    orderId: "GHI 33463 D VR",
+    customer: "Ifeoma Nwachukwu",
+    Amount: "#27,000.00",
+    paymentStatus: "Successful",
+  },
+  {
+    phoneNumber: "2348123456780",
+    transactionId: "62536",
+    transactionDate: "21 Jun, 2024 5:20PM",
+    orderId: "JKL 44364 C UI",
+    customer: "Bashir Danladi",
+    Amount: "#40,700.00",
+    paymentStatus: "Declined",
+  },
+  {
+    phoneNumber: "2348134567891",
+    transactionId: "62537",
+    transactionDate: "22 Jun, 2024 12:00PM",
+    orderId: "MNO 55365 T WE",
+    customer: "Grace Obinna",
+    Amount: "#22,950.00",
+    paymentStatus: "Successful",
+  },
+  {
+    phoneNumber: "2348145678912",
+    transactionId: "62538",
+    transactionDate: "23 Jun, 2024 3:35PM",
+    orderId: "PQR 66366 G EC",
+    customer: "Samuel Edet",
+    Amount: "#29,600.00",
+    paymentStatus: "Declined",
+  },
+];
+
+export const happyAnalyticsData = [
+  {
+    title: "Total Redemption",
+    value: "540",
+    icon: house,
+    iconColor: "#E17036",
+    textColor: "white",
+    cardBgColor: "linear-gradient(to bottom, #F16722, #B63D00)",
+    percentageValue: 0.5,
+    altText: "dollar-sign",
+  },
+
+  {
+    title: "Total Amount",
+    value: "$921,345",
+    icon: dollar,
+    iconColor: "#E17036",
+    cardBgColor: "#EFF8FF",
+    percentageValue: 0.5,
+    borderColor: "#98A2B3",
+    altText: "orders-icon",
+  },
+  {
+    title: "New Amount",
+    value: "$921,345",
+    icon: dollar,
+    iconColor: "#E17036",
+    cardBgColor: "#F4F3FF",
+    percentageValue: 0.5,
+    borderColor: "#98A2B3",
+    altText: "customer-icon",
   },
 ];

@@ -1,7 +1,7 @@
 import { Text } from "@mantine/core";
-import PageContainer from "../../layout/pageContainer";
-import TransactionOverview from "../../components/dashboard/pointOfSales/transactions/transactionOverview";
-import AllTransactionTable from "../../components/dashboard/pointOfSales/transactions/allTransactionTable";
+import PageContainer from "../../../layout/pageContainer";
+import TransactionOverview from "../../../components/dashboard/pointOfSales/transactions/transactionOverview";
+import AllTransactionTable from "../../../components/dashboard/pointOfSales/transactions/allTransactionTable";
 
 const TransactionPage = () => {
   const subHeaders = [

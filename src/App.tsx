@@ -4,12 +4,10 @@ import DashboardLayout from "./layout/layout";
 import ProductManagementPage from "./pages/pointOfSales/productManagementPage";
 import SalesProcessingPage from "./pages/pointOfSales/saleProcessing/salesProcessingPage";
 import CategoriesPage from "./pages/pointOfSales/categoriesPage";
-import HappyTimePage from "./pages/pointOfSales/happyTimePage";
 import StoresPage from "./pages/pointOfSales/storesPage";
 import ReportsPage from "./pages/pointOfSales/reportsPage";
 import CustomerPage from "./pages/pointOfSales/customerPage";
 import DashboardPage from "./pages/pointOfSales/dashboardPage";
-import TransactionPage from "./pages/pointOfSales/transactionPage";
 import CreateOrderPage from "./pages/pointOfSales/saleProcessing/createOrderPage";
 import { ROUTES } from "./constants/routes";
 import AddNewProduct from "./pages/pointOfSales/addNewProduct";
@@ -19,6 +17,9 @@ import ViewReturnsPage from "./pages/pointOfSales/returns/viewReturnsPage";
 import InventoryManagementPage from "./pages/pointOfSales/inventory/inventoryManagementPage";
 import UpdateInventory from "./pages/pointOfSales/inventory/updateInventory";
 import TriggerOrder from "./pages/pointOfSales/inventory/triggerOrder";
+import TransactionPage from "./pages/pointOfSales/transaction/transactionPage";
+import HappyTimePage from "./pages/pointOfSales/happyTime/happyTimePage";
+import DiscountAnalysisPage from "./pages/pointOfSales/happyTime/discountAnalysisPage";
 
 export default function App() {
   return (
@@ -47,7 +48,12 @@ export default function App() {
           <Route path={ROUTES.viewReturns} element={<ViewReturnsPage />} />
           <Route path={ROUTES.customer} element={<CustomerPage />} />
           <Route path={ROUTES.happyTime} element={<HappyTimePage />} />
+          <Route
+            path={ROUTES.happyDiscountAnalytics}
+            element={<DiscountAnalysisPage />}
+          />
           <Route path={ROUTES.transaction} element={<TransactionPage />} />
+
           <Route path={ROUTES.stores} element={<StoresPage />} />
           <Route path={ROUTES.report} element={<ReportsPage />} />
         </Route>
