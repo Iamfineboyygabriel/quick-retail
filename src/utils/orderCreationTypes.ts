@@ -4,6 +4,11 @@ export enum OrderCreationStep {
   CUSTOMER_RECEIPT = "CUSTOMER_RECEIPT",
 }
 
+export enum BulkProductStep {
+  INSTRUCTION = "INSTRUCTION",
+  UPLOAD_CSV = "UPLOAD_CSV",
+}
+
 export interface OrderCreationContextType {
   currentStep: OrderCreationStep;
   nextStep: () => void;
