@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "@mantine/core";
+import { Button, Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../layout/pageContainer";
@@ -50,9 +50,23 @@ const AddBulkProduct: React.FC = () => {
     return subHeaders;
   };
 
+    const getBottomButtons = () => {
+          return [
+            <div key="search-product-buttons" className="flex gap-4 justify-end">
+              <Button variant="outline-primary" onClick={() => navigate(-1)}>
+                Cancel
+              </Button>
+              <Button variant="filled-primary">
+                Next
+              </Button>
+            </div>,
+          ];
+    };
+
   return (
     <PageContainer
       subHeaders={getSubHeaders()}
+      subHeaderButtom={getBottomButtons()}
     >
       <AddBulkUploadDoc />
     </PageContainer>

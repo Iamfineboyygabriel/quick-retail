@@ -1,11 +1,16 @@
 import { Checkbox, Switch } from "@mantine/core";
-import { Upload, UploadCloud, X } from "lucide-react";
+import { Plus, Upload, UploadCloud, X } from "lucide-react";
 import FormInput from "../../components/General/formInput";
 import FormSelect from "../../components/General/select";
 import { useState } from "react";
 
 const AddProductForm = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [variations, setVariations] = useState<Variation[]>([
+    { name: "Size", values: ["Small", "Medium", "Large"] },
+    { name: "Colour", values: ["White", "Pink", "Black"] },
+  ]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -17,6 +22,13 @@ const AddProductForm = () => {
   const removeFile = () => {
     setSelectedFile(null);
   };
+
+  const handleDelete = (index: number) => {
+    const updated = [...variations];
+    updated.splice(index, 1);
+    setVariations(updated);
+  };
+
   return (
     <div>
       <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
@@ -132,11 +144,72 @@ const AddProductForm = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mt-[3em] bg-white p-6 rounded-lg shadow-md border border-gray-200">
+      {/* <div className="flex justify-between items-center mt-[3em] bg-white p-6 rounded-lg shadow-md border border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800">
           PRODUCT VARIATIONS
         </h2>
         <Switch onLabel="On" offLabel="Off" size="md" />
+      </div> */}
+
+      <div className="mt-12 bg-white p-6 rounded-lg shadow-md border border-gray-200">
+        <div className="flex justify-between items-center max-w-full w-full">
+          <h2 className="text-lg font-semibold text-gray-800">
+            PRODUCT VARIATIONS
+          </h2>
+          <Switch
+            checked={isEnabled}
+            onChange={(event) => setIsEnabled(event.target.checked)}
+            className={`${
+              isEnabled ? "text-orange-600" : "text-gray-300"
+            } relative inline-flex h-6 w-12 items-center rounded-full transition`}
+          />
+          <span
+            className={`${
+              isEnabled ? "translate-x-6" : "translate-x-1"
+            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+          />
+        </div>
+
+        {isEnabled && (
+          <>
+            <div className="flex justify-end mt-6">
+              <button className="flex items-center text-orange-600 text-sm font-medium hover:underline">
+                Add variation <Plus className="ml-1 w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="mt-4 space-y-6">
+              {variations.map((variation, idx) => (
+                <div key={idx} className="flex items-start justify-between">
+                  <div className="w-[100px] font-semibold text-gray-800">
+                    {variation.name}
+                  </div>
+                  <div className="flex-1 flex flex-wrap gap-2">
+                    {variation.values.map((value: string, i: number) => (
+                      <span
+                      key={i}
+                      className="bg-gray-300 text-white text-xs font-medium px-3 py-1 rounded-full"
+                      >
+                      {value}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-4 ml-4">
+                    <button
+                      className="text-red-600 text-sm hover:underline"
+                      onClick={() => handleDelete(idx)}
+                    >
+                      Delete
+                    </button>
+                    <button className="text-gray-800 text-sm hover:underline">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mt-[3em]">
