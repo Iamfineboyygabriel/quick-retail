@@ -11,6 +11,7 @@ export const ROUTES = {
   customer: "/dashboard/customer",
   happyTime: "/dashboard/happy-time",
   happyDiscountAnalytics: "/dashboard/happy-time/analytics",
+  happyGiftCard: "/dashboard/happy-time/gift_card",
   transaction: "/dashboard/transaction",
   stores: "/dashboard/stores",
   report: "/dashboard/reports",

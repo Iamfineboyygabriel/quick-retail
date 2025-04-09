@@ -4,7 +4,7 @@ import DashboardLayout from "./layout/layout";
 import ProductManagementPage from "./pages/pointOfSales/productManagementPage";
 import SalesProcessingPage from "./pages/pointOfSales/saleProcessing/salesProcessingPage";
 import CategoriesPage from "./pages/pointOfSales/categoriesPage";
-import StoresPage from "./pages/pointOfSales/storesPage";
+import StoresPage from "./pages/pointOfSales/stores/storesPage";
 import ReportsPage from "./pages/pointOfSales/reportsPage";
 import CustomerPage from "./pages/pointOfSales/customerPage";
 import DashboardPage from "./pages/pointOfSales/dashboardPage";
@@ -20,6 +20,7 @@ import TriggerOrder from "./pages/pointOfSales/inventory/triggerOrder";
 import TransactionPage from "./pages/pointOfSales/transaction/transactionPage";
 import HappyTimePage from "./pages/pointOfSales/happyTime/happyTimePage";
 import DiscountAnalysisPage from "./pages/pointOfSales/happyTime/discountAnalysisPage";
+import GiftCardPage from "./pages/pointOfSales/happyTime/giftCardPage";
 
 export default function App() {
   return (
@@ -52,6 +53,7 @@ export default function App() {
             path={ROUTES.happyDiscountAnalytics}
             element={<DiscountAnalysisPage />}
           />
+          <Route path={ROUTES.happyGiftCard} element={<GiftCardPage />} />
           <Route path={ROUTES.transaction} element={<TransactionPage />} />
 
           <Route path={ROUTES.stores} element={<StoresPage />} />
