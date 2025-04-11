@@ -14,6 +14,7 @@ export const ROUTES = {
   happyGiftCard: "/dashboard/happy-time/gift_card",
   transaction: "/dashboard/transaction",
   stores: "/dashboard/stores",
+  viewStore: "/dashboard/stores/view",
   report: "/dashboard/reports",
   createOrder: "/dashboard/sales/create_order",
   viewOrder: "/dashboard/sales/view_order",

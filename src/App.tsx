@@ -21,6 +21,7 @@ import TransactionPage from "./pages/pointOfSales/transaction/transactionPage";
 import HappyTimePage from "./pages/pointOfSales/happyTime/happyTimePage";
 import DiscountAnalysisPage from "./pages/pointOfSales/happyTime/discountAnalysisPage";
 import GiftCardPage from "./pages/pointOfSales/happyTime/giftCardPage";
+import View from "./pages/pointOfSales/stores/view";
 
 export default function App() {
   return (
@@ -57,6 +58,7 @@ export default function App() {
           <Route path={ROUTES.transaction} element={<TransactionPage />} />
 
           <Route path={ROUTES.stores} element={<StoresPage />} />
+          <Route path={ROUTES.viewStore} element={<View />} />
           <Route path={ROUTES.report} element={<ReportsPage />} />
         </Route>
       </Routes>
