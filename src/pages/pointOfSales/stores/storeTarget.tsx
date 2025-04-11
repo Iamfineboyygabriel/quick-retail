@@ -1,16 +1,17 @@
 import { Button, Text } from "@mantine/core";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Plus } from "lucide-react";
 import PageContainer from "../../../layout/pageContainer";
 import { Link } from "react-router";
 import { ROUTES } from "../../../constants/routes";
-import StoreTargetTable from "../../../components/dashboard/pointOfSales/stores/storeTargetTable";
+import AnalysisOverview from "../../../components/dashboard/pointOfSales/stores/analysisOverview";
+import StoreOverviewTable from "../../../components/dashboard/pointOfSales/stores/storeOverviewTable";
 
-const StoresPage = () => {
+const StoreTarget = () => {
   const subHeaders = [
     <div key="1">
       <div className="flex items-center justify-between">
         <Text fw={500} size="xl" c="black">
-          Store Target
+          Stores
         </Text>
         <div className="flex gap-4">
           <Button
@@ -18,8 +19,8 @@ const StoresPage = () => {
             className="flex gap-1.5"
             style={{ padding: "0.8rem 1rem" }}
           >
-            Set New Store Target
-            <ChevronRight />
+            Add New Store
+            <Plus />
           </Button>
           <Link to={ROUTES.storeTarget}>
             <Button
@@ -27,7 +28,7 @@ const StoresPage = () => {
               className="flex gap-1.5"
               style={{ padding: "0.8rem 1rem" }}
             >
-              Stores
+              Stores Target
               <ChevronRight />
             </Button>
           </Link>
@@ -38,9 +39,10 @@ const StoresPage = () => {
 
   return (
     <PageContainer subHeaders={subHeaders}>
-      <StoreTargetTable />
+      <AnalysisOverview />
+      <StoreOverviewTable />
     </PageContainer>
   );
 };
 
-export default StoresPage;
+export default StoreTarget;

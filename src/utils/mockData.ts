@@ -4,6 +4,8 @@ import customer from "../../src/assets/images/customers.png";
 import orangeBox from "../../src/assets/images/orangeBox.png";
 import goldBox from "../../src/assets/images/goldBox.png";
 import greenBox from "../../src/assets/images/greenBox.png";
+import activeStore from "../../src/assets/images/inactiveStore.png";
+import inactiveStore from "../../src/assets/images/activeStore.png";
 import house from "../../src/assets/images/house.png";
 import { BlueUserIcon, PinkUserIcon, PurpleUserIcon } from "../assets/svg";
 
@@ -1090,5 +1092,122 @@ export const allStoreOrders = [
     dateCreated: "21 Jun, 2024 12:10 PM",
     paymentSatus: "Failed",
     orderSatus: "Completed",
+  },
+];
+
+export const storeAnalysisData = [
+  {
+    title: "total stores",
+    value: "540",
+    icon: house,
+    iconColor: "#E17036",
+    textColor: "white",
+    cardBgColor: "linear-gradient(to bottom, #F16722, #B63D00)",
+    percentageValue: 0.5,
+    altText: "dollar-sign",
+  },
+
+  {
+    title: "active stores",
+    value: "345",
+    icon: activeStore,
+    iconColor: "#E17036",
+    cardBgColor: "#EFF8FF",
+    percentageValue: 0.5,
+    borderColor: "#98A2B3",
+    altText: "orders-icon",
+  },
+  {
+    title: "inactive stores",
+    value: "$921,345",
+    icon: inactiveStore,
+    iconColor: "#E17036",
+    cardBgColor: "#F4F3FF",
+    percentageValue: 0.5,
+    borderColor: "#98A2B3",
+    altText: "customer-icon",
+  },
+];
+
+export const storeOverviewData = [
+  {
+    storeName: "Ikeja City Mall",
+    storeId: "2456781",
+    storeSizeA: "2678",
+    storeSizeB: "2678",
+    location: "Ikeja, Ogba",
+    dateCreated: "13 Jun, 2025",
+    totalCustomer: "1312",
+    status: "Active",
+  },
+  {
+    storeName: "Yaba Market Plaza",
+    storeId: "2456782",
+    storeSizeA: "1890",
+    storeSizeB: "2050",
+    location: "Yaba, Lagos",
+    dateCreated: "20 May, 2025",
+    totalCustomer: "984",
+    status: "Inactive",
+  },
+  {
+    storeName: "Lekki Shopping Center",
+    storeId: "2456783",
+    storeSizeA: "3050",
+    storeSizeB: "3000",
+    location: "Lekki Phase 1",
+    dateCreated: "05 Apr, 2025",
+    totalCustomer: "1567",
+    status: "Active",
+  },
+  {
+    storeName: "Surulere Mall",
+    storeId: "2456784",
+    storeSizeA: "2200",
+    storeSizeB: "2180",
+    location: "Surulere, Lagos",
+    dateCreated: "11 Mar, 2025",
+    totalCustomer: "743",
+    status: "Inactive",
+  },
+  {
+    storeName: "Ajah Retail Hub",
+    storeId: "2456785",
+    storeSizeA: "2780",
+    storeSizeB: "2800",
+    location: "Ajah, Lagos",
+    dateCreated: "22 Feb, 2025",
+    totalCustomer: "1210",
+    status: "Active",
+  },
+  {
+    storeName: "Victoria Island Mega Store",
+    storeId: "2456786",
+    storeSizeA: "3500",
+    storeSizeB: "3600",
+    location: "VI, Lagos",
+    dateCreated: "30 Jan, 2025",
+    totalCustomer: "2001",
+    statuc: "Inactive",
+  },
+  {
+    storeName: "Maryland Shopping Plaza",
+    storeId: "2456787",
+    storeSizeA: "2400",
+    storeSizeB: "2500",
+    location: "Maryland, Lagos",
+    dateCreated: "15 Dec, 2024",
+    totalCustomer: "875",
+    status: "Active",
+  },
+  {
+    storeName: "Apapa Trade Centre",
+    storeId: "2456788",
+    storeSizeA: "3100",
+    storeSizeB: "3200",
+    location: "Apapa, Lagos",
+    dateCreated: "01 Nov, 2024",
+    totalCustomer: "654",
+    status: "Inactive",
   },
 ];

@@ -15,6 +15,7 @@ export const ROUTES = {
   transaction: "/dashboard/transaction",
   stores: "/dashboard/stores",
   viewStore: "/dashboard/stores/view",
+  storeTarget: "/dashboard/stores/store_target",
   report: "/dashboard/reports",
   createOrder: "/dashboard/sales/create_order",
   viewOrder: "/dashboard/sales/view_order",

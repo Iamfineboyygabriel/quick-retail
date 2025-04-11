@@ -22,6 +22,7 @@ import HappyTimePage from "./pages/pointOfSales/happyTime/happyTimePage";
 import DiscountAnalysisPage from "./pages/pointOfSales/happyTime/discountAnalysisPage";
 import GiftCardPage from "./pages/pointOfSales/happyTime/giftCardPage";
 import View from "./pages/pointOfSales/stores/view";
+import StoreTarget from "./pages/pointOfSales/stores/storeTarget";
 
 export default function App() {
   return (
@@ -59,6 +60,7 @@ export default function App() {
 
           <Route path={ROUTES.stores} element={<StoresPage />} />
           <Route path={ROUTES.viewStore} element={<View />} />
+          <Route path={ROUTES.storeTarget} element={<StoreTarget />} />
           <Route path={ROUTES.report} element={<ReportsPage />} />
         </Route>
       </Routes>
