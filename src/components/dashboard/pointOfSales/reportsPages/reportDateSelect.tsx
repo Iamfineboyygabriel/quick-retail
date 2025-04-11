@@ -65,7 +65,7 @@ const ReportDateSelect = () => {
           <button
             disabled={!startDate || !endDate}
             onClick={handleGenerate}
-            className={`w-full py-3 rounded-md font-semibold text-white transition-all ${
+            className={`w-full py-3 rounded-md font-semibold text-white transition-all cursor-pointer ${
               startDate && endDate
                 ? "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
                 : "bg-orange-200 cursor-not-allowed"

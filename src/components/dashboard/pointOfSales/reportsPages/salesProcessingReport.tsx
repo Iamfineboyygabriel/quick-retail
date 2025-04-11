@@ -77,20 +77,33 @@ const SalesProcessingReport = () => {
       <TanTable
         columnData={columns}
         data={allSalesReport}
-        showSearch
-        showSortFilter
-        searchPlaceholder="Search orders"
+        showSearch={false}     
+        showSortFilter={false}  
         length={5}
         tableTitle={
-          <div className="flex gap-2.5">
-            <Text fw={500} size="xl" c="textSecondary.9">
-              Sales Processing
-            </Text>
-            <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
-              <Text c="customPrimary.10">{discountProduct.length}</Text>
+            <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        
+              <div className="flex gap-2.5 items-center">
+                <Text fw={500} size="xl" c="textSecondary.9">
+                  Sales Processing
+                </Text>
+                <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
+                  <Text c="customPrimary.10" size="sm">{discountProduct.length}</Text>
+                </div>
+              </div>
+          
+            
+              <div className="flex items-center gap-3">
+                <div className="border border-[#E0E0E0] rounded-lg px-4 py-2 flex items-center text-sm text-[#344054] min-w-[230px]">
+                  14/01/2025 – 14/02/2025
+                </div>
+                <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-md font-medium text-sm">
+                  Export
+                </button>
+              </div>
             </div>
-          </div>
-        }
+          }
+                   
       />
     </main>
   );

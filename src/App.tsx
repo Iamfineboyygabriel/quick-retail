@@ -22,10 +22,10 @@ import HappyTimePage from "./pages/pointOfSales/happyTime/happyTimePage";
 import DiscountAnalysisPage from "./pages/pointOfSales/happyTime/discountAnalysisPage";
 import GiftCardPage from "./pages/pointOfSales/happyTime/giftCardPage";
 import ReportDateSelect from "./components/dashboard/pointOfSales/reportsPages/reportDateSelect";
-import ReturnsRefundsReport from "./components/dashboard/pointOfSales/reportsPages/returnsRefundsReport";
 import SalesProcessingReportPage from "./pages/pointOfSales/salesProcessingReportPage";
 import ProductReportPage from "./pages/pointOfSales/productReportPage";
 import View from "./pages/pointOfSales/stores/view";
+import RetunsRefundsReportPage from "./pages/pointOfSales/returnsRefundsReportPage";
 
 export default function App() {
   return (
@@ -78,7 +78,7 @@ export default function App() {
           />
           <Route
             path={ROUTES.returnsRefundsReport}
-            element={<ReturnsRefundsReport />}
+            element={<RetunsRefundsReportPage />}
           />
         </Route>
       </Routes>
