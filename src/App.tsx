@@ -26,6 +26,7 @@ import SalesProcessingReportPage from "./pages/pointOfSales/salesProcessingRepor
 import ProductReportPage from "./pages/pointOfSales/productReportPage";
 import View from "./pages/pointOfSales/stores/view";
 import RetunsRefundsReportPage from "./pages/pointOfSales/returnsRefundsReportPage";
+import StoreTarget from "./pages/pointOfSales/stores/storeTarget";
 
 export default function App() {
   return (
@@ -63,6 +64,7 @@ export default function App() {
 
           <Route path={ROUTES.stores} element={<StoresPage />} />
           <Route path={ROUTES.viewStore} element={<View />} />
+          <Route path={ROUTES.storeTarget} element={<StoreTarget />} />
           <Route path={ROUTES.report} element={<ReportsPage />} />
           <Route
             path={ROUTES.reportDateSelect}
