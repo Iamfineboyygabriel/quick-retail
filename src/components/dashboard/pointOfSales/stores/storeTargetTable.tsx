@@ -3,6 +3,8 @@ import { TableRowData } from "../../../../types";
 import { Text } from "@mantine/core";
 import TanTable from "../../../General/table";
 import { storeTargetOrder } from "../../../../utils/mockData";
+import { Link } from "react-router";
+import { ROUTES } from "../../../../constants/routes";
 
 const StoreTargetTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -43,9 +45,11 @@ const StoreTargetTable = () => {
       header: "",
       accessorKey: "action",
       cell: () => (
-        <Text fw={600} c="customPrimary.10" className="cursor-pointer">
-          View
-        </Text>
+        <Link to={ROUTES.viewStore}>
+          <Text fw={600} c="customPrimary.10" className="cursor-pointer">
+            View
+          </Text>
+        </Link>
       ),
     },
   ];
