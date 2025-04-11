@@ -9,7 +9,7 @@ import { Link } from "react-router";
 import { ROUTES } from "../../../../constants/routes";
 
 const ReturnsRefundsReport = () => {
-const columns: ColumnDef<TableRowData>[] = [
+  const columns: ColumnDef<TableRowData>[] = [
     {
       header: "Name",
       accessorKey: "name",
@@ -82,7 +82,7 @@ const columns: ColumnDef<TableRowData>[] = [
       cell: () => (
         <Link to={ROUTES.viewReturns}>
           <Text fw={600} c="customPrimary.10" className="cursor-pointer">
-            View Order
+            View
           </Text>
         </Link>
       ),
@@ -94,17 +94,27 @@ const columns: ColumnDef<TableRowData>[] = [
       <TanTable
         columnData={columns}
         data={loggedReturn}
-        showSearch
-        showSortFilter
-        searchPlaceholder="Search orders"
+        showSearch={false}
+        showSortFilter={false}
         length={5}
         tableTitle={
-          <div className="flex gap-2.5">
-            <Text fw={500} size="xl" c="textSecondary.9">
-              Logged Returns
-            </Text>
-            <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
-              <Text c="customPrimary.10">{loggedReturn.length}</Text>
+          <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div className="flex gap-2.5 items-center">
+              <Text fw={500} size="xl" c="textSecondary.9">
+                Logged Returns
+              </Text>
+              <div className="bg-[#FFEADF] rounded-full flex items-center py-0.5 px-3">
+                <Text c="customPrimary.10">{loggedReturn.length}</Text>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="border border-[#E0E0E0] rounded-lg px-4 py-2 flex items-center text-sm text-[#344054] min-w-[230px]">
+                14/01/2025 – 14/02/2025
+              </div>
+              <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-md font-medium text-sm">
+                Export
+              </button>
             </div>
           </div>
         }
@@ -113,4 +123,4 @@ const columns: ColumnDef<TableRowData>[] = [
   );
 };
 
-export default ReturnsRefundsReport
+export default ReturnsRefundsReport;
