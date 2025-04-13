@@ -20,6 +20,7 @@ export const ROUTES = {
   viewStore: "/dashboard/stores/view",
   storeTarget: "/dashboard/stores/store_target",
   storeBillingInformation: "/dashboard/stores/billing-information",
+  aboutProduct: "/dashboard/stores/about_product",
   report: "/dashboard/reports",
   reportDateSelect: "/dashboard/reportsPages/report-date-input",
   salesProcessing: "/dashboard/reportsPages/sales-processing",

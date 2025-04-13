@@ -30,6 +30,7 @@ import StoreTarget from "./pages/pointOfSales/stores/storeTarget";
 import SubCategories from "./pages/pointOfSales/categories/subCategories";
 import ViewCollection from "./pages/pointOfSales/categories/viewCollection";
 import BillingInformation from "./pages/pointOfSales/stores/billingInformation";
+import AboutProduct from "./pages/pointOfSales/stores/aboutProduct";
 
 export default function App() {
   return (
@@ -63,6 +64,7 @@ export default function App() {
             path={ROUTES.storeBillingInformation}
             element={<BillingInformation />}
           />
+          <Route path={ROUTES.aboutProduct} element={<AboutProduct />} />
           <Route path={ROUTES.returns} element={<ReturnsPage />} />
           <Route path={ROUTES.viewReturns} element={<ViewReturnsPage />} />
           <Route path={ROUTES.customer} element={<CustomerPage />} />

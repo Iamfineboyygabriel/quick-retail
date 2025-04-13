@@ -5,6 +5,8 @@ import { TableRowData } from "../../../../types";
 import { Avatar, Text } from "@mantine/core";
 import { PaidDot, UnpaidDot } from "../../../../assets/svg";
 import imageSrc from "../../../../assets/images/productIMG.png";
+import { Link } from "react-router";
+import { ROUTES } from "../../../../constants/routes";
 
 const ProductOrderedTable = () => {
   const columns: ColumnDef<TableRowData>[] = [
@@ -103,9 +105,11 @@ const ProductOrderedTable = () => {
       header: "",
       accessorKey: "action",
       cell: () => (
-        <Text fw={600} c="customPrimary.10" className="cursor-pointer">
-          View
-        </Text>
+        <Link to={ROUTES.aboutProduct}>
+          <Text fw={600} c="customPrimary.10" className="cursor-pointer">
+            View
+          </Text>
+        </Link>
       ),
     },
   ];
