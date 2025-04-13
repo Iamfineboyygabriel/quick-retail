@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const StoreTarget = () => {
   const [isAddNewStoreOpen, setIsAddNewStoreOpen] = useState(false);
+  
   const subHeaders = [
     <div key="1">
       <div className="flex items-center justify-between">

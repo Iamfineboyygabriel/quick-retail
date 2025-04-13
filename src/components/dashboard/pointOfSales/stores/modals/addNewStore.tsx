@@ -2,6 +2,8 @@ import { Button, Modal, Switch, Text } from "@mantine/core";
 import FormInput from "../../../../General/formInput";
 import { useState } from "react";
 import storeIcon from "../../../../../assets/images/newStore.png";
+import { CircleHelp } from "lucide-react";
+import ActivateStore from "./activateStore";
 interface AddNewStoreModalProps {
   opened: boolean;
   onClose: () => void;
@@ -9,6 +11,12 @@ interface AddNewStoreModalProps {
 
 const AddNewStore = ({ opened, onClose }: AddNewStoreModalProps) => {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [isActivateStoreOpen, setIsActivateOpen] = useState(false);
+
+  const handleActivateStore = () => {
+    onClose();
+    setIsActivateOpen(true);
+  };
 
   return (
     <>
@@ -31,18 +39,50 @@ const AddNewStore = ({ opened, onClose }: AddNewStoreModalProps) => {
       >
         <div className="flex flex-col space-y-6">
           <div className="col-span-2">
-            <FormInput type="text" label="Store Name" paddingY="6px" />
+            <label htmlFor="" className="flex items-center gap-2 mb-1.5">
+              Store Name
+              <CircleHelp color="#98A2B3" size={20} />
+            </label>
+            <FormInput type="number" paddingY="6px" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <FormInput type="number" label="GLA" paddingY="6px" />
-
-            <FormInput type="number" label="GSA" paddingY="6px" />
-            <FormInput type="text" label="Store ID" paddingY="6px" />
-            <FormInput type="text" label="Country" paddingY="6px" />
-
+            <div className="flex flex-col">
+              <label htmlFor="" className="flex items-center gap-2 mb-1.5">
+                GLA
+                <CircleHelp color="#98A2B3" size={20} />
+              </label>
+              <FormInput type="text" paddingY="6px" />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="" className="flex items-center gap-2 mb-1.5">
+                GSA
+                <CircleHelp color="#98A2B3" size={20} />
+              </label>
+              <FormInput type="text" paddingY="6px" />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="" className="flex items-center gap-2 mb-1.5">
+                Store ID
+                <CircleHelp color="#98A2B3" size={20} />
+              </label>
+              <FormInput type="text" paddingY="6px" />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="" className="flex items-center gap-2 mb-1.5">
+                Country
+                <CircleHelp color="#98A2B3" size={20} />
+              </label>
+              <FormInput type="text" paddingY="6px" />
+            </div>{" "}
             <div className="col-span-2">
-              <FormInput type="text" label="Address" paddingY="6px" />
+              <div className="col-span-2">
+                <label htmlFor="" className="flex items-center gap-2 mb-1.5">
+                  Address
+                  <CircleHelp color="#98A2B3" size={20} />
+                </label>
+                <FormInput type="text" paddingY="6px" />
+              </div>
             </div>
             <div className="flex flex-col">
               <Text>Status</Text>
@@ -68,10 +108,16 @@ const AddNewStore = ({ opened, onClose }: AddNewStoreModalProps) => {
             >
               Cancel
             </Button>
-            <Button variant="filled-primary">Submit</Button>
+            <Button variant="filled-primary" onClick={handleActivateStore}>
+              Submit
+            </Button>
           </div>
         </div>
       </Modal>
+      <ActivateStore
+        opened={isActivateStoreOpen}
+        onClose={() => setIsActivateOpen(false)}
+      />
     </>
   );
 };
