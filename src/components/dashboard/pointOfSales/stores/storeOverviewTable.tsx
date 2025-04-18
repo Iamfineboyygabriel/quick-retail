@@ -1,18 +1,26 @@
+import { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { TableRowData } from "../../../../types";
-import { Switch, Text } from "@mantine/core";
+import { Text, Switch } from "@mantine/core";
 import TanTable from "../../../General/table";
 import {
-  storeOverviewData,
+  storeOverviewData as initialData,
   storeTargetOrder,
 } from "../../../../utils/mockData";
 import { Link } from "react-router";
 import { ROUTES } from "../../../../constants/routes";
-import { InactiveIcon, PaidDot } from "../../../../assets/svg";
-import { useState } from "react";
+import { PaidDot, UnpaidDot } from "../../../../assets/svg";
+import { TableRowData } from "../../../../types";
 
 const StoreOverviewTable = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [tableData, setTableData] = useState(initialData);
+
+  const handleToggle = (index: number) => {
+    const updatedData = [...tableData];
+    const currentStatus = updatedData[index].status;
+    updatedData[index].status =
+      currentStatus === "Active" ? "Inactive" : "Active";
+    setTableData(updatedData);
+  };
 
   const columns: ColumnDef<TableRowData>[] = [
     {
@@ -20,14 +28,11 @@ const StoreOverviewTable = () => {
       accessorKey: "storeName",
       cell: (props) => (
         <div className="flex flex-col">
-          <Text fw={500} c="#1D2739">
+          <Text fw={500} c="black">
             {props.row.original.storeName}
           </Text>
           <Text fw={400} className="text-sm">
-            Store ID:{" "}
-            <span className="text-[#1D2739] font-medium">
-              {props.row.original.storeId}
-            </span>
+            Store ID: {props.row.original.storeId}
           </Text>
         </div>
       ),
@@ -37,17 +42,11 @@ const StoreOverviewTable = () => {
       accessorKey: "store",
       cell: (props) => (
         <div className="flex flex-col">
-          <Text>
-            GLA:
-            <span className="text-[#1D2739] font-medium ml-1">
-              {props.row.original.storeSizeA}
-            </span>
+          <Text fw={500} c="black">
+            GLA: {props.row.original.storeSizeA}
           </Text>
-          <Text>
-            GLA:{" "}
-            <span className="text-black font-medium">
-              {props.row.original.storeSizeA}
-            </span>
+          <Text fw={400} className="text-sm">
+            GSA: {props.row.original.storeSizeB}
           </Text>
         </div>
       ),
@@ -55,49 +54,49 @@ const StoreOverviewTable = () => {
     {
       header: "Store Location",
       accessorKey: "location",
-      cell: (props) => (
-        <Text c={"#1D2739"} fw={500}>
-          {props.row.original.location}
-        </Text>
-      ),
+      cell: (props) => <Text>{props.row.original.location}</Text>,
     },
     {
       header: "Date Created",
       accessorKey: "dateCreated",
-      cell: ({ row }) => (
-        <Text className="text-sm font-medium">{row.original.dateCreated}</Text>
+      cell: (props) => (
+        <Text c="black" fw={500} className="text-sm font-medium">
+          {props.row.original.dateCreated}
+        </Text>
       ),
     },
     {
       header: "Total Customers",
-      accessorKey: "totalCustomers",
-      cell: ({ row }) => (
-        <Text className="text-sm font-medium">{row.original.dateCreated}</Text>
+      accessorKey: "totalCustomer",
+      cell: (props) => (
+        <Text c="black" fw={500} className="text-sm font-medium">
+          {props.row.original.totalCustomer}
+        </Text>
       ),
     },
     {
       header: "Status",
       accessorKey: "status",
       cell: (props) => {
+        const rowIndex = props.row.index;
         const status = props.row.original.status;
+
         return (
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
             <div
               className={`inline-flex items-center px-3 py-1 rounded-full font-medium text-sm ${
                 status === "Active"
                   ? "bg-[#ECFDF3] text-[#027A48]"
-                  : "bg-[#F2F4F7] text-[#344054]"
+                  : "bg-[#F2F4F7] text-[#667085]"
               }`}
             >
-              {status === "Active" ? <PaidDot /> : <InactiveIcon />}
+              {status === "Active" ? <PaidDot /> : <UnpaidDot />}
               <span className="ml-2">{status}</span>
             </div>
             <Switch
-              checked={isEnabled}
-              onChange={(event) => setIsEnabled(event.target.checked)}
-              className={`${
-                isEnabled ? "text-orange-600" : "text-gray-300"
-              } relative inline-flex h-6 w-12 items-center rounded-full transition`}
+              checked={status === "Active"}
+              onChange={() => handleToggle(rowIndex)}
+              color="orange"
               size="md"
             />
           </div>
@@ -116,12 +115,13 @@ const StoreOverviewTable = () => {
       ),
     },
   ];
+
   return (
     <div>
       <main className="w-full h-auto py-6 rounded-lg bg-white">
         <TanTable
           columnData={columns}
-          data={storeOverviewData}
+          data={tableData}
           showSearch
           showSortFilter
           searchPlaceholder="Search orders"
