@@ -10,6 +10,7 @@ interface NavItemProps {
   href: string;
   hasChildren?: boolean;
   children?: { label: string; href: string }[];
+  active?: boolean;
 }
 
 const NavItem = ({

@@ -27,7 +27,6 @@ const DashboardLayout = () => {
   return (
     <DashboardProvider>
       <div className="flex h-screen overflow-hidden">
-        {/* Sidebar - only visible on desktop */}
         {!isMobile && (
           <div
             className={`fixed top-0 left-0 h-full w-[20rem] z-30 transform transition-transform duration-300 md:relative ${
@@ -39,7 +38,6 @@ const DashboardLayout = () => {
         )}
 
         <div className="flex-1 flex flex-col w-full">
-          {/* Header - Different components for mobile and desktop */}
           <div className="sticky top-0 z-20 w-full">
             {isMobile ? (
               <MobileDashboardHeader />
@@ -48,7 +46,6 @@ const DashboardLayout = () => {
             )}
           </div>
 
-          {/* Main content */}
           <div
             className={`flex-1 overflow-y-auto overflow-hidden ${
               isMobile ? "pb-16" : ""
@@ -57,7 +54,6 @@ const DashboardLayout = () => {
             <Outlet />
           </div>
 
-          {/* Mobile navigation */}
           {isMobile && <MobileMoreMnu />}
         </div>
       </div>
