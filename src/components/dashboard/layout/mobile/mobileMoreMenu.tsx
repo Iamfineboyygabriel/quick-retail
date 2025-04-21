@@ -9,20 +9,8 @@ import {
   mobileOtherMenu,
 } from "../../../../layout/navItemData";
 import { useDashboard } from "../../../../layout/dashboardContext";
-import {
-  InActiveDashboardIcon,
-  ActiveDashboardIcon,
-  InActiveProductIcon,
-  ActiveProductIcon,
-  InActiveSalesIcon,
-  ActiveSalesIcon,
-  InActiveReport,
-  ActiveReport,
-  MoreIcon,
-  LogoutBlack,
-} from "../../../../assets/svg";
+import { MoreIcon, LogoutBlack } from "../../../../assets/svg";
 import { Link, useLocation } from "react-router-dom";
-import { ROUTES } from "../../../../constants/routes";
 import avatar from "../../../../assets/images/Avatars.png";
 
 const MobileMoreMnu = () => {
@@ -46,37 +34,13 @@ const MobileMoreMnu = () => {
     }
   };
 
-  const bottomNavItems = [
-    {
-      activeIcon: ActiveDashboardIcon,
-      inactiveIcon: InActiveDashboardIcon,
-      to: ROUTES.dashboard,
-      active: location.pathname === ROUTES.dashboard,
-    },
-    {
-      activeIcon: ActiveProductIcon,
-      inactiveIcon: InActiveProductIcon,
-      to: ROUTES.productManagement,
-      active: location.pathname === ROUTES.productManagement,
-    },
-    {
-      activeIcon: ActiveSalesIcon,
-      inactiveIcon: InActiveSalesIcon,
-      to: ROUTES.sales,
-      active: location.pathname === ROUTES.sales,
-    },
-    {
-      activeIcon: ActiveReport,
-      inactiveIcon: InActiveReport,
-      to: ROUTES.report,
-      active: location.pathname === ROUTES.report,
-    },
-  ];
+  const sidebarItems = getSidebarItems();
 
-  const bottomNavPaths = bottomNavItems.map((item) => item.to);
-  const additionalItems = getSidebarItems().filter(
-    (item) => !bottomNavPaths.includes(item.href)
-  );
+  const bottomNavItems = sidebarItems.slice(0, 4);
+
+  const moreMenuItems = sidebarItems.slice(4);
+
+  const hasMoreItems = moreMenuItems.length > 0;
 
   const handleDrawerLinkClick = () => {
     setIsDrawerOpen(false);
@@ -86,23 +50,25 @@ const MobileMoreMnu = () => {
     <>
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 md:hidden z-20">
         {bottomNavItems.map((item, index) => {
-          const IconComponent = item.active
-            ? item.activeIcon
-            : item.inactiveIcon;
+          const isActive = location.pathname === item.href;
+          const IconComponent = isActive ? item.activeIcon : item.inactiveIcon;
+
           return (
             <Link
               key={index}
-              to={item.to}
-              className={`p-2 ${item.active ? "bg-[#FCE7DD] rounded-lg" : ""}`}
+              to={item.href}
+              className={`p-2 ${isActive ? "bg-[#FCE7DD] rounded-lg" : ""}`}
             >
-              <IconComponent />
+              {IconComponent && <IconComponent />}
             </Link>
           );
         })}
 
-        <div className="p-2" onClick={() => setIsDrawerOpen(true)}>
-          <MoreIcon />
-        </div>
+        {hasMoreItems && (
+          <div className="p-2" onClick={() => setIsDrawerOpen(true)}>
+            <MoreIcon />
+          </div>
+        )}
       </div>
 
       <Drawer
@@ -124,7 +90,7 @@ const MobileMoreMnu = () => {
         }}
       >
         <List spacing="xs" size="sm" className="p-0">
-          {additionalItems.map((item, index) => (
+          {moreMenuItems.map((item, index) => (
             <div key={index} onClick={handleDrawerLinkClick}>
               <NavItem
                 href={item.href}

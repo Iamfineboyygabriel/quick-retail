@@ -11,6 +11,7 @@ const MobileDashboardHeader = () => {
     | "Financial Management"
     | "Reports"
     | "Admin";
+
   const navLinks = [
     {
       label: "Overview" as DashboardSection,
@@ -38,6 +39,7 @@ const MobileDashboardHeader = () => {
       active: activeSection === "Admin",
     },
   ];
+
   const handleNavClick = (section: DashboardSection) => {
     setActiveSection(section);
   };

@@ -6,7 +6,7 @@ const DivisionSaleChart = () => {
   return (
     <main className="flex flex-col md:flex-row mt-6 justify-between">
       <div className="flex flex-col md:flex-row w-full md:w-[63%] items-center">
-        <div className="w-48 h-48 md:w-56 md:h-56 flex items-center justify-center mb-4 md:mb-0">
+        <div className="w-48 h-48 md:w-56 md:h-56 flex  items-center justify-center mb-4 md:mb-0">
           <PieChart
             data={customerData}
             size={180}
