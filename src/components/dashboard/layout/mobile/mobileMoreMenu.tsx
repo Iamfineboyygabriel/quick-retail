@@ -35,14 +35,11 @@ const MobileMoreMnu = () => {
   };
 
   const sidebarItems = getSidebarItems();
-
   const bottomNavItems = sidebarItems.slice(0, 4);
-
   const moreMenuItems = sidebarItems.slice(4);
-
   const hasMoreItems = moreMenuItems.length > 0;
 
-  const handleDrawerLinkClick = () => {
+  const handleNavigation = () => {
     setIsDrawerOpen(false);
   };
 
@@ -91,7 +88,7 @@ const MobileMoreMnu = () => {
       >
         <List spacing="xs" size="sm" className="p-0">
           {moreMenuItems.map((item, index) => (
-            <div key={index} onClick={handleDrawerLinkClick}>
+            <div key={index}>
               <NavItem
                 href={item.href}
                 label={item.label}
@@ -99,6 +96,7 @@ const MobileMoreMnu = () => {
                 activeIcon={item.activeIcon}
                 hasChildren={item.hasChildren}
                 children={item.children}
+                onNavigate={handleNavigation}
               />
             </div>
           ))}
@@ -108,7 +106,7 @@ const MobileMoreMnu = () => {
               <div
                 key={index}
                 className="flex flex-col"
-                onClick={handleDrawerLinkClick}
+                onClick={handleNavigation}
               >
                 <NavItem
                   href={item.href}
