@@ -141,13 +141,15 @@ function DateFilterMenu({
           disabled={disabled}
           className={buttonClasses}
           style={style}
-          leftSection={<CalendaIcon />}
+          leftSection={isIconOnly ? undefined : <CalendaIcon />}
           rightSection={
-            <ChevronDown
-              size={24}
-              color="#667185"
-              className={getResponsiveClasses(true)}
-            />
+            isIconOnly ? undefined : (
+              <ChevronDown
+                size={24}
+                color="#667185"
+                className={getResponsiveClasses(true)}
+              />
+            )
           }
           styles={(theme) => ({
             root: {
@@ -159,8 +161,9 @@ function DateFilterMenu({
                 backgroundColor: theme.colors.gray[0],
               },
               ...(isIconOnly && {
-                padding: "0 8px",
+                padding: 0,
                 width: "40px",
+                height: "40px",
                 minWidth: "40px",
                 display: "flex",
                 justifyContent: "center",
@@ -168,32 +171,34 @@ function DateFilterMenu({
               }),
             },
             inner: {
-              ...(isIconOnly && {
-                padding: 0,
-                margin: 0,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }),
+              justifyContent: isIconOnly ? "center" : "flex-start",
+              width: "100%",
             },
             leftSection: {
               marginRight: isIconOnly ? 0 : 8,
             },
             rightSection: {
               marginLeft: isIconOnly ? 0 : 8,
-              display: isIconOnly ? "none" : "flex",
             },
             label: {
               fontWeight: 400,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: isIconOnly ? "100%" : "auto",
             },
           })}
         >
-          <div className="flex items-center">
-            <div className={getResponsiveClasses()}></div>
-            <Text fw={500} className={getResponsiveClasses(true)}>
-              {selectedFilter}
-            </Text>
-          </div>
+          {isIconOnly ? (
+            <CalendaIcon />
+          ) : (
+            <div className="flex items-center">
+              <div className={getResponsiveClasses()}></div>
+              <Text fw={500} className={getResponsiveClasses(true)}>
+                {selectedFilter}
+              </Text>
+            </div>
+          )}
         </Button>
       </Menu.Target>
 
