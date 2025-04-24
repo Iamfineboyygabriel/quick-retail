@@ -18,6 +18,7 @@ const ReturnsReportAnalytics = () => {
             defaultFilter="This Month"
             buttonVariant="subtle"
             buttonSize="md"
+            showIconOnly="sm"
           />
         </Group>
       </header>
