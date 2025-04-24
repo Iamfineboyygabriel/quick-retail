@@ -125,6 +125,36 @@ export const FinancialManagement: NavItem[] = [
   },
 ];
 
+export const Procurement: NavItem[] = [
+  {
+    label: "Dashboard",
+    href: ROUTES.dashboard,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
+  },
+  {
+    label: "Customer",
+    href: ROUTES.productManagement,
+    inactiveIcon: InActiveReturns,
+    activeIcon: ActiveReturns,
+  },
+];
+
+export const AssetManagement: NavItem[] = [
+  {
+    label: "Dashboard",
+    href: ROUTES.dashboard,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
+  },
+  {
+    label: "Customer",
+    href: ROUTES.productManagement,
+    inactiveIcon: InActiveReturns,
+    activeIcon: ActiveReturns,
+  },
+];
+
 export const Reports: NavItem[] = [
   {
     label: "Customer",
