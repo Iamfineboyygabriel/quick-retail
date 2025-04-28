@@ -34,7 +34,7 @@ export const DashboardHeader = ({
     },
     {
       label: "Procurement" as DashboardSection,
-      to: ROUTES.test,
+      to: ROUTES.procurementDashboard,
       active: activeSection === "Procurement",
     },
     {

@@ -31,4 +31,14 @@ export const ROUTES = {
   test: "/dashboard/#",
   addNewProduct: "/dashboard/product-management/add-new-product",
   addBulkProduct: "/dashboard/product-management/add-bulk-product",
+
+  // PROCUREMENT SECTION
+
+  procurementDashboard: "/dashboard/procurement/dashboard",
+  newRequest: "/dashboard/procurement/new-request",
+  createdRequest: "/dashboard/procurement/created-request",
+  viewApproveRequest: "/dashboard/procurement/view-approve-request",
+  viewPendingRequest: "/dashboard/procurement/view-pending-request",
+  viewCancelledRequest: "/dashboard/procurement/view-cancelled-request",
+  purchaseOrder: "/dashboard/procurement/purchase-order",
 };

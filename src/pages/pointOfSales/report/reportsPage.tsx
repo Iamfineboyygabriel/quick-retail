@@ -1,6 +1,6 @@
 import { Text } from "@mantine/core";
-import PageContainer from "../../layout/pageContainer";
-import ReportSelection from "../../components/dashboard/pointOfSales/reportsPages/reportSelection";
+import PageContainer from "../../../layout/pageContainer";
+import ReportSelection from "../../../components/dashboard/pointOfSales/reportsPages/reportSelection";
 
 
 const ReportsPage = () => {

@@ -1,11 +1,10 @@
 import { Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import PageContainer from "../../layout/pageContainer";
-import ReturnsRefundsReport from "../../components/dashboard/pointOfSales/reportsPages/returnsRefundsReport";
-import ReturnsReportAnalytics from "../../components/dashboard/pointOfSales/reportsPages/returnsReportAnlytics";
+import PageContainer from "../../../layout/pageContainer";
+import SalesProcessingReport from "../../../components/dashboard/pointOfSales/reportsPages/salesProcessingReport";
 
-const RetunsRefundsReportPage = () => {
+const SalesProcessingReportPage = () => {
     const navigate = useNavigate();
    
      const handleBack = () => {
@@ -34,7 +33,7 @@ const RetunsRefundsReportPage = () => {
                  <>
                    <span className="mx-2">/</span>
                    <Text c="black" fw={500}>
-                      Returns and refunds
+                       Sales Report
                    </Text>
                  </>
              </div>
@@ -42,7 +41,7 @@ const RetunsRefundsReportPage = () => {
          </div>,
          <div key="2">
            <Text fw={500} size="xl" c="black">
-             Reports: Returns and Refunds
+             Reports: Sales Processing
            </Text>
          </div>,
        ];
@@ -56,10 +55,9 @@ const RetunsRefundsReportPage = () => {
        <PageContainer
          subHeaders={getSubHeaders()}
        >
-        <ReturnsReportAnalytics/>
-         <ReturnsRefundsReport />
+         <SalesProcessingReport />
        </PageContainer>
      );
    };
 
-export default RetunsRefundsReportPage
+export default SalesProcessingReportPage

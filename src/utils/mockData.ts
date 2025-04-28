@@ -1,6 +1,9 @@
 import dollar from "../../src/assets/images/dollarSign.png";
 import orders from "../../src/assets/images/orders.png";
 import customer from "../../src/assets/images/customers.png";
+import approve from "../../src/assets/images/approved.png";
+import pending from "../../src/assets/images/pending.png";
+import rejected from "../../src/assets/images/rejected.png";
 import orangeBox from "../../src/assets/images/orangeBox.png";
 import goldBox from "../../src/assets/images/goldBox.png";
 import greenBox from "../../src/assets/images/greenBox.png";
@@ -42,6 +45,42 @@ export const analyticsData = [
     altText: "customer-icon",
   },
 ];
+
+export const requestOverviewData = [
+  {
+    title: "APPROVED",
+    value: "1,500",
+    icon: approve,
+    iconColor: "#099137",
+    textColor: "#1D2739",
+    cardBgColor: "#E7F6EC",
+    percentageValue: 0.5,
+    altText: "approve-sign",
+  },
+
+  {
+    title: "PENDING",
+    value: "1,453",
+    icon: pending,
+    iconColor: "#DD900D",
+    textColor: "#1D2739",
+    cardBgColor: "#FEF6E7",
+    percentageValue: 0.5,
+    borderColor: "#98A2B3",
+    altText: "pending-icon",
+  },
+  {
+    title: "REJECTED",
+    value: "1,456",
+    icon: rejected,
+    iconColor: "#CB1A14",
+    textColor: "#1D2739",
+    cardBgColor: "#FBEAE9",
+    percentageValue: 0.5,
+    borderColor: "#98A2B3",
+    altText: "rejected-icon",
+  },
+]
 
 export const monthlySalesData = [
   { month: "Jan", revenue: 550 },
@@ -138,6 +177,99 @@ export const customerOrders = [
     amount: "₦275,000",
     status: "Paid",
     items: 5,
+  },
+];
+
+export const allPurchaseOrders = [
+  {
+    id: "#1001",
+    timestamp: "12 June, 4:20 PM",
+    customer: "John Doe",
+    amount: "₦120,000",
+    status: "Partial Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1002",
+    timestamp: "13 June, 2:15 PM",
+    customer: "Alice Smith",
+    amount: "₦250,000",
+    status: "Full Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1003",
+    timestamp: "14 June, 1:30 PM",
+    customer: "David Brown",
+    amount: "₦90,000",
+    status: "Pending Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1004",
+    timestamp: "15 June, 3:45 PM",
+    customer: "Sarah Lee",
+    amount: "₦300,000",
+    status: "Full Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1005",
+    timestamp: "16 June, 12:10 PM",
+    customer: "Michael Johnson",
+    amount: "₦75,000",
+    status: "Pending Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1006",
+    timestamp: "17 June, 6:25 PM",
+    customer: "Emma Wilson",
+    amount: "₦180,000",
+    status: "Partial Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1007",
+    timestamp: "18 June, 9:50 AM",
+    customer: "Olivia Martinez",
+    amount: "₦210,000",
+    status: "Pending Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1008",
+    timestamp: "19 June, 5:40 PM",
+    customer: "William Anderson",
+    amount: "₦95,000",
+    status: "Full Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1009",
+    timestamp: "20 June, 10:15 AM",
+    customer: "Sophia Thomas",
+    amount: "₦150,000",
+    status: "Full Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
+  },
+  {
+    id: "#1010",
+    timestamp: "21 June, 7:30 PM",
+    customer: "James White",
+    amount: "₦275,000",
+    status: "Pending Payment",
+    items: 34876543,
+    purchaseId: "PO12345",
   },
 ];
 
@@ -318,6 +450,261 @@ export const loggedReturn = [
     customer: "Jessica Brown",
     returnedReason: "Color Mismatch",
     complaintStatus: "Pending",
+  },
+];
+
+export const pendingRequest = [
+  {
+    name: "Request Name",
+    productCode: "ABC 23456 S BL",
+    dateReturned: "13 June 2024, 4:20pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Request Name",
+    productCode: "DEF 56789 L BR",
+    dateReturned: "14 June 2024, 2:15pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Running Shoes",
+    productCode: "GHI 34567 R BL",
+    dateReturned: "15 June 2024, 5:00pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Leather Boots",
+    productCode: "JKL 67890 B TN",
+    dateReturned: "16 June 2024, 1:30pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Casual Slippers",
+    productCode: "MNO 45678 C BK",
+    dateReturned: "17 June 2024, 11:10am",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Formal Shoes",
+    productCode: "PQR 78901 F BR",
+    dateReturned: "18 June 2024, 3:45pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+];
+
+export const allRequest = [
+  {
+    name: "Request Name",
+    productCode: "ABC 23456 S BL",
+    dateReturned: "13 June 2024, 4:20pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Request Name",
+    productCode: "DEF 56789 L BR",
+    dateReturned: "14 June 2024, 2:15pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+  {
+    name: "Running Shoes",
+    productCode: "GHI 34567 R BL",
+    dateReturned: "15 June 2024, 5:00pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Leather Boots",
+    productCode: "JKL 67890 B TN",
+    dateReturned: "16 June 2024, 1:30pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Casual Slippers",
+    productCode: "MNO 45678 C BK",
+    dateReturned: "17 June 2024, 11:10am",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Formal Shoes",
+    productCode: "PQR 78901 F BR",
+    dateReturned: "18 June 2024, 3:45pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+];
+
+export const allApprovedRequest = [
+  {
+    name: "Request Name",
+    productCode: "ABC 23456 S BL",
+    dateReturned: "13 June 2024, 4:20pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+  {
+    name: "Request Name",
+    productCode: "DEF 56789 L BR",
+    dateReturned: "14 June 2024, 2:15pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+  {
+    name: "Running Shoes",
+    productCode: "GHI 34567 R BL",
+    dateReturned: "15 June 2024, 5:00pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+  {
+    name: "Leather Boots",
+    productCode: "JKL 67890 B TN",
+    dateReturned: "16 June 2024, 1:30pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+  {
+    name: "Casual Slippers",
+    productCode: "MNO 45678 C BK",
+    dateReturned: "17 June 2024, 11:10am",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+  {
+    name: "Formal Shoes",
+    productCode: "PQR 78901 F BR",
+    dateReturned: "18 June 2024, 3:45pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Success",
+  },
+];
+
+export const allCancelledRequest = [
+  {
+    name: "Request Name",
+    productCode: "ABC 23456 S BL",
+    dateReturned: "13 June 2024, 4:20pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Request Name",
+    productCode: "DEF 56789 L BR",
+    dateReturned: "14 June 2024, 2:15pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Running Shoes",
+    productCode: "GHI 34567 R BL",
+    dateReturned: "15 June 2024, 5:00pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Leather Boots",
+    productCode: "JKL 67890 B TN",
+    dateReturned: "16 June 2024, 1:30pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Casual Slippers",
+    productCode: "MNO 45678 C BK",
+    dateReturned: "17 June 2024, 11:10am",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+  {
+    name: "Formal Shoes",
+    productCode: "PQR 78901 F BR",
+    dateReturned: "18 June 2024, 3:45pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Cancelled",
+  },
+];
+
+export const allPendingRequest = [
+  {
+    name: "Request Name",
+    productCode: "ABC 23456 S BL",
+    dateReturned: "13 June 2024, 4:20pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Request Name",
+    productCode: "DEF 56789 L BR",
+    dateReturned: "14 June 2024, 2:15pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Running Shoes",
+    productCode: "GHI 34567 R BL",
+    dateReturned: "15 June 2024, 5:00pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Leather Boots",
+    productCode: "JKL 67890 B TN",
+    dateReturned: "16 June 2024, 1:30pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Casual Slippers",
+    productCode: "MNO 45678 C BK",
+    dateReturned: "17 June 2024, 11:10am",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
+  },
+  {
+    name: "Formal Shoes",
+    productCode: "PQR 78901 F BR",
+    dateReturned: "18 June 2024, 3:45pm",
+    requestValue: "31,000",
+    numberOfItems: "32",
+    status: "Pending",
   },
 ];
 
