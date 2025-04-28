@@ -132,42 +132,42 @@ export const Procurement: NavItem[] = [
     inactiveIcon: InActiveDashboardIcon,
     activeIcon: ActiveDashboardIcon,
   },
-  {
-    label: "Purchase Orders",
-    href: ROUTES.purchaseOrder,
-    inactiveIcon: InActiveDashboardIcon,
-    activeIcon: ActiveDashboardIcon,
-  },
-  {
-    label: "Vendor Management",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
-  },
-  {
-    label: "Requests",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
-  },
-  {
-    label: "Shipments",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
-  },
-  {
-    label: "Purchase Returns",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
-  },
-  {
-    label: "Goods Receive Note (G.R.N)",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
-  },
+  // {
+  //   label: "Purchase Orders",
+  //   href: ROUTES.purchaseOrder,
+  //   inactiveIcon: InActiveDashboardIcon,
+  //   activeIcon: ActiveDashboardIcon,
+  // },
+  // {
+  //   label: "Vendor Management",
+  //   href: ROUTES.productManagement,
+  //   inactiveIcon: InActiveReturns,
+  //   activeIcon: ActiveReturns,
+  // },
+  // {
+  //   label: "Requests",
+  //   href: ROUTES.productManagement,
+  //   inactiveIcon: InActiveReturns,
+  //   activeIcon: ActiveReturns,
+  // },
+  // {
+  //   label: "Shipments",
+  //   href: ROUTES.productManagement,
+  //   inactiveIcon: InActiveReturns,
+  //   activeIcon: ActiveReturns,
+  // },
+  // {
+  //   label: "Purchase Returns",
+  //   href: ROUTES.productManagement,
+  //   inactiveIcon: InActiveReturns,
+  //   activeIcon: ActiveReturns,
+  // },
+  // {
+  //   label: "Goods Receive Note (G.R.N)",
+  //   href: ROUTES.productManagement,
+  //   inactiveIcon: InActiveReturns,
+  //   activeIcon: ActiveReturns,
+  // },
 ];
 
 export const AssetManagement: NavItem[] = [

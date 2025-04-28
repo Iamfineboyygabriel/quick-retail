@@ -34,7 +34,7 @@ export const ROUTES = {
 
   // PROCUREMENT SECTION
 
-  procurementDashboard: "/dashboard/procurement/dashboard",
+  procurementDashboard: "/dashboard/procurement",
   newRequest: "/dashboard/procurement/new-request",
   createdRequest: "/dashboard/procurement/created-request",
   viewApproveRequest: "/dashboard/procurement/view-approve-request",
