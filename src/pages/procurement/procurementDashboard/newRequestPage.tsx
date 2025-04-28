@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import PageContainer from "../../layout/pageContainer";
-import AddBulkUploadDoc from "./addBulkUploadDoc";
+import PageContainer from "../../../layout/pageContainer";
+import NewRequestForm from "../../../components/dashboard/procurement/dashboard/newRequestForm";
 
-const AddBulkProduct: React.FC = () => {
+
+const NewRequestPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -30,11 +31,11 @@ const AddBulkProduct: React.FC = () => {
         <div className="hidden sm:flex gap-8 items-center">
           {backButton}
           <div className="flex items-center">
-            <Text>In-Store Management</Text>
+            <Text>Purchase</Text>
             <>
               <span className="mx-2">/</span>
               <Text c="black" fw={500}>
-                Add Product
+                 Purchase Invoice
               </Text>
             </>
           </div>
@@ -44,7 +45,7 @@ const AddBulkProduct: React.FC = () => {
       </div>,
       <div key="2">
         <Text fw={500} size="xl" c="black">
-          Add Bulk Product
+           New Requests
         </Text>
       </div>,
     ];
@@ -52,25 +53,14 @@ const AddBulkProduct: React.FC = () => {
     return subHeaders;
   };
 
-  const getBottomButtons = () => {
-    return [
-      <div key="search-product-buttons" className="flex gap-4 justify-end">
-        <Button variant="outline-primary" onClick={() => navigate(-1)}>
-          Cancel
-        </Button>
-        <Button variant="filled-primary">Next</Button>
-      </div>,
-    ];
-  };
 
   return (
     <PageContainer
       subHeaders={getSubHeaders()}
-      subHeaderButtom={getBottomButtons()}
     >
-      <AddBulkUploadDoc />
+      <NewRequestForm />
     </PageContainer>
   );
 };
 
-export default AddBulkProduct;
+export default NewRequestPage;

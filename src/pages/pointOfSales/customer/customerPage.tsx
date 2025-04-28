@@ -1,6 +1,6 @@
 import { Text } from "@mantine/core";
-import PageContainer from "../../layout/pageContainer";
-import CustomerTable from "../../components/dashboard/pointOfSales/customer/customerTable";
+import PageContainer from "../../../layout/pageContainer";
+import CustomerTable from "../../../components/dashboard/pointOfSales/customer/customerTable";
 
 const CustomerPage = () => {
   const subHeaders = [

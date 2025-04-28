@@ -1,8 +1,9 @@
 import { Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import PageContainer from "../../layout/pageContainer";
-import ProductManagementReport from "../../components/dashboard/pointOfSales/reportsPages/productManagementReport";
+import PageContainer from "../../../layout/pageContainer";
+import ProductManagementReport from "../../../components/dashboard/pointOfSales/reportsPages/productManagementReport";
+
 
 const ProductReportPage = () => {
     const navigate = useNavigate();

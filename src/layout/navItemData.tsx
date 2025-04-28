@@ -128,12 +128,42 @@ export const FinancialManagement: NavItem[] = [
 export const Procurement: NavItem[] = [
   {
     label: "Dashboard",
-    href: ROUTES.dashboard,
+    href: ROUTES.procurementDashboard,
     inactiveIcon: InActiveDashboardIcon,
     activeIcon: ActiveDashboardIcon,
   },
   {
-    label: "Customer",
+    label: "Purchase Orders",
+    href: ROUTES.purchaseOrder,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
+  },
+  {
+    label: "Vendor Management",
+    href: ROUTES.productManagement,
+    inactiveIcon: InActiveReturns,
+    activeIcon: ActiveReturns,
+  },
+  {
+    label: "Requests",
+    href: ROUTES.productManagement,
+    inactiveIcon: InActiveReturns,
+    activeIcon: ActiveReturns,
+  },
+  {
+    label: "Shipments",
+    href: ROUTES.productManagement,
+    inactiveIcon: InActiveReturns,
+    activeIcon: ActiveReturns,
+  },
+  {
+    label: "Purchase Returns",
+    href: ROUTES.productManagement,
+    inactiveIcon: InActiveReturns,
+    activeIcon: ActiveReturns,
+  },
+  {
+    label: "Goods Receive Note (G.R.N)",
     href: ROUTES.productManagement,
     inactiveIcon: InActiveReturns,
     activeIcon: ActiveReturns,

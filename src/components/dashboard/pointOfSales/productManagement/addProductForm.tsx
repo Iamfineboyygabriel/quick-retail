@@ -1,8 +1,8 @@
 import { Checkbox, Switch } from "@mantine/core";
 import { Plus, Upload, UploadCloud, X } from "lucide-react";
-import FormInput from "../../components/General/formInput";
-import FormSelect from "../../components/General/select";
 import { useState } from "react";
+import FormInput from "../../../General/formInput";
+import FormSelect from "../../../General/select";
 
 const AddProductForm = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);

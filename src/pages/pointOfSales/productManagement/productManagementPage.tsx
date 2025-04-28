@@ -1,5 +1,5 @@
-import PageContainer from "../../layout/pageContainer";
-import ProductTable from "../../components/dashboard/pointOfSales/productManagement/productTable";
+import PageContainer from "../../../layout/pageContainer";
+import ProductTable from "../../../components/dashboard/pointOfSales/productManagement/productTable";
 import { Menu, Button, Text } from "@mantine/core";
 import { ChevronDown, Plus } from "lucide-react";
 import { useNavigate } from "react-router";

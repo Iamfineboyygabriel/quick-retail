@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import csv from "../../assets/images/excelimg.png";
 import { CheckCircle, FileText, UploadCloud } from "lucide-react";
+import csv from "../../../../assets/images/excelimg.png";
 
 const AddBulkUploadDoc = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
