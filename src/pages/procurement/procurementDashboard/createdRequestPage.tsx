@@ -1,14 +1,18 @@
-import { Button, Tabs, Text } from "@mantine/core";
+import { useState } from "react";
+import { Button, Text } from "@mantine/core";
 import PageContainer from "../../../layout/pageContainer";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router";
 import { ROUTES } from "../../../constants/routes";
+
 import AllRequestTable from "../../../components/dashboard/procurement/dashboard/allRequestTable";
 import TotalApproveRequestTable from "../../../components/dashboard/procurement/dashboard/totalApproveRequestTable";
 import TotalCancelledRequestTable from "../../../components/dashboard/procurement/dashboard/totalCancelledRequestTable";
 import TotalPendingRequestTable from "../../../components/dashboard/procurement/dashboard/totalPendingRequestTable";
 
 const CreatedRequestPage = () => {
+  const [activeTab, setActiveTab] = useState<"all" | "approved" | "pending" | "cancelled">("all");
+
   const subHeaders = [
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
       <Text fw={500} size="xl" c="black">
@@ -40,38 +44,57 @@ const CreatedRequestPage = () => {
 
   return (
     <PageContainer subHeaders={subHeaders}>
-      <Tabs
-        defaultValue="all"
-        color="orange"
-        className="w-full bg-[#fff] p-[2em]"
-        // classNames={{
-        //     tab: "px-4 py-2 rounded-md font-medium text-gray-700 data-[active=true]:bg-[#FFECE5] data-[active=true]:text-[#D14900] data-[active=true]:font-semibold",
-        //     list: "bg-white p-4 flex gap-2",
-        //   }}
-      >
-        <Tabs.List>
-          <Tabs.Tab value="all">All Requests (0)</Tabs.Tab>
-          <Tabs.Tab value="approved">Total Approved Requests (0)</Tabs.Tab>
-          <Tabs.Tab value="pending">Total Pending Requests (0)</Tabs.Tab>
-          <Tabs.Tab value="cancelled">Total Cancelled Requests (0)</Tabs.Tab>
-        </Tabs.List>
+      <div className="w-full bg-white p-8">
+        {/* Tab headers */}
+        <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-4 mb-6">
+          <button
+            onClick={() => setActiveTab("all")}
+            className={`text-sm px-4 py-2 rounded-md font-medium ${
+              activeTab === "all"
+                ? "bg-[#FFECE5] text-[#D14900]"
+                : "text-[#344054]"
+            }`}
+          >
+            All Requests (0)
+          </button>
+          <button
+            onClick={() => setActiveTab("approved")}
+            className={`text-sm px-4 py-2 rounded-md font-medium ${
+              activeTab === "approved"
+                ? "bg-[#FFECE5] text-[#D14900]"
+                : "text-[#344054]"
+            }`}
+          >
+            Total Approved Requests (0)
+          </button>
+          <button
+            onClick={() => setActiveTab("pending")}
+            className={`text-sm px-4 py-2 rounded-md font-medium ${
+              activeTab === "pending"
+                ? "bg-[#FFECE5] text-[#D14900]"
+                : "text-[#344054]"
+            }`}
+          >
+            Total Pending Requests (0)
+          </button>
+          <button
+            onClick={() => setActiveTab("cancelled")}
+            className={`text-sm px-4 py-2 rounded-md font-medium ${
+              activeTab === "cancelled"
+                ? "bg-[#FFECE5] text-[#D14900]"
+                : "text-[#344054]"
+            }`}
+          >
+            Total Cancelled Requests (0)
+          </button>
+        </div>
 
-        <Tabs.Panel value="all" pt="xs">
-          <AllRequestTable />
-        </Tabs.Panel>
-
-        <Tabs.Panel value="approved" pt="xs">
-          <TotalApproveRequestTable />
-        </Tabs.Panel>
-
-        <Tabs.Panel value="pending" pt="xs">
-          <TotalPendingRequestTable />
-        </Tabs.Panel>
-
-        <Tabs.Panel value="cancelled" pt="xs">
-          <TotalCancelledRequestTable />
-        </Tabs.Panel>
-      </Tabs>
+        {/* Tab panels */}
+        {activeTab === "all" && <AllRequestTable />}
+        {activeTab === "approved" && <TotalApproveRequestTable />}
+        {activeTab === "pending" && <TotalPendingRequestTable />}
+        {activeTab === "cancelled" && <TotalCancelledRequestTable />}
+      </div>
     </PageContainer>
   );
 };

@@ -39,6 +39,28 @@ import ViewApproveRequestPage from "./pages/procurement/procurementDashboard/vie
 import ViewPendingRequestPage from "./pages/procurement/procurementDashboard/viewPendingRequestPage";
 import ViewCancelledRequestPage from "./pages/procurement/procurementDashboard/viewCancelledRequestPage";
 import PurchaseOrderPage from "./pages/procurement/purchaseOrder/purchaseOrderPage";
+import CreatePurchaseOrderPage from "./pages/procurement/purchaseOrder/createPurchaseOrderPage";
+import PurchaseInvoicePage from "./pages/procurement/purchaseOrder/purchaseInvoicePage";
+import ViewPurchaseOrderInvoicePage from "./pages/procurement/purchaseOrder/viewPurchaseOrder&InvoicePage";
+import VendorManagement from "./pages/procurement/vendorManagement/vendorManagement";
+import RequestDashboard from "./pages/procurement/requestDashboard/requestDashboard";
+import ShipmentsDashboard from "./pages/procurement/shipments/shipmentsDashboard";
+import PurchaseReturns from "./pages/procurement/purchaseReturns/purchaseReturns";
+import GoodsReceiveNote from "./pages/procurement/goodsReceiveNote/goodsReceiveNote";
+import RequestSummaryPage from "./pages/procurement/requestDashboard/requestSummaryPage";
+import ViewBudgetPage from "./pages/procurement/requestDashboard/viewBudgetPage";
+import PendingNoteDetails from "./pages/procurement/goodsReceiveNote/pendingNoteDetails";
+import RejectedNoteDetails from "./pages/procurement/goodsReceiveNote/rejectedNoteDetails";
+import ApprovedNoteDetails from "./pages/procurement/goodsReceiveNote/approvedNoteDetails";
+import ShipmentSummaryPage from "./pages/procurement/shipments/shipmentSummaryPage";
+import CreateShipment from "./pages/procurement/shipments/createShipment";
+import ApproveReturnPurchase from "./pages/procurement/purchaseReturns/approveReturnPurchase";
+import IssuePurchasePage from "./pages/procurement/purchaseReturns/issuePurchasePage";
+import TierTwoVendorDetails from "./pages/procurement/vendorManagement/tierTwoVendorDetails";
+import CreateTierOne from "./pages/procurement/vendorManagement/createTierOne";
+import CreateTierTwo from "./pages/procurement/vendorManagement/createTierTwo";
+import EditVendor from "./pages/procurement/vendorManagement/editVendor";
+import TierOneVendorDetails from "./pages/procurement/vendorManagement/tierOneVendorDetails";
 
 export default function App() {
   return (
@@ -117,8 +139,29 @@ export default function App() {
             <Route path={ROUTES.viewApproveRequest} element={<ViewApproveRequestPage />} />
             <Route path={ROUTES.viewPendingRequest} element={<ViewPendingRequestPage />} />
             <Route path={ROUTES.viewCancelledRequest} element={<ViewCancelledRequestPage />} />
-
             <Route path={ROUTES.purchaseOrder} element={<PurchaseOrderPage />} />
+            <Route path={ROUTES.createPurchaseOrder} element={<CreatePurchaseOrderPage />} />
+            <Route path={ROUTES.purchaseInvoicePage} element={<PurchaseInvoicePage />} />
+            <Route path={ROUTES.viewPurchaseOrderInvoicePage} element={<ViewPurchaseOrderInvoicePage />} />
+            <Route path={ROUTES.vendorManagement} element={<VendorManagement />} />
+            <Route path={ROUTES.tierOneVendors} element={<TierOneVendorDetails/>} />
+            <Route path={ROUTES.tierTwoVendors} element={<TierTwoVendorDetails/>} />
+            <Route path={ROUTES.createTierOne} element={<CreateTierOne/>} />
+            <Route path={ROUTES.createTierTwo} element={<CreateTierTwo/>} />
+            <Route path={ROUTES.editVendor} element={<EditVendor/>} />
+            <Route path={ROUTES.requestDashboard} element={<RequestDashboard />} />
+            <Route path={ROUTES.requestSummaryPage} element={<RequestSummaryPage />} />
+            <Route path={ROUTES.viewBudgetPage} element={<ViewBudgetPage />} />
+            <Route path={ROUTES.shipments} element={<ShipmentsDashboard />} />
+            <Route path={ROUTES.shipmentsSummary} element={<ShipmentSummaryPage/>} />
+            <Route path={ROUTES.createShipment} element={<CreateShipment/>} />
+            <Route path={ROUTES.purchaseReturns} element={<PurchaseReturns />} />
+            <Route path={ROUTES.approveReturns} element={<ApproveReturnPurchase />} />
+            <Route path={ROUTES.issuePurchase} element={<IssuePurchasePage />} />
+            <Route path={ROUTES.goodsReceived} element={<GoodsReceiveNote />} />
+            <Route path={ROUTES.pendingNoteDetails} element={<PendingNoteDetails />} />
+            <Route path={ROUTES.rejectedNoteDetails} element={<RejectedNoteDetails />} />
+            <Route path={ROUTES.approvedNoteDetails} element={<ApprovedNoteDetails />} />
         </Route>
       </Routes>
     </Router>

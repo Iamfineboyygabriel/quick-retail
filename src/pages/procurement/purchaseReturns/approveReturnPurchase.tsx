@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Menu, Text } from "@mantine/core";
 import { ChevronDown, ChevronLeft, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../layout/pageContainer";
-import ViewApproveRequestForm from "../../../components/dashboard/procurement/dashboard/viewApproveRequestForm";
-import ApproveModal from "../../../components/dashboard/procurement/dashboard/modal/approveModal";
-import RejectModal from "../../../components/dashboard/procurement/dashboard/modal/rejectModal";
+import ViewPurchaseForm from "../../../components/dashboard/procurement/purchaseReturns/viewPurchaseForm";
 
-const ViewPendingRequestPage: React.FC = () => {
+const ApproveReturnPurchase: React.FC = () => {
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [rejectModalOpen, setRejectModalOpen] = useState(false);
 
   const handleBack = () => {
     navigate(-1);
@@ -38,7 +34,7 @@ const ViewPendingRequestPage: React.FC = () => {
             <>
               <span className="mx-2">/</span>
               <Text c="black" fw={500}>
-                Purchase Invoice
+                Purchase Return
               </Text>
             </>
           </div>
@@ -48,13 +44,13 @@ const ViewPendingRequestPage: React.FC = () => {
       </div>,
       <div key="2" className="flex justify-between items-center w-full">
         <Text fw={500} size="xl" c="black">
-          View Pending Requests
+          View Purchase Requests
         </Text>
 
         <div className="flex items-center gap-4">
-          <div className="inline-flex items-center bg-[#FFFAEB] text-[#B54708] px-3 py-1 rounded-full font-medium text-sm">
-            <div className="w-2 h-2 bg-[#B54708] rounded-full" />
-            <span className="ml-2">Pending</span>
+          <div className="inline-flex items-center bg-[#ECFDF3] text-[#027A48] px-3 py-1 rounded-full font-medium text-sm">
+            <div className="w-2 h-2 bg-[#027A48] rounded-full" />
+            <span className="ml-2">Approved</span>
           </div>
 
           <div>
@@ -81,9 +77,9 @@ const ViewPendingRequestPage: React.FC = () => {
                       padding: "8px 16px",
                       color: "#333",
                     }}
-                    onClick={() => setModalOpen(true)}
+                    // onClick={handleAddProduct}
                   >
-                    Approve Request
+                    Approve Purchase Return
                   </Menu.Item>
                   <Menu.Item
                     style={{
@@ -91,9 +87,39 @@ const ViewPendingRequestPage: React.FC = () => {
                       padding: "8px 16px",
                       color: "#333",
                     }}
-                    onClick={() => setRejectModalOpen(true)}
+                    // onClick={handleAddBulkProducts}
                   >
-                    Reject Request
+                    Reject Purchase Return
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Get Shareable Link
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Preview Purchase Return
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Download Purchase Return
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -126,15 +152,15 @@ const ViewPendingRequestPage: React.FC = () => {
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <Menu.Item
+                 <Menu.Item
                     style={{
                       fontSize: "14px",
                       padding: "8px 16px",
                       color: "#333",
                     }}
-                    onClick={() => setModalOpen(true)}
+                    // onClick={handleAddProduct}
                   >
-                    Approve Request
+                    Approve Purchase Return
                   </Menu.Item>
                   <Menu.Item
                     style={{
@@ -142,9 +168,39 @@ const ViewPendingRequestPage: React.FC = () => {
                       padding: "8px 16px",
                       color: "#333",
                     }}
-                    onClick={() => setRejectModalOpen(true)}
+                    // onClick={handleAddBulkProducts}
                   >
-                    Reject Request
+                    Reject Purchase Return
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Get Shareable Link
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Preview Purchase Return
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Download Purchase Return
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -159,13 +215,9 @@ const ViewPendingRequestPage: React.FC = () => {
 
   return (
     <PageContainer subHeaders={getSubHeaders()}>
-      <ViewApproveRequestForm />
-
-      <ApproveModal opened={modalOpen} onClose={() => setModalOpen(false)} />
-
-      <RejectModal opened={rejectModalOpen} onClose={() => setRejectModalOpen(false)} />
+      <ViewPurchaseForm />
     </PageContainer>
   );
 };
 
-export default ViewPendingRequestPage;
+export default ApproveReturnPurchase;

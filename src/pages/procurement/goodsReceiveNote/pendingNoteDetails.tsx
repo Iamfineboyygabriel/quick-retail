@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Menu, Text } from "@mantine/core";
 import { ChevronDown, ChevronLeft, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../layout/pageContainer";
-import ViewApproveRequestForm from "../../../components/dashboard/procurement/dashboard/viewApproveRequestForm";
-import ApproveModal from "../../../components/dashboard/procurement/dashboard/modal/approveModal";
-import RejectModal from "../../../components/dashboard/procurement/dashboard/modal/rejectModal";
+import PendingNoteForm from "../../../components/dashboard/procurement/goodsReceiveNote/pendingNoteForm";
+import ApproveGrn from "../../../components/dashboard/procurement/goodsReceiveNote/modal/approveGrn";
+import RejectGrn from "../../../components/dashboard/procurement/goodsReceiveNote/modal/rejectGrn";
+import ShareableLinkModal from "../../../components/dashboard/procurement/goodsReceiveNote/modal/getShearLink";
 
-const ViewPendingRequestPage: React.FC = () => {
+const PendingNoteDetails: React.FC = () => {
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [rejectModalOpen, setRejectModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [rejectModalOpen, setRejectModalOpen] = React.useState(false);
+  const [linkModalOpen, setLinkModalOpen] = React.useState(false);
 
   const handleBack = () => {
     navigate(-1);
@@ -34,11 +36,11 @@ const ViewPendingRequestPage: React.FC = () => {
         <div className="hidden sm:flex gap-8 items-center">
           {backButton}
           <div className="flex items-center">
-            <Text>Purchase</Text>
+            <Text>Good Receive Note</Text>
             <>
               <span className="mx-2">/</span>
               <Text c="black" fw={500}>
-                Purchase Invoice
+                Good Receive Note
               </Text>
             </>
           </div>
@@ -48,7 +50,7 @@ const ViewPendingRequestPage: React.FC = () => {
       </div>,
       <div key="2" className="flex justify-between items-center w-full">
         <Text fw={500} size="xl" c="black">
-          View Pending Requests
+          View Approved Good Received Note Details
         </Text>
 
         <div className="flex items-center gap-4">
@@ -83,7 +85,7 @@ const ViewPendingRequestPage: React.FC = () => {
                     }}
                     onClick={() => setModalOpen(true)}
                   >
-                    Approve Request
+                    Approve G.R.N
                   </Menu.Item>
                   <Menu.Item
                     style={{
@@ -93,7 +95,37 @@ const ViewPendingRequestPage: React.FC = () => {
                     }}
                     onClick={() => setRejectModalOpen(true)}
                   >
-                    Reject Request
+                    Reject G.R.N
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    onClick={() => setLinkModalOpen(true)}
+                  >
+                    Get Shareable Link
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Preview G.R.N
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Download Purchase Return
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -134,7 +166,7 @@ const ViewPendingRequestPage: React.FC = () => {
                     }}
                     onClick={() => setModalOpen(true)}
                   >
-                    Approve Request
+                    Approve G.R.N
                   </Menu.Item>
                   <Menu.Item
                     style={{
@@ -144,7 +176,37 @@ const ViewPendingRequestPage: React.FC = () => {
                     }}
                     onClick={() => setRejectModalOpen(true)}
                   >
-                    Reject Request
+                    Reject G.R.N
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    onClick={() => setLinkModalOpen(true)}
+                  >
+                    Get Shareable Link
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Preview G.R.N
+                  </Menu.Item>
+                  <Menu.Item
+                    style={{
+                      fontSize: "14px",
+                      padding: "8px 16px",
+                      color: "#333",
+                    }}
+                    // onClick={handleAddBulkProducts}
+                  >
+                    Download Purchase Return
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -159,13 +221,21 @@ const ViewPendingRequestPage: React.FC = () => {
 
   return (
     <PageContainer subHeaders={getSubHeaders()}>
-      <ViewApproveRequestForm />
-
-      <ApproveModal opened={modalOpen} onClose={() => setModalOpen(false)} />
-
-      <RejectModal opened={rejectModalOpen} onClose={() => setRejectModalOpen(false)} />
+      <PendingNoteForm />
+      <ApproveGrn
+        opened={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
+       <RejectGrn
+        opened={rejectModalOpen}
+        onClose={() => setRejectModalOpen(false)}
+      />
+       <ShareableLinkModal
+        opened={linkModalOpen}
+        onClose={() => setLinkModalOpen(false)}
+      />
     </PageContainer>
   );
 };
 
-export default ViewPendingRequestPage;
+export default PendingNoteDetails;

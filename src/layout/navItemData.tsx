@@ -25,6 +25,9 @@ import {
   Logout,
   Settings,
   NotificationIcon,
+  InActivePurchaseOrderIcon,
+  InActiveVendorManagementIcon,
+  InActiveShipmentIcon,
 } from "../assets/svg";
 import { ROUTES } from "../constants/routes";
 
@@ -135,38 +138,38 @@ export const Procurement: NavItem[] = [
   {
     label: "Purchase Orders",
     href: ROUTES.purchaseOrder,
-    inactiveIcon: InActiveDashboardIcon,
-    activeIcon: ActiveDashboardIcon,
+    inactiveIcon: InActivePurchaseOrderIcon,
+    activeIcon: ActiveProductIcon,
   },
   {
     label: "Vendor Management",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
+    href: ROUTES.vendorManagement,
+    inactiveIcon: InActiveVendorManagementIcon,
+    activeIcon: InActiveVendorManagementIcon,
   },
   {
     label: "Requests",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
+    href: ROUTES.requestDashboard,
+    inactiveIcon: InActiveInventory,
+    activeIcon: ActiveInventory,
   },
   {
     label: "Shipments",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
+    href: ROUTES.shipments,
+    inactiveIcon: InActiveShipmentIcon,
+    activeIcon: InActiveShipmentIcon,
   },
   {
     label: "Purchase Returns",
-    href: ROUTES.productManagement,
+    href: ROUTES.purchaseReturns,
     inactiveIcon: InActiveReturns,
     activeIcon: ActiveReturns,
   },
   {
     label: "Goods Receive Note (G.R.N)",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
+    href: ROUTES.goodsReceived,
+    inactiveIcon: InActiveCustomer,
+    activeIcon: ActiveCustomer,
   },
 ];
 

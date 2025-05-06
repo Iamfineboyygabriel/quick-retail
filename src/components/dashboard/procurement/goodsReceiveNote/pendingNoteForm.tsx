@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Button } from "@mantine/core";
-import { UploadCloud } from "lucide-react";
+import {  Upload } from "lucide-react";
 import requestimg from "../../../../assets/images/requestimg.png";
 import FormSelect from "../../../General/select";
 import FormInput from "../../../General/formInput";
-import { Link, useNavigate } from "react-router";
-import { ROUTES } from "../../../../constants/routes";
+import { useNavigate } from "react-router";
 
-export default function NewRequestForm() {
+export default function PendingNoteForm() {
   const [items, setItems] = useState([
     {
       name: "Microwave",
@@ -171,8 +170,12 @@ export default function NewRequestForm() {
 
         {/* Right side */}
         <div className="bg-white p-6 rounded-md shadow-sm space-y-4">
-          <h2 className="text-[20px] font-semibold text-[#101828]">Supporting Documents</h2>
-          <p className="text-[16px] text-[#667085] mb-3">A live preview of your purchase order.</p>
+          <h2 className="text-[20px] font-semibold text-[#101828]">
+            Supporting Documents
+          </h2>
+          <p className="text-[16px] text-[#667085] mb-3">
+            A live preview of your purchase order.
+          </p>
           <div className="border border-[#E4E7EC] rounded-lg h-100 flex items-center justify-center overflow-hidden">
             {selectedFile ? (
               <img
@@ -186,16 +189,14 @@ export default function NewRequestForm() {
               <p className="text-gray-400">No document uploaded</p>
             )}
           </div>
-          <div className="flex flex-col space-y-2">
-            <Button
-              variant="light"
-              fullWidth
-              leftSection={<UploadCloud size={16} />}
-              component="label"
-            >
-              Change
-              <input type="file" hidden onChange={handleFileChange} />
-            </Button>
+          <div className="flex flex-col items-center gap-4 w-full">
+            {/* Change Button */}
+            <button className="flex items-center justify-center border border-gray-300 rounded-md px-3 py-1.5 text-gray-700 text-sm hover:bg-gray-50 w-full">
+              <Upload size={16} className="mr-1" />
+              <span className="font-medium">Change  <input type="file" hidden onChange={handleFileChange}/></span>
+            </button>
+
+            {/* Add New Dashed Box */}
             <button className="flex items-center justify-center w-full border-2 border-dashed border-orange-500 text-orange-500 rounded-md px-6 py-4 hover:bg-orange-50">
               <span className="text-lg mr-2">+</span>
               <span className="font-medium">Add new</span>
@@ -208,9 +209,9 @@ export default function NewRequestForm() {
         <Button variant="outline-primary" onClick={() => navigate(-1)}>
           Back
         </Button>
-        <Link to={ROUTES.createdRequest}>
-        <Button variant="filled-primary">Create New Request</Button>
-        </Link>
+        <Button variant="filled-primary" >
+           Save and Update Changes
+        </Button>
       </div>
     </div>
   );
