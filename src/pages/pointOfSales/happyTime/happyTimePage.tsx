@@ -6,10 +6,13 @@ import { Link } from "react-router";
 import { ROUTES } from "../../../constants/routes";
 import { useState } from "react";
 import CreateDiscountModal from "../../../components/dashboard/pointOfSales/happyTime/modals/createDiscountModal";
+import { useFetchAllDiscount } from "../../../hooks/backendApis/pos/discount";
 
 const HappyTimePage = () => {
   const [isLogComplaintsOpen, setIsLogComplaintsOpen] = useState(false);
 
+  const { data, isLoading, refetch } = useFetchAllDiscount();
+  
   const subHeaders = [
     <div key="1">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
@@ -42,10 +45,19 @@ const HappyTimePage = () => {
   ];
   return (
     <PageContainer subHeaders={subHeaders}>
-      <DiscountTable />
+      {/* <DiscountTable /> */}
+      <DiscountTable 
+        data={data}
+        isLoading={isLoading}
+        refresh={refetch} 
+      />
       <CreateDiscountModal
         opened={isLogComplaintsOpen}
         onClose={() => setIsLogComplaintsOpen(false)}
+        onCreated={() => {
+          setIsLogComplaintsOpen(false);
+          refetch();
+        }}
       />
     </PageContainer>
   );

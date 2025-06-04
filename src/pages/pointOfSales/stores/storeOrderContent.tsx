@@ -1,7 +1,6 @@
-import React from "react";
 import { Button, Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import PageContainer from "../../../layout/pageContainer";
@@ -12,6 +11,8 @@ import {
 import OrderDetails from "../../../components/dashboard/pointOfSales/returnsRefunds/orderDetails";
 import ViewProduct from "../../../components/General/orderContext/viewProduct";
 import AllOrders from "./allOrders";
+import EditStore from "../../../components/dashboard/pointOfSales/stores/modals/editStore";
+import { useState } from "react";
 
 const slideVariants = {
   initial: (direction: number) => ({
@@ -37,8 +38,11 @@ const slideVariants = {
 };
 
 const StoreOrderContent: React.FC = () => {
+  const location = useLocation();
+  const store = location.state?.store;
   const navigate = useNavigate();
   const { currentStep, prevStep } = useStoreOrder();
+  const [storeData, setStoreData] = useState(location.state?.store);
 
   const handleBack = () => {
     if (currentStep === StoreOverviewStep.STORE_OVERVIEW) {
@@ -47,7 +51,9 @@ const StoreOrderContent: React.FC = () => {
       prevStep();
     }
   };
+  const storeName = storeData?.name ?? "Store";
 
+  const [isAddNewStoreOpen, setIsAddNewStoreOpen] = useState(false);
   const getSubHeaders = () => {
     const backButton = (
       <button
@@ -60,30 +66,29 @@ const StoreOrderContent: React.FC = () => {
         </Text>
       </button>
     );
-
     const subHeaders = [
       <div key="1" className="py-2.5">
         <div className="flex gap-8 items-center">
           {backButton}
           <div className="md:flex hidden items-center">
-            <Text>Stores</Text>
-            <span className="mx-2">/</span>
-            <Text c={"black"}>Ikeja City Mall</Text>
+            {/* <Text>Stores</Text> */}
+            {/* <span className="mx-2">/</span> */}
+            {/* <Text c={"black"}>{store.name}</Text> */}
           </div>
         </div>
       </div>,
       <div key="2" className="w-full">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
           <Text fw={500} size="xl" c="black">
-            Ikeja City Mall
+          {storeName}
           </Text>
           <div className="flex gap-2 sm:gap-4 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
-            <Button variant="filled-primary" className="whitespace-nowrap">
+            <Button variant="filled-primary" className="whitespace-nowrap"      onClick={() => setIsAddNewStoreOpen(true)}>
               Edit Store
             </Button>
-            <Button variant="outline-primary" className="whitespace-nowrap">
+            {/* <Button variant="outline-primary" className="whitespace-nowrap">
               View Store
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>,
@@ -105,7 +110,9 @@ const StoreOrderContent: React.FC = () => {
             exit="exit"
             className="flex flex-col gap-4"
           >
-            <AllOrders />
+           {/* <AllOrders store={store} /> */}
+           <AllOrders store={storeData} />
+
           </motion.div>
         );
       case StoreOverviewStep.ORDER_DETAILS:
@@ -140,9 +147,17 @@ const StoreOrderContent: React.FC = () => {
   };
 
   return (
+    <>
+     <EditStore
+        opened={isAddNewStoreOpen}
+        onClose={() => setIsAddNewStoreOpen(false)}
+        store={store} 
+        setStore={setStoreData}
+      />
     <PageContainer subHeaders={getSubHeaders()}>
       <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
     </PageContainer>
+    </>
   );
 };
 

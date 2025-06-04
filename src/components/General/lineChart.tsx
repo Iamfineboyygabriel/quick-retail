@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ResponsiveContainer,
   Line,
@@ -126,7 +125,7 @@ const LineChart: React.FC<LineChartProps> = ({
               stroke="#eee"
             />
           )}
-
+{/* @ts-ignore */}
           <XAxis
             dataKey={xAxisDataKey}
             axisLine={false}
@@ -134,14 +133,16 @@ const LineChart: React.FC<LineChartProps> = ({
             tickMargin={10}
             tick={{ fontSize: 12, fill: "#666" }}
           />
-
+{/* @ts-ignore */}
           <YAxis
             axisLine={false}
             tickLine={false}
             tickMargin={10}
             tick={{ fontSize: 12, fill: "#666" }}
             tickFormatter={yAxisFormatter}
-          />
+          /> 
+
+         
 
           {showTooltip && (
             <Tooltip content={<CustomTooltip />} formatter={tooltipFormatter} />

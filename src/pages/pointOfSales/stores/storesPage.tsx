@@ -6,10 +6,15 @@ import { ROUTES } from "../../../constants/routes";
 import StoreTargetTable from "../../../components/dashboard/pointOfSales/stores/storeTargetTable";
 import { useState } from "react";
 import SetStoreTarget from "../../../components/dashboard/pointOfSales/stores/modals/setStoreTarget";
+import { useFetchStore } from "../../../hooks/backendApis/pos/storeManagement";
+
 
 const StoresPage = () => {
   const [isSetStoreOpen, setIsSetStoreOpen] = useState(false);
 
+  const { data, isPending } = useFetchStore({ paginate: true });
+  const stores = Array.isArray(data?.data?.stores?.data) ? data.data.stores.data : [];
+  
   const subHeaders = [
     <div key="1" className="w-full">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
@@ -43,7 +48,7 @@ const StoresPage = () => {
 
   return (
     <PageContainer subHeaders={subHeaders}>
-      <StoreTargetTable />
+      <StoreTargetTable stores={stores} loading={isPending} />
       <SetStoreTarget
         opened={isSetStoreOpen}
         onClose={() => setIsSetStoreOpen(false)}

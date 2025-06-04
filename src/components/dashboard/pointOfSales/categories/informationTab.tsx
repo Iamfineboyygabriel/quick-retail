@@ -1,6 +1,18 @@
 import { Text } from "@mantine/core";
+import { OrderData } from "../../../../types";
 
-const InformationTab = () => {
+interface InformationTabProps {
+  orderData: OrderData;
+}
+
+const InformationTab: React.FC<InformationTabProps> = ({ orderData }) => {
+  if (!orderData) return null;
+
+  const customer = orderData.customer || {};
+  const addressParts = (customer.customer_address || "").split(",").map(s => s.trim());
+
+  const state = addressParts.length > 0 ? addressParts[addressParts.length - 1] : "";
+  // const state = addressParts.length > 1 ? addressParts[addressParts.length - 2] : "";
   return (
     <main className="w-full h-auto rounded-lg bg-white px-6 py-8">
       <Text className="" c="black" size="xl" fw={"500"}>
@@ -13,25 +25,25 @@ const InformationTab = () => {
           <div className="flex flex-col">
             <Text fw={"500"}>Customer Name</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              Victoria Francis
+            {customer.customer_name}
             </Text>
           </div>
           <div className="flex flex-col">
             <Text fw={"500"}>Email</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              victoriafrancis@gmail.com
+            {customer.customer_email}
             </Text>
           </div>
           <div className="flex flex-col">
             <Text fw={"500"}>Phone Number</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              +234 701 526 9954
+            {customer.customer_phone}
             </Text>
           </div>
           <div className="flex flex-col">
             <Text fw={"500"}>Delivery Address</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              142, Obafemi Awolowo Street, Ikeja Aluasa Lagos
+            {customer.customer_address}
             </Text>
           </div>
         </div>
@@ -40,25 +52,25 @@ const InformationTab = () => {
           <div className="flex flex-col">
             <Text fw={"500"}>State</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              Lagos
+            {state}
             </Text>
           </div>
           <div className="flex flex-col">
             <Text fw={"500"}>Country</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              Nigeria
+            Nigeria
             </Text>
           </div>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <Text fw={"500"}>Amount</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              #32,000.00
+            {orderData.amount_paid}
             </Text>
-          </div>
+          </div> */}
           <div className="flex flex-col">
             <Text fw={"500"}>Payment Method</Text>
             <Text size="lg" c={"black"} fw={"400"}>
-              Cash
+            {orderData.payment_method}
             </Text>
           </div>
         </div>

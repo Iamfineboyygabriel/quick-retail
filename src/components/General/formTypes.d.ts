@@ -43,6 +43,8 @@ interface iInputField extends iFormProps {
   rightIcon?: ReactNode;
   leftIconClick?: () => void;
   rightIconClick?: () => void;
+  label?: React.ReactNode;
+
 }
 
 interface iCheckForm extends iFormProps {
@@ -51,9 +53,11 @@ interface iCheckForm extends iFormProps {
   callback?: () => void;
 }
 
+
 interface iSelect extends iFormProps {
   onSelect?: ChangeEventHandler<HTMLSelectElement>;
-  options: string[];
+  // options: string[];
+  options: string[] | { label: string; value: string | number }[];
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   leftIconClick?: () => void;

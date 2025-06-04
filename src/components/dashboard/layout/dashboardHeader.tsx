@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../constants/routes";
 import { useDashboard } from "../../../layout/dashboardContext";
-import { QuestionMark, Settings } from "../../../assets/svg";
-import avatar from "../../../assets/images/Avatars.png";
-import { Text } from "@mantine/core";
+
 
 export const DashboardHeader = ({
   toggleSidebar,
@@ -33,30 +31,31 @@ export const DashboardHeader = ({
       active: activeSection === "Point of Sales",
     },
     {
+      label: "Financial Management" as DashboardSection,
+      to: ROUTES.financialDashboard,
+      active: activeSection === "Financial Management",
+    },
+    {
       label: "Procurement" as DashboardSection,
       to: ROUTES.procurementDashboard,
       active: activeSection === "Procurement",
     },
     {
       label: "Asset Management" as DashboardSection,
-      to: ROUTES.test,
+      to: ROUTES.assetDashboard,
       active: activeSection === "Asset Management",
     },
-    {
-      label: "Financial Management" as DashboardSection,
-      to: ROUTES.dashboard,
-      active: activeSection === "Financial Management",
-    },
+    
     {
       label: "Reports" as DashboardSection,
       to: ROUTES.dashboard,
       active: activeSection === "Reports",
     },
-    {
-      label: "Admin" as DashboardSection,
-      to: ROUTES.dashboard,
-      active: activeSection === "Admin",
-    },
+    // {
+    //   label: "Admin" as DashboardSection,
+    //   to: ROUTES.dashboard,
+    //   active: activeSection === "Admin",
+    // },
   ];
 
   const handleNavClick = (section: DashboardSection) => {
@@ -88,7 +87,7 @@ export const DashboardHeader = ({
             </Link>
           ))}
         </div>
-        <div className="flex items-center gap-3">
+        {/* <div className="flex items-center gap-3">
           <Settings />
           <QuestionMark />
           <div className="bg-[#F7F9FC] text-center rounded-full p-1 flex items-center gap-2">
@@ -97,7 +96,7 @@ export const DashboardHeader = ({
               Victoria LLC
             </Text>
           </div>
-        </div>
+        </div> */}
       </nav>
     </div>
   );

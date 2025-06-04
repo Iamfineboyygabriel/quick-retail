@@ -1,7 +1,6 @@
-import React from "react";
 import { Button, Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import PageContainer from "../../../layout/pageContainer";
 import { useOrderCreation } from "../../../components/General/orderContext/orderCreationContext";
@@ -10,7 +9,11 @@ import CustomerReceipt from "./customerReceipt";
 import { OrderCreationStep } from "../../../utils/orderCreationTypes";
 import { motion, AnimatePresence } from "framer-motion";
 import CreateOrderForm from "./createOrderForm";
-import ConfirmPayment from "./confirmPayment";
+import { useEffect, useState } from "react";
+import PaymentDetails2 from "../../../components/dashboard/pointOfSales/salesProcessing/confirmPayment/paymentDetails";
+import { useCreateSales, useUpdateDraft } from "../../../hooks/backendApis/pos/salesProcessing";
+import { notifications } from "@mantine/notifications";
+import { ROUTES } from "../../../constants/routes";
 
 const slideVariants = {
   initial: (direction: number) => ({
@@ -37,6 +40,30 @@ const slideVariants = {
 
 const CreateOrderPageContent: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+const saleData = location.state?.saleData;
+const orderId = location.state?.saleData?.data?.orderID;
+
+
+
+
+useEffect(() => {
+  if (saleData) {
+    setPaymentDetails({
+      method: saleData.payment_method || "",
+      amount: saleData.amount_collected || "",
+      customerId: saleData.customerId || null,
+      items: (saleData.items || []).map((item: any) => ({
+        ...item,
+        quantity: item.quantity || 1,
+        price: item.selling_price || 0,
+      })),
+    });
+  }
+}, [saleData]);
+
+
+
   const { currentStep, nextStep, prevStep } = useOrderCreation();
 
   const handleBack = () => {
@@ -47,6 +74,124 @@ const CreateOrderPageContent: React.FC = () => {
     }
   };
 
+  const [submitHandler, setSubmitHandler] = useState<
+  ((status: string) => void) | null
+>(null);
+
+  const [paymentDetails, setPaymentDetails] = useState<{
+    method: string;
+    amount: string;
+    items: any[];
+    customerId: string | null;
+  }>({
+    method: "",
+    amount: "",
+    items: [],
+    customerId: null,
+  });
+
+
+
+
+  const createSaleMutation = useCreateSales();
+const updateDraftMutation = useUpdateDraft(orderId);
+  const handleSubmit = async (status: 'draft' | 'completed') => {
+    const payload = {
+      status,
+      customerId: paymentDetails.customerId,
+      payment_method: paymentDetails.method,
+      amount_collected: paymentDetails.amount,
+      items: paymentDetails.items.map((item) => ({
+        variationId: item.variationId,
+        quantity: Number(item.quantity),
+        price: item.selling_price,
+      })),
+    };
+  
+    try {
+      if (orderId) {
+        await updateDraftMutation.mutateAsync(payload);
+      } else {
+        await createSaleMutation.mutateAsync(payload);
+      }
+  
+      notifications.show({
+        title: 'Success',
+        message:
+          status === 'completed' ? 'Payment confirmed' : 'Draft saved successfully',
+        color: 'green',
+      });
+          navigate(ROUTES.sales);
+    } catch (error) {
+      notifications.show({
+        title: 'Error',
+        //@ts-ignore
+        message: error?.message || 'Failed to save order',
+        color: 'red',
+      });
+    }
+  };
+
+useEffect(() => {
+  registerSubmitHandler((status: string) => {
+    if (status === "draft" || status === "completed") {
+      handleSubmit(status);  // call your typed async function
+    } else {
+      console.warn(`Invalid status: ${status}`);
+    }
+  });
+}, [paymentDetails]);
+// Re-register handler if details change
+
+
+  const registerSubmitHandler = (handler: (status: string) => void) => {
+    setSubmitHandler(() => handler);
+  };
+
+  const updatePaymentDetails = (details: {
+    method: string;
+    amount: string;
+    items: any[];
+    customerId: string | null;
+  }) => {
+    setPaymentDetails(details);
+  };
+
+
+  const handlePaymentChange = (method: string, amount: string) => {
+    setPaymentDetails((prev) => ({
+      ...prev,
+      method,
+      amount,
+    }));
+  };
+  
+  
+  const formatCurrency = (amount: number) => {
+    if (isNaN(amount)) return "₦ 0";
+    return `₦ ${amount.toLocaleString()}`;
+  };
+
+  const subtotal = paymentDetails.items.reduce((acc, item) => {
+    const price = Number(item.price) || 0;
+    const quantity = Number(item.quantity) || 0;
+    return acc + price * quantity;
+  }, 0);
+  
+  const tax = subtotal * 0.075;
+  
+  const paymentItems = [
+    { label: `Subtotal (${paymentDetails.items.length} items)`, amount: formatCurrency(subtotal) },
+    { label: "Discount", amount: "-" },
+    { label: "Tax (7.5% VAT)", amount: formatCurrency(tax) },
+  ];
+  
+  const totalAmount = subtotal + tax;
+  const total = formatCurrency(totalAmount);
+  
+
+  
+  
   const getSubHeaders = () => {
     const backButton = (
       <button
@@ -104,7 +249,7 @@ const CreateOrderPageContent: React.FC = () => {
       </div>,
     ];
 
-    return subHeaders;
+    return subHeaders;                       
   };
 
   const getBottomButtons = () => {
@@ -118,17 +263,33 @@ const CreateOrderPageContent: React.FC = () => {
             <Button variant="filled-primary" onClick={nextStep}>
               Confirm Order
             </Button>
+
+
+
           </div>,
         ];
       case OrderCreationStep.CONFIRM_PAYMENT:
         return [
           <div key="confirm-payment-buttons" className="flex gap-4 justify-end">
-            <Button variant="outline-primary" onClick={prevStep}>
-              Save to Draft
-            </Button>
-            <Button variant="filled-primary" onClick={nextStep}>
-              Confirm Payment
-            </Button>
+
+<Button
+variant="outline-primary" 
+  onClick={() => {
+    if (submitHandler) submitHandler("draft");
+  }}
+  className="btn btn-secondary"
+>
+  Save as Draft
+  </Button> 
+
+   <Button
+  variant="filled-primary"
+  onClick={() => {
+    if (submitHandler) submitHandler("completed");
+  }}
+>
+  Confirm Payment
+</Button> 
           </div>,
         ];
       case OrderCreationStep.CUSTOMER_RECEIPT:
@@ -145,6 +306,8 @@ const CreateOrderPageContent: React.FC = () => {
     }
   };
 
+  
+
   const renderStepContent = () => {
     switch (currentStep) {
       case OrderCreationStep.SEARCH_PRODUCT:
@@ -157,8 +320,16 @@ const CreateOrderPageContent: React.FC = () => {
             animate="animate"
             exit="exit"
             className="flex flex-col gap-4"
-          >
-            <CreateOrderForm />
+       >
+            <CreateOrderForm
+  registerSubmit={registerSubmitHandler}
+  paymentDetails={paymentDetails}
+  updatePaymentDetails={updatePaymentDetails}
+  paymentItems={paymentItems}
+  total={total}
+
+/>
+
           </motion.div>
         );
       case OrderCreationStep.CONFIRM_PAYMENT:
@@ -171,7 +342,15 @@ const CreateOrderPageContent: React.FC = () => {
             animate="animate"
             exit="exit"
           >
-            <ConfirmPayment />
+
+<PaymentDetails2
+  method={paymentDetails.method}
+  amount={paymentDetails.amount}
+  onPaymentChange={handlePaymentChange}
+  items={paymentItems}
+  total={total}
+/>
+
           </motion.div>
         );
       case OrderCreationStep.CUSTOMER_RECEIPT:

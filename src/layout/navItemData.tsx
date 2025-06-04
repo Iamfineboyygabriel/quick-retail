@@ -1,4 +1,3 @@
-import React from "react";
 import {
   InActiveDashboardIcon,
   ActiveDashboardIcon,
@@ -28,6 +27,7 @@ import {
   InActivePurchaseOrderIcon,
   InActiveVendorManagementIcon,
   InActiveShipmentIcon,
+  procurementInActiveIcon,
 } from "../assets/svg";
 import { ROUTES } from "../constants/routes";
 
@@ -101,7 +101,7 @@ export const PointOfSale: NavItem[] = [
   },
   {
     label: "Stores",
-    href: ROUTES.stores,
+    href: ROUTES.storeTarget,
     inactiveIcon: InActiveStores,
     activeIcon: ActiveStores,
   },
@@ -116,15 +116,79 @@ export const PointOfSale: NavItem[] = [
 export const FinancialManagement: NavItem[] = [
   {
     label: "Dashboard",
-    href: ROUTES.dashboard,
+    href: ROUTES.financialDashboard,
     inactiveIcon: InActiveDashboardIcon,
     activeIcon: ActiveDashboardIcon,
   },
   {
-    label: "Customer",
-    href: ROUTES.productManagement,
+    label: "Sales Management",
+    href: ROUTES.customerPage,
     inactiveIcon: InActiveReturns,
     activeIcon: ActiveReturns,
+    hasChildren: true,
+    children: [
+      { label: "Customer", href: `${ROUTES.customerPage}` },
+      { label: "Receipt", href: `${ROUTES.createReceipt}` },
+      { label: "Receipt Allocation", href: `${ROUTES.generateReport}` },
+      { label: "Sales Invoice", href: `${ROUTES.invoiceOverview}` },
+      { label: "Sales Returns", href: `${ROUTES.orderReceipt}` },
+      { label: "Credit Note", href: `${ROUTES.issueCreditNote}` },
+    ],
+  },
+  {
+    label: "Purchase",
+    href: ROUTES.selectVendor,
+    inactiveIcon: InActivePurchaseOrderIcon,
+    activeIcon: ActiveProductIcon,
+    hasChildren: true,
+    children: [
+      { label: "Vendor", href: `${ROUTES.selectVendor}` },
+      { label: "Purchase Order", href: `${ROUTES.allPurchaseOrder}` },
+      { label: "Purchase Invoice", href: `${ROUTES.allPurchaseInvoice}` },
+      { label: "Non-inventory Purchase", href: `${ROUTES.nonInventory}` },
+      { label: "Remittance Advice", href: `${ROUTES.createRemittance}` },
+      { label: "Purchase Returns", href: `${ROUTES.allPurchaseReturns}` },
+      { label: "Debit Note", href: `${ROUTES.allDebitNote}` },
+      { label: "Add New Payment", href: `${ROUTES.addPayment}` },
+    ],
+  },
+  {
+    label: "Inventory",
+    href: ROUTES.inventoryWarehouse,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
+  },
+  {
+    label: "Banking",
+    href: ROUTES.selectVendor,
+    inactiveIcon: InActivePurchaseOrderIcon,
+    activeIcon: ActiveProductIcon,
+    hasChildren: true,
+    children: [
+      { label: "Card", href: `${ROUTES.addCard}` },
+      { label: "Bank", href: `${ROUTES.addBank}` },
+      { label: "Transactions", href: `${ROUTES.allPurchaseOrder}` },
+      { label: "Transfer", href: `${ROUTES.allPurchaseInvoice}` },
+      { label: "Account Reconciliation", href: `${ROUTES.createRemittance}` },
+      
+    ],
+  },
+  {
+    label: "Accounting",
+    href: ROUTES.accountChart,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
+    hasChildren: true,
+    children: [
+      { label: "Chart of Account", href: `${ROUTES.accountChart}` },
+      { label: "Journal Entry", href: `${ROUTES.allJournal}` },
+    ],
+  },
+  {
+    label: "Payment",
+    href: ROUTES.initiatePayment,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
   },
 ];
 
@@ -176,15 +240,45 @@ export const Procurement: NavItem[] = [
 export const AssetManagement: NavItem[] = [
   {
     label: "Dashboard",
-    href: ROUTES.dashboard,
+    href: ROUTES.assetDashboard,
     inactiveIcon: InActiveDashboardIcon,
     activeIcon: ActiveDashboardIcon,
   },
   {
-    label: "Customer",
-    href: ROUTES.productManagement,
-    inactiveIcon: InActiveReturns,
-    activeIcon: ActiveReturns,
+    label: "Asset Request",
+    href: ROUTES.assetRequestPage,
+    inactiveIcon: InActiveProductIcon,
+    activeIcon: ActiveProductIcon,
+  },
+  {
+    label: "Asset Register",
+    href: ROUTES.assetRegisterPage,
+    inactiveIcon: InActiveVendorManagementIcon,
+    activeIcon: InActiveVendorManagementIcon,
+  },
+  {
+    label: "Depreciation",
+    href: ROUTES.depreciationPage,
+    inactiveIcon: InActiveInventory,
+    activeIcon: ActiveInventory,
+  },
+  {
+    label: "Procurement",
+    href: ROUTES.procurementPage,
+    inactiveIcon: procurementInActiveIcon,
+    activeIcon: procurementInActiveIcon,
+  },
+  {
+    label: "Report",
+    href: ROUTES.reportPage,
+    inactiveIcon: InActiveDashboardIcon,
+    activeIcon: ActiveDashboardIcon,
+  },
+  {
+    label: "Setting",
+    href: ROUTES.settingPage,
+    inactiveIcon: Settings,
+    activeIcon: Settings,
   },
 ];
 

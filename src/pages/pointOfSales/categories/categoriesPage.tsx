@@ -5,10 +5,23 @@ import CategoriesTable from "../../../components/dashboard/pointOfSales/categori
 import { useState } from "react";
 import CreateNewCategory from "../../../components/dashboard/pointOfSales/categories/modals/createNewCategory";
 import CreateSubCategory from "../../../components/dashboard/pointOfSales/categories/modals/createSubCategory";
+import { useFetchAllCategories } from "../../../hooks/backendApis/pos/categories";
 
 const CategoriesPage = () => {
   const [isCreateCategoryOpen, setIsCreateCategoryOpen] = useState(false);
   const [isCreateSubCategoryOpen, setIsSubCreateCategoryOpen] = useState(false);
+
+  const { data, isLoading,refetch  } = useFetchAllCategories();
+  const categories = Array.isArray(data?.data?.data) ? data.data.data : [];
+  
+
+  const categoryOptions =
+    Array.isArray(categories) && categories.length > 0
+      ? categories.map((cat: { name: string; id: number }) => ({
+          label: cat.name,
+          value: cat.id,
+        }))
+      : [];
 
   const subHeaders = [
     <div key="1">
@@ -59,16 +72,22 @@ const CategoriesPage = () => {
       </div>
     </div>,
   ];
+
   return (
     <PageContainer subHeaders={subHeaders}>
-      <CategoriesTable />
+      <CategoriesTable categories={categories} isLoading={isLoading}  />
       <CreateNewCategory
         opened={isCreateCategoryOpen}
         onClose={() => setIsCreateCategoryOpen(false)}
+        onCreated={() => {
+          refetch();          
+          setIsCreateCategoryOpen(false); 
+        }}
       />
       <CreateSubCategory
         opened={isCreateSubCategoryOpen}
         onClose={() => setIsSubCreateCategoryOpen(false)}
+        categories={categoryOptions}
       />
     </PageContainer>
   );

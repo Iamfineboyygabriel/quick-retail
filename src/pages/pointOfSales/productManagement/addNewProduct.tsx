@@ -1,10 +1,9 @@
-import React from "react";
 import { Button, Text } from "@mantine/core";
 import { ChevronLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageContainer from "../../../layout/pageContainer";
 import AddProductForm from "../../../components/dashboard/pointOfSales/productManagement/addProductForm";
-
+import { ROUTES } from "../../../constants/routes";
 
 const AddNewProduct: React.FC = () => {
   const navigate = useNavigate();
@@ -59,7 +58,10 @@ const AddNewProduct: React.FC = () => {
         <Button variant="outline-primary" onClick={() => navigate(-1)}>
           Cancel
         </Button>
-        <Button variant="filled-primary">Confirm Order</Button>
+
+        <Link to={ROUTES.inventoryDetails}>
+          <Button variant="filled-primary">Next</Button>
+        </Link>
       </div>,
     ];
   };
