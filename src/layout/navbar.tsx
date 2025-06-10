@@ -1,50 +1,300 @@
-import { Button, Menu as MantineMenu } from "@mantine/core";
-import { Menu, ChevronDown } from "lucide-react";
-import logo from "../../src/assets/images/logo.png";
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Burger, Drawer, Button, Group } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { ChevronDown } from "lucide-react";
+import logo from "../assets/images/logo.png";
+import { ROUTES } from "../constants/routes";
 
-const Navbar = () => {
+const productSubLinks = [
+  {
+    href: `${ROUTES.test}/life-development-skills`,
+    label: "Life Skills Development",
+  },
+  {
+    href: `${ROUTES.test}/community`,
+    label: "Community Engagement",
+  },
+];
+
+const NavBar = () => {
+  const location = useLocation();
+  const [isProductOpen, setIsProductOpen] = useState(false);
+  const [
+    isMobileMenuOpen,
+    { toggle: toggleMobileMenu, close: closeMobileMenu },
+  ] = useDisclosure(false);
+
+  const getLinkClassName = (href: string) => {
+    const isActive =
+      href === ROUTES.HOME
+        ? location.pathname === href
+        : location.pathname === href ||
+          location.pathname.startsWith(href + "/");
+    return `transition-colors tracking-wider hover:text-[#F16722] ${
+      isActive ? "text-[#F16722] font-semibold" : "text-[#5C6C72]"
+    }`;
+  };
+
+  const toggleProductDropdown = () => {
+    setIsProductOpen((prev) => !prev);
+  };
+
+  const closeDropdown = () => {
+    setIsProductOpen(false);
+  };
+
+  const closeAll = () => {
+    closeDropdown();
+    closeMobileMenu();
+  };
 
   return (
-    <header className="w-full py-4 bg-white shadow-sm font-[Clash Display]">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Menu className="md:hidden text-gray-800" />
-          <img src={logo} alt="logo" className="object-contain" />
-        </div>
-        <nav className="hidden md:flex gap-6 text-gray-700 font-[400] text-[18px] leading-[100%] tracking-[0.02em] items-center">
-          <a href="#">Home</a>
+    <div className="bg-white font-clash-regular relative shadow-sm">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex justify-between items-center h-16 sm:h-20">
+          {/* Logo */}
+          <NavLink to={ROUTES.HOME} onClick={closeAll}>
+            <img src={logo} alt="Logo" className="h-8 sm:h-10" />
+          </NavLink>
 
-          {/* Dropdown for Products */}
-          <MantineMenu shadow="md" width={200} position="bottom">
-            <MantineMenu.Target>
-              <div className="flex items-center gap-1 cursor-pointer hover:text-orange-500">
-                <span>Products</span>
-                <ChevronDown size={16} />
-              </div>
-            </MantineMenu.Target>
-            <MantineMenu.Dropdown>
-              <MantineMenu.Item>POS Software</MantineMenu.Item>
-              <MantineMenu.Item>Inventory</MantineMenu.Item>
-              <MantineMenu.Item>eCommerce</MantineMenu.Item>
-              <MantineMenu.Item>Reports</MantineMenu.Item>
-            </MantineMenu.Dropdown>
-          </MantineMenu>
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+            <li>
+              <NavLink
+                to={ROUTES.HOME}
+                className={getLinkClassName(ROUTES.HOME)}
+                onClick={closeDropdown}
+              >
+                <p className="text-base">Home</p>
+              </NavLink>
+            </li>
 
-          <a href="#">Pricing</a>
-          <a href="#">Company</a>
-          <a href="#">Contact</a>
-        </nav>
-        <div key="search-product-buttons" className="flex gap-4 justify-end">
-          <Link to="/login">
-            <Button variant="outline-primary">Log in</Button>
-          </Link>
-          <Button variant="filled-primary">Sign Up</Button>
+            <li className="relative">
+              <button
+                className={`flex items-center gap-1.5 ${getLinkClassName(
+                  ROUTES.test
+                )}`}
+                onClick={toggleProductDropdown}
+                aria-expanded={isProductOpen}
+                aria-controls="product-dropdown"
+              >
+                <p className="text-base">Products</p>
+                <ChevronDown
+                  size={18}
+                  className={`transition-transform ${
+                    isProductOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {/* {isProductOpen && (
+                <div
+                  id="product-dropdown"
+                  className="absolute top-full left-0 mt-2 bg-[#48D1CC] shadow-lg rounded-md p-2 min-w-[200px] z-50"
+                >
+                  {productSubLinks.map(({ href, label }) => (
+                    <NavLink
+                      key={href}
+                      to={href}
+                      className="block py-2 px-4 text-white hover:text-[#48D1CC] hover:bg-[#EFFBFA] rounded transition-colors"
+                      onClick={closeAll}
+                    >
+                      <p className="font-medium text-sm">{label}</p>
+                    </NavLink>
+                  ))}
+                </div>
+              )} */}
+            </li>
+
+            <li>
+              <NavLink
+                to={ROUTES.PRICING}
+                className={getLinkClassName(ROUTES.PRICING)}
+                onClick={closeDropdown}
+              >
+                <p className="text-base">Pricing</p>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to={ROUTES.test}
+                className={getLinkClassName(ROUTES.test)}
+                onClick={closeDropdown}
+              >
+                <p className="text-base">Company</p>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to={ROUTES.CONTACT}
+                className={getLinkClassName(ROUTES.CONTACT)}
+                onClick={closeDropdown}
+              >
+                <p className="text-base">Contact</p>
+              </NavLink>
+            </li>
+          </ul>
+
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex gap-4 items-center">
+            <Link to="/login">
+              <Button
+                variant="outline"
+                color="#F16722"
+                radius="md"
+                size="md"
+                styles={{
+                  root: {
+                    padding: "8px 20px",
+                    fontSize: "14px",
+                    fontFamily: "sans-serif",
+                  },
+                }}
+              >
+                Log In
+              </Button>
+            </Link>
+            <Button
+              variant="filled"
+              color="#F16722"
+              radius="md"
+              size="md"
+              styles={{
+                root: {
+                  padding: "8px 20px",
+                  fontSize: "14px",
+                  fontFamily: "sans-serif",
+                },
+              }}
+            >
+              Sign Up
+            </Button>
+          </div>
+
+          {/* Mobile Burger */}
+          <div className="md:hidden">
+            <Burger
+              opened={isMobileMenuOpen}
+              onClick={toggleMobileMenu}
+              color="#F16722"
+              size="md"
+              aria-label="Toggle navigation menu"
+            />
+          </div>
         </div>
-        ,
       </div>
-    </header>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        opened={isMobileMenuOpen}
+        onClose={closeAll}
+        position="right"
+        size="xs"
+        withCloseButton={true}
+        closeButtonProps={{ "aria-label": "Close navigation menu" }}
+        styles={{
+          content: { backgroundColor: "#fff" },
+          header: { padding: "16px" },
+        }}
+      >
+        <div className="flex flex-col gap-4 p-4">
+          <NavLink
+            to={ROUTES.HOME}
+            className={getLinkClassName(ROUTES.HOME)}
+            onClick={closeAll}
+          >
+            <p className="text-base font-medium py-2">Home</p>
+          </NavLink>
+
+          <div>
+            <button
+              className={`flex items-center justify-between w-full text-left ${getLinkClassName(
+                ROUTES.test
+              )}`}
+              onClick={toggleProductDropdown}
+              aria-expanded={isProductOpen}
+              aria-controls="mobile-product-dropdown"
+            >
+              <p className="text-base font-medium py-2">Products</p>
+              <ChevronDown
+                size={20}
+                className={`transition-transform ${
+                  isProductOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {isProductOpen && (
+              <div id="mobile-product-dropdown" className="pl-4 mt-2 space-y-2">
+                {productSubLinks.map(({ href, label }) => (
+                  <NavLink
+                    key={href}
+                    to={href}
+                    className="block text-[#5C6C72] hover:text-[#48D1CC] text-sm font-medium py-2"
+                    onClick={closeAll}
+                  >
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <NavLink
+            to={ROUTES.PRICING}
+            className={getLinkClassName(ROUTES.PRICING)}
+            onClick={closeAll}
+          >
+            <p className="text-base font-medium py-2">Pricing</p>
+          </NavLink>
+
+          <NavLink
+            to={ROUTES.test}
+            className={getLinkClassName(ROUTES.test)}
+            onClick={closeAll}
+          >
+            <p className="text-base font-medium py-2">Company</p>
+          </NavLink>
+
+          <NavLink
+            to={ROUTES.CONTACT}
+            className={getLinkClassName(ROUTES.CONTACT)}
+            onClick={closeAll}
+          >
+            <p className="text-base font-medium py-2">Contact</p>
+          </NavLink>
+
+          <Group grow className="mt-4">
+            <Button
+              component={Link}
+              to="/login"
+              variant="outline"
+              color="#F16722"
+              radius="md"
+              size="md"
+              styles={{ root: { height: "48px", fontSize: "14px" } }}
+              onClick={closeAll}
+            >
+              Log In
+            </Button>
+            <Button
+              component={Link}
+              to="/signup"
+              variant="filled"
+              color="#F16722"
+              radius="md"
+              size="md"
+              styles={{ root: { height: "48px", fontSize: "14px" } }}
+              onClick={closeAll}
+            >
+              Sign Up
+            </Button>
+          </Group>
+        </div>
+      </Drawer>
+    </div>
   );
 };
 
-export default Navbar;
+export default NavBar;
