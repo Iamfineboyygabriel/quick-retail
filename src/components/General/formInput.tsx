@@ -6,8 +6,7 @@ interface FlexibleInputField
   paddingX?: number | string;
   paddingY?: number | string;
   borderWidth?: number | string;
-  leftPrefix?: string; 
-  
+  leftPrefix?: string;
 }
 
 const FormInput = ({
@@ -31,7 +30,7 @@ const FormInput = ({
   inputRef,
   fontSize = "16px",
   paddingX = 16,
-  paddingY = "5px",
+  paddingY = "12px", // Increased from 5px
   className,
   id,
   leftPrefix,
@@ -39,7 +38,7 @@ const FormInput = ({
   ...rest
 }: FlexibleInputField) => {
   const normalizeDimension = (dimension: number | string | undefined) => {
-    if (dimension === undefined) return "0.5rem";
+    if (dimension === undefined) return "0.75rem"; // Increased default
     if (typeof dimension === "number") return `${dimension}px`;
     return dimension;
   };
@@ -55,7 +54,9 @@ const FormInput = ({
       type={type}
       label={
         label && (
-          <div className="flex items-center">
+          <div className="flex items-center mb-2">
+            {" "}
+            {/* Added margin bottom */}
             {label}
             {required && <span className={`pl-1 ${requiredColor}`}>*</span>}
             {optional && <span className="text-gray-500 pl-1">(Optional)</span>}
@@ -83,7 +84,6 @@ const FormInput = ({
           </div>
         ) : undefined
       }
-      
       rightSection={
         rightIcon && (
           <div onClick={rightIconClick} className="cursor-pointer">
@@ -94,26 +94,40 @@ const FormInput = ({
       styles={{
         wrapper: {
           width: "100%",
+          marginBottom: "1rem", // Add spacing between inputs
+        },
+        label: {
+          fontSize: "14px",
+          fontWeight: 500,
+          color: "#374151",
+          marginBottom: "8px",
         },
         input: {
           backgroundColor: bgColor,
-          color: error ? "#D42620" : color,
+          color: error ? "#D42620" : color || "#374151",
           borderWidth: borderWidthValue,
+          borderColor: error ? "#D42620" : "#D1D5DB",
           borderStyle: "solid",
-          borderRadius: "0.375rem",
+          borderRadius: "0.5rem", // Slightly more rounded
           paddingLeft: leftIcon ? "2.5rem" : paddingXValue,
           paddingRight: rightIcon ? "2.5rem" : paddingXValue,
           paddingTop: paddingYValue,
           paddingBottom: paddingYValue,
-          height: "auto",
-          minHeight: "2.5rem",
+          height: "48px", // Fixed height for consistency
+          minHeight: "48px", // Minimum height
           fontSize: fontSize,
+          lineHeight: "1.5",
           boxShadow: "none",
           outline: "none",
-          label: {
-            color: error ? "#D42620" : color,
-            fontSize: fontSize,
-            marginBottom: "0.5rem",
+          transition:
+            "border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+          "&:focus": {
+            borderColor: "#3B82F6",
+            boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)",
+          },
+          "&::placeholder": {
+            color: "#9CA3AF",
+            opacity: 1,
           },
         },
       }}
